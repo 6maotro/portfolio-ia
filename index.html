@@ -739,6 +739,44 @@
     letter-spacing: 0.1em;
   }
 
+  /* IMAGE GALLERY */
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 1100px;
+  }
+
+  .image-card {
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+  }
+
+  .image-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(200,255,0,0.08);
+  }
+
+  .image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .image-card.hero-image {
+    grid-column: 1 / -1;
+    max-height: 500px;
+  }
+
+  .image-card.hero-image img {
+    max-height: 500px;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
@@ -748,6 +786,7 @@
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .expertise-grid { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: repeat(2, 1fr); }
+    .image-grid { grid-template-columns: repeat(2, 1fr); }
     .highlight-grid { grid-template-columns: 1fr; }
     .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -762,6 +801,8 @@
   <ul class="nav-links">
     <li><a href="#motion">Motion Design</a></li>
     <li><a href="#ugc">UGC</a></li>
+    <li><a href="#packshot">Packshot</a></li>
+    <li><a href="#character">Character</a></li>
     <li><a href="#animation">Animation</a></li>
   </ul>
   <a href="mailto:simao.thomas@hotmail.fr" class="nav-cta">Me contacter</a>
@@ -797,7 +838,7 @@
   <h2 class="section-title">Motion Design IA</h2>
   <p class="portfolio-intro">Séquences motion design entièrement générées par IA. Animations produit, transitions cinématiques et habillages visuels au service d'un message commercial.</p>
   <div class="video-grid">
-    <div class="video-card reveal" data-category="motion">
+    <div class="video-card reveal">
       <div class="video-wrapper">
         <iframe src="https://drive.google.com/file/d/1ir0MVeJPEZiOQiWqD_kM3DSlG5Ei6KRy/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
@@ -808,7 +849,7 @@
         <div class="video-tool">⚡ Higgsfield · Seedance</div>
       </div>
     </div>
-    <div class="video-card reveal" data-category="motion">
+    <div class="video-card reveal">
       <div class="video-wrapper">
         <iframe src="https://drive.google.com/file/d/1SY4QDNdHPM68hPKvkkwFMsuoO0qH6o8l/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
@@ -816,6 +857,17 @@
         <div class="video-tag">Motion Design</div>
         <h3>Elipson Planet L</h3>
         <p>Motion design produit avec mise en scène cinématique. L'enceinte connectée prend vie dans un univers visuel IA.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1L4k-PXnsxwco7NMKwY1htzL1yDq9Y9-y/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Motion Design</div>
+        <h3>JBL BoomBox</h3>
+        <p>Animation motion design pour la JBL BoomBox. Mise en scène dynamique qui reprend avec dérision les défilés des footballers avec cette enceinte comme Yamal ou Neymar.</p>
         <div class="video-tool">⚡ Higgsfield · Seedance</div>
       </div>
     </div>
@@ -828,38 +880,117 @@
   <h2 class="section-title">UGC généré par IA</h2>
   <p class="portfolio-intro">Contenus façon "User Generated Content" sans tournage. Des personnages IA cohérents qui interagissent avec de vrais produits, prêts pour les campagnes Social Ads.</p>
   <div class="video-grid">
-    <div class="video-card reveal" data-category="ugc">
+    <div class="video-card reveal">
       <div class="video-wrapper">
         <iframe src="https://drive.google.com/file/d/1WS6MVBUiyddp5zJjgeHWmEk8Sp7N8wLZ/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
         <div class="video-tag">UGC</div>
         <h3>Nothing UGC IA</h3>
-        <p>Vidéo UGC avec intégration du produit réel, le Nothing Headphone (1), dans une scène IA. Le personnage interagit naturellement avec le casque.</p>
+        <p>Contenu UGC synthétique avec personnage IA cohérent, conçu pour des campagnes Social Ads sans tournage.</p>
         <div class="video-tool">⚡ Higgsfield · Seedance</div>
       </div>
     </div>
-    <div class="video-card reveal" data-category="ugc">
+    <div class="video-card reveal">
       <div class="video-wrapper">
         <iframe src="https://drive.google.com/file/d/1KVE1goYxELa11KyMfvRhPVjwuctc7nm3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
         <div class="video-tag">UGC</div>
         <h3>Elipson Prestige Facet 6B</h3>
-        <p>Contenu UGC synthétique avec personnage IA cohérent, conçu pour des campagnes Social Ads sans tournage</p>
+        <p>Vidéo UGC avec intégration du produit réel dans une scène IA. Le personnage interagit naturellement avec l'enceinte.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1EmPpEjXM6lydQfkdtSywkdt2fyPyO0rF/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">UGC</div>
+        <h3>Platine Days</h3>
+        <p>Vidéo promotionnelle UGC pour l'opération Platine Days. Personnage IA présentant les offres en contexte réaliste.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1wIWwVFRtG8fIp1tdB4nPkTDAOGPPxTJx/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">UGC</div>
+        <h3>Elipson Planet L · French Days</h3>
+        <p>UGC promotionnel pour les French Days. Mise en avant du produit avec un personnage IA dans un cadre naturel.</p>
         <div class="video-tool">⚡ Higgsfield · Seedance</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PACKSHOT -->
+<section class="portfolio-section" id="packshot">
+  <div class="section-label">03 Packshot</div>
+  <h2 class="section-title">Packshots IA</h2>
+  <p class="portfolio-intro">Visuels produits générés par IA. Intégration de vrais produits dans des mises en scène photoréalistes, prêts pour le e-commerce et les campagnes Ads.</p>
+  <div class="image-grid">
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=1tMVOFLGsJuq48GlwaozMtYPiXeUHF30l&sz=w800" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=1iE12cKdgaTmZDU6vCdmeVrezoUEpSP4o&sz=w800" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=1kJLcXSalVR_6ur-ABwdjJJmjpyEIsLmy&sz=w800" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=1QrQNGqIbQFH6zIqEBxuoPptRBwonYQDa&sz=w800" alt="Packshot Nothing" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=1nNl-xi-c8ZBJ_n-lbnDfKaeaFsmVetne&sz=w800" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=17mmR6Hlak1BC2T9PrI2PpxmPw3Cu3Znh&sz=w800" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=16qC3XA16dbphMQBph7ZxP1EsVT4k3SjB&sz=w800" alt="Packshot IA" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTER CONSISTENCY -->
+<section class="portfolio-section portfolio-alt" id="character">
+  <div class="section-label">04 Character Consistency</div>
+  <h2 class="section-title">Cohérence des personnages</h2>
+  <p class="portfolio-intro">Un même personnage IA maintenu cohérent à travers différentes scènes et environnements. Visage, morphologie et style fidèles d'une image à l'autre.</p>
+  <div class="image-grid">
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=19FuSVjMpx2E8gtZq17Up8RIgZj_C-01a&sz=w800" alt="Character Consistency Hero" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=1n_dNTSaiq0XjRxIkwoAI_sJE9PLCrnLv&sz=w800" alt="Character Consistency" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=18Ub7P8RDt1h8LHZIJDjYiaAvvRvTyi3h&sz=w800" alt="Character Consistency" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=1YxlEpbrpsHyOX_MGV5FsaKlS19mKDLd1&sz=w800" alt="Character Consistency" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=1yZRSnX6DyES06-_dPSuzwGlDG63xqlxU&sz=w800" alt="Character Consistency" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://drive.google.com/thumbnail?id=1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg&sz=w800" alt="Character Consistency" loading="lazy">
+    </div>
+  </div>
+</section>
+
 <!-- ANIMATION -->
 <section class="portfolio-section" id="animation">
-  <div class="section-label">03 Animation</div>
+  <div class="section-label">05 Animation</div>
   <h2 class="section-title">Photos animées par IA</h2>
   <p class="portfolio-intro">Des photos statiques transformées en séquences cinématiques. Mouvements de caméra, jeux de lumière et ambiance, le tout généré par IA.</p>
   <div class="video-grid">
-    <div class="video-card full-width reveal" data-category="animation">
+    <div class="video-card full-width reveal">
       <div class="video-wrapper horizontal">
         <iframe src="https://drive.google.com/file/d/1zssYI3CSR49ucqR1S3ZLGW1YPP8ia-kk/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
