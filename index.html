@@ -119,6 +119,76 @@
     position: relative;
   }
 
+  .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-text {
+    flex: 1;
+  }
+
+  .hero-photos {
+    position: relative;
+    width: 420px;
+    height: 480px;
+    flex-shrink: 0;
+  }
+
+  .hero-photo {
+    position: absolute;
+    width: 220px;
+    height: 310px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transition: transform 0.4s ease;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-photo.hp-1 {
+    top: 0;
+    left: 0;
+    transform: rotate(-8deg);
+    z-index: 1;
+  }
+
+  .hero-photo.hp-2 {
+    top: 40px;
+    left: 120px;
+    transform: rotate(3deg);
+    z-index: 2;
+  }
+
+  .hero-photo.hp-3 {
+    top: 90px;
+    left: 200px;
+    transform: rotate(8deg);
+    z-index: 3;
+  }
+
+  .hero-photos:hover .hp-1 {
+    transform: rotate(-12deg) translateX(-30px);
+  }
+
+  .hero-photos:hover .hp-2 {
+    transform: rotate(0deg) translateY(-15px);
+  }
+
+  .hero-photos:hover .hp-3 {
+    transform: rotate(12deg) translateX(30px);
+  }
+
   .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -783,6 +853,9 @@
     .nav-links { display: none; }
     section { padding: 4rem 1.5rem; }
     .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-content { flex-direction: column; gap: 2rem; }
+    .hero-photos { width: 260px; height: 360px; margin: 0 auto; }
+    .hero-photo { width: 180px; height: 260px; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .expertise-grid { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: repeat(2, 1fr); }
@@ -797,7 +870,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Thomas<span>.</span>Simão</div>
+  <div class="nav-logo">T<span>.</span>Simão</div>
   <ul class="nav-links">
     <li><a href="#motion">Motion Design</a></li>
     <li><a href="#ugc">UGC</a></li>
@@ -811,23 +884,38 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-orb"></div>
-  <div class="hero-badge">Disponible pour votre prochain projet</div>
-  <h1>Je transforme vos<br>pages produits en<br><em>contenu vidéo</em></h1>
-  <p class="hero-sub">
-    Traffic Manager & créateur de contenus IA. Je produis des vidéos avec des <strong>personnages cohérents</strong>, j'intègre de <strong>vrais produits</strong> dans des scènes générées par IA et j'<strong>anime des photos</strong>, le tout avec Higgsfield et le modèle Seedance.
-  </p>
-  <div class="hero-stats">
-    <div class="stat">
-      <span class="stat-number">260K€</span>
-      <span class="stat-label">Budget Ads géré / an</span>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">Disponible pour votre prochain projet</div>
+      <h1>Je transforme vos<br>pages produits en<br><em>contenu vidéo</em></h1>
+      <p class="hero-sub">
+        Traffic Manager & créateur de contenus IA. Je produis des vidéos avec des <strong>personnages cohérents</strong>, j'intègre de <strong>vrais produits</strong> dans des scènes générées par IA et j'<strong>anime des photos</strong>, le tout avec Higgsfield et le modèle Seedance.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">260K€</span>
+          <span class="stat-label">Budget Ads géré / an</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">×30</span>
+          <span class="stat-label">ROAS moyen PMax</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">+64%</span>
+          <span class="stat-label">Trafic organique</span>
+        </div>
+      </div>
     </div>
-    <div class="stat">
-      <span class="stat-number">×30</span>
-      <span class="stat-label">ROAS moyen PMax</span>
-    </div>
-    <div class="stat">
-      <span class="stat-number">+64%</span>
-      <span class="stat-label">Trafic organique</span>
+    <div class="hero-photos">
+      <div class="hero-photo hp-1">
+        <img src="https://lh3.googleusercontent.com/d/1nlIEKB9JozQutVTVIMzScdwaL9lifN2G" alt="Casque doré et gant">
+      </div>
+      <div class="hero-photo hp-2">
+        <img src="https://lh3.googleusercontent.com/d/1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg" alt="Character Kanye Donda">
+      </div>
+      <div class="hero-photo hp-3">
+        <img src="https://lh3.googleusercontent.com/d/1kJLcXSalVR_6ur-ABwdjJJmjpyEIsLmy" alt="Nothing Headphone close up">
+      </div>
     </div>
   </div>
 </section>
@@ -838,6 +926,17 @@
   <h2 class="section-title">Motion Design IA</h2>
   <p class="portfolio-intro">Séquences motion design entièrement générées par IA. Animations produit, transitions cinématiques et habillages visuels au service d'un message commercial.</p>
   <div class="video-grid">
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1ZqN0ROkDrB-KtR5xCXFDa3Uz_eS_VEB3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Motion Design</div>
+        <h3>Sonos Ace</h3>
+        <p>Motion design pour le casque Sonos Ace. Mise en scène cinématique et transitions visuelles générées par IA.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
     <div class="video-card reveal">
       <div class="video-wrapper">
         <iframe src="https://drive.google.com/file/d/1ir0MVeJPEZiOQiWqD_kM3DSlG5Ei6KRy/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
@@ -862,12 +961,12 @@
     </div>
     <div class="video-card reveal">
       <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/1L4k-PXnsxwco7NMKwY1htzL1yDq9Y9-y/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://drive.google.com/file/d/129zpF8VYlV9BAmfJU9ykNZpQdGCfRod2/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
         <div class="video-tag">Motion Design</div>
-        <h3>JBL BoomBox</h3>
-        <p>Animation motion design pour la JBL BoomBox. Mise en scène dynamique qui reprend avec dérision les défilés des footballers avec cette enceinte comme Yamal ou Neymar.</p>
+        <h3>Aurzen Projecteur</h3>
+        <p>Motion design pour le projecteur Aurzen. Animations produit et ambiance visuelle générées par IA.</p>
         <div class="video-tool">⚡ Higgsfield · Seedance</div>
       </div>
     </div>
@@ -882,12 +981,12 @@
   <div class="video-grid">
     <div class="video-card reveal">
       <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/1WS6MVBUiyddp5zJjgeHWmEk8Sp7N8wLZ/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://drive.google.com/file/d/1QhtLtFRzfdKoJD1mt-NHNyoLo2PPQUA3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
         <div class="video-tag">UGC</div>
-        <h3>Nothing UGC IA</h3>
-        <p>Contenu UGC synthétique avec personnage IA cohérent, conçu pour des campagnes Social Ads sans tournage.</p>
+        <h3>Aurzen Projecteur</h3>
+        <p>UGC promotionnel pour le projecteur Aurzen. Personnage IA interagissant naturellement avec le produit.</p>
         <div class="video-tool">⚡ Higgsfield · Seedance</div>
       </div>
     </div>
@@ -934,25 +1033,28 @@
   <p class="portfolio-intro">Visuels produits générés par IA. Intégration de vrais produits dans des mises en scène photoréalistes, prêts pour le e-commerce et les campagnes Ads.</p>
   <div class="image-grid">
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=1tMVOFLGsJuq48GlwaozMtYPiXeUHF30l&sz=w800" alt="Packshot IA" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1tMVOFLGsJuq48GlwaozMtYPiXeUHF30l" alt="Packshot IA" loading="lazy">
     </div>
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=1iE12cKdgaTmZDU6vCdmeVrezoUEpSP4o&sz=w800" alt="Packshot IA" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1iE12cKdgaTmZDU6vCdmeVrezoUEpSP4o" alt="Packshot IA" loading="lazy">
     </div>
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=1kJLcXSalVR_6ur-ABwdjJJmjpyEIsLmy&sz=w800" alt="Packshot IA" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1kJLcXSalVR_6ur-ABwdjJJmjpyEIsLmy" alt="Packshot IA" loading="lazy">
     </div>
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=1QrQNGqIbQFH6zIqEBxuoPptRBwonYQDa&sz=w800" alt="Packshot Nothing" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1QrQNGqIbQFH6zIqEBxuoPptRBwonYQDa" alt="Packshot Nothing" loading="lazy">
     </div>
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=1nNl-xi-c8ZBJ_n-lbnDfKaeaFsmVetne&sz=w800" alt="Packshot IA" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1nNl-xi-c8ZBJ_n-lbnDfKaeaFsmVetne" alt="Packshot IA" loading="lazy">
     </div>
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=17mmR6Hlak1BC2T9PrI2PpxmPw3Cu3Znh&sz=w800" alt="Packshot IA" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/17mmR6Hlak1BC2T9PrI2PpxmPw3Cu3Znh" alt="Packshot IA" loading="lazy">
     </div>
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=16qC3XA16dbphMQBph7ZxP1EsVT4k3SjB&sz=w800" alt="Packshot IA" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/16qC3XA16dbphMQBph7ZxP1EsVT4k3SjB" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1nlIEKB9JozQutVTVIMzScdwaL9lifN2G" alt="Packshot IA" loading="lazy">
     </div>
   </div>
 </section>
@@ -964,22 +1066,25 @@
   <p class="portfolio-intro">Un même personnage IA maintenu cohérent à travers différentes scènes et environnements. Visage, morphologie et style fidèles d'une image à l'autre.</p>
   <div class="image-grid">
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=19FuSVjMpx2E8gtZq17Up8RIgZj_C-01a&sz=w800" alt="Character Consistency Hero" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/19FuSVjMpx2E8gtZq17Up8RIgZj_C-01a" alt="Character Consistency" loading="lazy">
     </div>
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=1n_dNTSaiq0XjRxIkwoAI_sJE9PLCrnLv&sz=w800" alt="Character Consistency" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1G6qfYTrDmlbW38CH785oI74RaxdmOLvr" alt="Character Consistency" loading="lazy">
     </div>
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=18Ub7P8RDt1h8LHZIJDjYiaAvvRvTyi3h&sz=w800" alt="Character Consistency" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1n_dNTSaiq0XjRxIkwoAI_sJE9PLCrnLv" alt="Character Consistency" loading="lazy">
     </div>
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=1YxlEpbrpsHyOX_MGV5FsaKlS19mKDLd1&sz=w800" alt="Character Consistency" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/18Ub7P8RDt1h8LHZIJDjYiaAvvRvTyi3h" alt="Character Consistency" loading="lazy">
     </div>
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=1yZRSnX6DyES06-_dPSuzwGlDG63xqlxU&sz=w800" alt="Character Consistency" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1YxlEpbrpsHyOX_MGV5FsaKlS19mKDLd1" alt="Character Consistency" loading="lazy">
     </div>
     <div class="image-card reveal">
-      <img src="https://drive.google.com/thumbnail?id=1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg&sz=w800" alt="Character Consistency" loading="lazy">
+      <img src="https://lh3.googleusercontent.com/d/1yZRSnX6DyES06-_dPSuzwGlDG63xqlxU" alt="Character Consistency" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg" alt="Character Consistency" loading="lazy">
     </div>
   </div>
 </section>
@@ -992,12 +1097,12 @@
   <div class="video-grid">
     <div class="video-card full-width reveal">
       <div class="video-wrapper horizontal">
-        <iframe src="https://drive.google.com/file/d/1zssYI3CSR49ucqR1S3ZLGW1YPP8ia-kk/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://drive.google.com/file/d/14-FvcstpiBAXbX2ViybsH1AUiDvC996R/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
         <div class="video-tag">Animation</div>
-        <h3>Hisense Minia × HT Saturn</h3>
-        <p>Photo produit animée. Passage du statique au cinématique avec mouvements de caméra et jeux de lumière IA.</p>
+        <h3>Opium Denim Jacket</h3>
+        <p>Photo animée par IA. Passage du statique au cinématique avec mouvements de caméra et jeux de lumière.</p>
         <div class="video-tool">⚡ Higgsfield · Seedance</div>
       </div>
     </div>
