@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas Simão · AI Video & Motion</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --fg: #f0ece4;
+    --accent: #c8ff00;
+    --muted: #6b6b6b;
+    --card-bg: #141414;
+    --card-border: #222;
+    --gradient-1: #c8ff00;
+    --gradient-2: #00ffc8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* GRAIN OVERLAY */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .nav-logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.3rem;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo span {
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+    font-weight: 500;
+  }
+
+  .nav-links a.active {
+    color: var(--accent);
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(200,255,0,0.3);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+  }
+
+  .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-text {
+    flex: 1;
+  }
+
+  .hero-photos {
+    position: relative;
+    width: 420px;
+    height: 480px;
+    flex-shrink: 0;
+  }
+
+  .hero-photo {
+    position: absolute;
+    width: 220px;
+    height: 310px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transition: transform 0.4s ease;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-photo.hp-1 {
+    top: 0;
+    left: 0;
+    transform: rotate(-8deg);
+    z-index: 1;
+  }
+
+  .hero-photo.hp-2 {
+    top: 40px;
+    left: 120px;
+    transform: rotate(3deg);
+    z-index: 2;
+  }
+
+  .hero-photo.hp-3 {
+    top: 90px;
+    left: 200px;
+    transform: rotate(8deg);
+    z-index: 3;
+  }
+
+  .hero-photos:hover .hp-1 {
+    transform: rotate(-12deg) translateX(-30px);
+  }
+
+  .hero-photos:hover .hp-2 {
+    transform: rotate(0deg) translateY(-15px);
+  }
+
+  .hero-photos:hover .hp-3 {
+    transform: rotate(12deg) translateX(30px);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(200,255,0,0.08);
+    border: 1px solid rgba(200,255,0,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    width: fit-content;
+    animation: fadeInUp 0.8s ease both;
+    font-weight: 500;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s 0.1s ease both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.7;
+    animation: fadeInUp 0.8s 0.2s ease both;
+    font-weight: 300;
+  }
+
+  .hero-sub strong {
+    color: var(--fg);
+    font-weight: 500;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+    animation: fadeInUp 0.8s 0.3s ease both;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+
+  /* GLOW ORB */
+  .hero-orb {
+    position: absolute;
+    right: 5%;
+    top: 30%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(200,255,0,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: float 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 3rem;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+    line-height: 1.1;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--card-bg);
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1100px;
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+    color: #b0b0b0;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .about-text strong {
+    color: var(--fg);
+    font-weight: 500;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  .timeline-item {
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 6px;
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .timeline-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.15rem;
+  }
+
+  .timeline-role {
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .timeline-company {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* SKILLS / EXPERTISE */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+  }
+
+  .expertise-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 2rem;
+    border-radius: 12px;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .expertise-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .expertise-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(200,255,0,0.03), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .expertise-card:hover::after { opacity: 1; }
+
+  .expertise-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .expertise-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .expertise-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* SEEDANCE / PORTFOLIO HIGHLIGHT */
+  .portfolio-highlight {
+    background: linear-gradient(135deg, rgba(200,255,0,0.03), rgba(0,255,200,0.02));
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+  }
+
+  .highlight-card {
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .highlight-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+  }
+
+  .highlight-visual {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-visual .icon-big {
+    font-size: 3.5rem;
+    opacity: 0.6;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .highlight-card:hover .icon-big {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  .hv-1 { background: linear-gradient(135deg, #1a1a2e, #0f0f1a); }
+  .hv-2 { background: linear-gradient(135deg, #1a2e1a, #0f1a0f); }
+  .hv-3 { background: linear-gradient(135deg, #2e1a1a, #1a0f0f); }
+
+  .highlight-content {
+    padding: 1.5rem;
+  }
+
+  .highlight-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .highlight-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .highlight-content p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* TOOLS */
+  .tools-wrap {
+    max-width: 1100px;
+  }
+
+  .tools-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tool-category-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  .tool-chip {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .tool-chip:hover {
+    border-color: var(--accent);
+    background: rgba(200,255,0,0.05);
+    color: var(--accent);
+  }
+
+  .tool-chip.primary {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(200,255,0,0.06);
+  }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    padding: 8rem 3rem;
+    position: relative;
+  }
+
+  .cta-section .section-title {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(200,255,0,0.3);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--card-border);
+    color: var(--fg);
+    background: transparent;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--fg);
+    background: rgba(255,255,255,0.03);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--card-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .portfolio-intro {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 650px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .portfolio-alt {
+    background: var(--card-bg);
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .portfolio-section + .portfolio-section {
+    border-top: none;
+  }
+
+  /* VIDEO PORTFOLIO */
+  .portfolio-section {
+    background: linear-gradient(135deg, rgba(200,255,0,0.03), rgba(0,255,200,0.02));
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .portfolio-categories {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .cat-tab {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--muted);
+    padding: 0.5rem 1.2rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .cat-tab:hover, .cat-tab.active {
+    background: rgba(200,255,0,0.08);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+  }
+
+  .video-card.full-width {
+    grid-column: 1 / -1;
+    max-width: 700px;
+  }
+
+  .video-card {
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+  }
+
+  .video-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(200,255,0,0.08);
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 177.78%; /* 9:16 vertical by default */
+    background: #0d0d0d;
+  }
+
+  .video-wrapper.horizontal {
+    padding-top: 56.25%; /* 16:9 horizontal */
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .video-info {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .video-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .video-tag::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .video-info h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+  }
+
+  .video-info p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .video-tool {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: #555;
+    margin-top: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* IMAGE GALLERY */
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 1100px;
+  }
+
+  .image-card {
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+  }
+
+  .image-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(200,255,0,0.08);
+  }
+
+  .image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .image-card.hero-image {
+    grid-column: 1 / -1;
+    max-height: 500px;
+  }
+
+  .image-card.hero-image img {
+    max-height: 500px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-content { flex-direction: column; gap: 2rem; }
+    .hero-photos { width: 260px; height: 360px; margin: 0 auto; }
+    .hero-photo { width: 180px; height: 260px; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: repeat(2, 1fr); }
+    .image-grid { grid-template-columns: repeat(2, 1fr); }
+    .highlight-grid { grid-template-columns: 1fr; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">T<span>.</span>Simão</div>
+  <ul class="nav-links">
+    <li><a href="#motion">Motion Design</a></li>
+    <li><a href="#ugc">UGC</a></li>
+    <li><a href="#packshot">Packshot</a></li>
+    <li><a href="#character">Character</a></li>
+    <li><a href="#animation">Proyectos personales</a></li>
+  </ul>
+  <a href="mailto:simao.thomas@hotmail.fr" class="nav-cta">Contacto</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">Disponible para tu próximo proyecto</div>
+      <h1>Transformo tus<br>páginas de producto en<br><em>contenido de vídeo</em></h1>
+      <p class="hero-sub">
+        Traffic Manager y creador de contenidos IA. Produzco vídeos con <strong>personajes coherentes</strong>, integro <strong>productos reales</strong> en escenas generadas por IA y <strong>animo fotos</strong>, todo con Higgsfield y el modelo Seedance.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">260K€</span>
+          <span class="stat-label">Presupuesto Ads gestionado / año</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">×30</span>
+          <span class="stat-label">ROAS promedio PMax</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">+64%</span>
+          <span class="stat-label">Tráfico orgánico</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photos">
+      <div class="hero-photo hp-1">
+        <img src="https://lh3.googleusercontent.com/d/1nlIEKB9JozQutVTVIMzScdwaL9lifN2G" alt="Casque doré et gant">
+      </div>
+      <div class="hero-photo hp-2">
+        <img src="https://lh3.googleusercontent.com/d/1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg" alt="Character Kanye Donda">
+      </div>
+      <div class="hero-photo hp-3">
+        <img src="https://lh3.googleusercontent.com/d/1kJLcXSalVR_6ur-ABwdjJJmjpyEIsLmy" alt="Nothing Headphone close up">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOTION DESIGN -->
+<section class="portfolio-section" id="motion">
+  <div class="section-label">01 Motion Design</div>
+  <h2 class="section-title">Motion Design IA</h2>
+  <p class="portfolio-intro">Secuencias de motion design generadas íntegramente por IA. Animaciones de producto, transiciones cinemáticas y elementos visuales al servicio de un mensaje comercial.</p>
+  <div class="video-grid">
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1ZqN0ROkDrB-KtR5xCXFDa3Uz_eS_VEB3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Motion Design</div>
+        <h3>Sonos Ace</h3>
+        <p>Motion design para los auriculares Sonos Ace. Puesta en escena cinemática y transiciones visuales generadas por IA.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1ir0MVeJPEZiOQiWqD_kM3DSlG5Ei6KRy/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Motion Design</div>
+        <h3>Hydratis</h3>
+        <p>Secuencia motion design IA para la marca Hydratis. Animaciones y transiciones generadas íntegramente por IA.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1SY4QDNdHPM68hPKvkkwFMsuoO0qH6o8l/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Motion Design</div>
+        <h3>Elipson Planet L</h3>
+        <p>Motion design de producto con puesta en escena cinemática. El altavoz conectado cobra vida en un universo visual IA.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/129zpF8VYlV9BAmfJU9ykNZpQdGCfRod2/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Motion Design</div>
+        <h3>Aurzen Proyector</h3>
+        <p>Motion design para el proyector Aurzen. Animaciones de producto y ambiente visual generados por IA.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UGC -->
+<section class="portfolio-section portfolio-alt" id="ugc">
+  <div class="section-label">02 UGC Sintético</div>
+  <h2 class="section-title">UGC generado por IA</h2>
+  <p class="portfolio-intro">Contenidos tipo "User Generated Content" sin rodaje. Personajes IA coherentes que interactúan con productos reales, listos para campañas de Social Ads.</p>
+  <div class="video-grid">
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1QhtLtFRzfdKoJD1mt-NHNyoLo2PPQUA3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">UGC</div>
+        <h3>Aurzen Proyector</h3>
+        <p>UGC promocional para el proyector Aurzen. Personaje IA interactuando naturalmente con el producto.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1KVE1goYxELa11KyMfvRhPVjwuctc7nm3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">UGC</div>
+        <h3>Elipson Prestige Facet 6B</h3>
+        <p>Vídeo UGC con integración del producto real en una escena IA. El personaje interactúa naturalmente con el altavoz.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1EmPpEjXM6lydQfkdtSywkdt2fyPyO0rF/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">UGC</div>
+        <h3>Platine Days</h3>
+        <p>Vídeo UGC promocional para la operación Platine Days. Personaje IA presentando las ofertas en contexto realista.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1wIWwVFRtG8fIp1tdB4nPkTDAOGPPxTJx/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">UGC</div>
+        <h3>Elipson Planet L · French Days</h3>
+        <p>UGC promocional para los French Days. Presentación del producto con un personaje IA en un entorno natural.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKSHOT -->
+<section class="portfolio-section" id="packshot">
+  <div class="section-label">03 Packshot</div>
+  <h2 class="section-title">Packshots IA</h2>
+  <p class="portfolio-intro">Visuales de producto generados por IA. Integración de productos reales en escenas fotorrealistas, listos para e-commerce y campañas Ads.</p>
+  <div class="image-grid">
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1tMVOFLGsJuq48GlwaozMtYPiXeUHF30l" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1iE12cKdgaTmZDU6vCdmeVrezoUEpSP4o" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1kJLcXSalVR_6ur-ABwdjJJmjpyEIsLmy" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1QrQNGqIbQFH6zIqEBxuoPptRBwonYQDa" alt="Packshot Nothing" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1nNl-xi-c8ZBJ_n-lbnDfKaeaFsmVetne" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/17mmR6Hlak1BC2T9PrI2PpxmPw3Cu3Znh" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/16qC3XA16dbphMQBph7ZxP1EsVT4k3SjB" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1nlIEKB9JozQutVTVIMzScdwaL9lifN2G" alt="Packshot IA" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTER CONSISTENCY -->
+<section class="portfolio-section portfolio-alt" id="character">
+  <div class="section-label">04 Character Consistency</div>
+  <h2 class="section-title">Coherencia de personajes</h2>
+  <p class="portfolio-intro">Un mismo personaje IA mantenido coherente en diferentes escenas y entornos. Rostro, morfología y estilo fieles de una imagen a otra.</p>
+  <div class="image-grid">
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/19FuSVjMpx2E8gtZq17Up8RIgZj_C-01a" alt="Character Consistency" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1G6qfYTrDmlbW38CH785oI74RaxdmOLvr" alt="Character Consistency" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1n_dNTSaiq0XjRxIkwoAI_sJE9PLCrnLv" alt="Character Consistency" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/18Ub7P8RDt1h8LHZIJDjYiaAvvRvTyi3h" alt="Character Consistency" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1YxlEpbrpsHyOX_MGV5FsaKlS19mKDLd1" alt="Character Consistency" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1yZRSnX6DyES06-_dPSuzwGlDG63xqlxU" alt="Character Consistency" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg" alt="Character Consistency" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ANIMATION -->
+<section class="portfolio-section" id="animation">
+  <div class="section-label">05 Proyectos personales</div>
+  <h2 class="section-title">Proyectos personales</h2>
+  <p class="portfolio-intro">Creaciones personales fuera del ámbito profesional.</p>
+  <div class="video-grid">
+    <div class="video-card full-width reveal">
+      <div class="video-wrapper horizontal">
+        <iframe src="https://drive.google.com/file/d/14-FvcstpiBAXbX2ViybsH1AUiDvC996R/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Proyecto personal</div>
+        <h3 style="color: #ffffff;">Denim Jacket handmade</h3>
+        <p>Foto animada por IA. Del estático al cinemático con movimientos de cámara y juegos de luz.</p>
+        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-label" style="justify-content:center;">¿Listo para colaborar?</div>
+  <h2 class="section-title">¿Un proyecto de vídeo IA?<br>Hablemos.</h2>
+  <div class="cta-buttons">
+    <a href="mailto:simao.thomas@hotmail.fr" class="btn btn-primary">
+      simao.thomas@hotmail.fr →
+    </a>
+    <a href="tel:0612225566" class="btn btn-outline">
+      06 12 22 55 66
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Thomas Simão</span>
+  <span>Champigny-sur-Marne</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Active nav link on scroll
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 120;
+      if (window.scrollY >= top) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
