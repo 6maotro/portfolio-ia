@@ -7,14 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0a;
-    --fg: #f0ece4;
-    --accent: #c8ff00;
-    --muted: #6b6b6b;
-    --card-bg: #141414;
-    --card-border: #222;
-    --gradient-1: #c8ff00;
-    --gradient-2: #00ffc8;
+    --bg: #f5f0e8;
+    --fg: #1a1a1a;
+    --accent: #e85d26;
+    --muted: #8a8070;
+    --card-bg: #ece6da;
+    --card-border: #d4cbbf;
+    --gradient-1: #e85d26;
+    --gradient-2: #f5a623;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,6 +23,10 @@
 
   body {
     background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(232,93,38,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(245,166,35,0.05) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
     color: var(--fg);
     font-family: 'DM Sans', sans-serif;
     overflow-x: hidden;
@@ -31,7 +35,7 @@
 
   ::selection {
     background: var(--accent);
-    color: var(--bg);
+    color: #fff;
   }
 
   /* GRAIN OVERLAY */
@@ -39,7 +43,7 @@
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 9999;
   }
@@ -54,9 +58,9 @@
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    background: rgba(10,10,10,0.8);
+    background: rgba(245,240,232,0.85);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
   }
 
   .nav-logo {
@@ -91,9 +95,20 @@
 
   .nav-links a:hover { color: var(--accent); }
 
+  .nav-linkedin {
+    color: var(--muted);
+    transition: color 0.3s, transform 0.3s;
+    display: flex;
+  }
+
+  .nav-linkedin:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
   .nav-cta {
     background: var(--accent);
-    color: var(--bg);
+    color: #fff;
     padding: 0.6rem 1.4rem;
     border-radius: 100px;
     text-decoration: none;
@@ -106,7 +121,7 @@
 
   .nav-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(200,255,0,0.3);
+    box-shadow: 0 4px 20px rgba(232,93,38,0.3);
   }
 
   /* HERO */
@@ -145,8 +160,8 @@
     height: 310px;
     border-radius: 16px;
     overflow: hidden;
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    border: 2px solid rgba(0,0,0,0.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
     transition: transform 0.4s ease;
   }
 
@@ -211,13 +226,13 @@
     border-radius: 16px;
     overflow: hidden;
     border: 2px solid var(--card-border);
-    box-shadow: 0 20px 80px rgba(200,255,0,0.08);
+    box-shadow: 0 20px 80px rgba(232,93,38,0.08);
     transition: border-color 0.4s, box-shadow 0.4s;
   }
 
   .showreel-video:hover {
     border-color: var(--accent);
-    box-shadow: 0 20px 80px rgba(200,255,0,0.15);
+    box-shadow: 0 20px 80px rgba(232,93,38,0.15);
   }
 
   .showreel-video .yt-vertical {
@@ -359,8 +374,8 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(200,255,0,0.08);
-    border: 1px solid rgba(200,255,0,0.2);
+    background: rgba(232,93,38,0.08);
+    border: 1px solid rgba(232,93,38,0.25);
     padding: 0.5rem 1rem;
     border-radius: 100px;
     font-size: 0.75rem;
@@ -452,7 +467,7 @@
     top: 30%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(200,255,0,0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(232,93,38,0.08) 0%, transparent 70%);
     border-radius: 50%;
     filter: blur(60px);
     animation: float 6s ease-in-out infinite;
@@ -512,7 +527,7 @@
 
   .about-text {
     font-size: 1.05rem;
-    color: #b0b0b0;
+    color: #5a5347;
     line-height: 1.8;
     font-weight: 300;
   }
@@ -601,7 +616,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(200,255,0,0.03), transparent);
+    background: linear-gradient(135deg, rgba(232,93,38,0.04), transparent);
     opacity: 0;
     transition: opacity 0.3s;
   }
@@ -628,7 +643,7 @@
 
   /* SEEDANCE / PORTFOLIO HIGHLIGHT */
   .portfolio-highlight {
-    background: linear-gradient(135deg, rgba(200,255,0,0.03), rgba(0,255,200,0.02));
+    background: linear-gradient(135deg, rgba(232,93,38,0.03), rgba(245,166,35,0.02));
     border-top: 1px solid var(--card-border);
     border-bottom: 1px solid var(--card-border);
   }
@@ -736,14 +751,14 @@
 
   .tool-chip:hover {
     border-color: var(--accent);
-    background: rgba(200,255,0,0.05);
+    background: rgba(232,93,38,0.06);
     color: var(--accent);
   }
 
   .tool-chip.primary {
     border-color: var(--accent);
     color: var(--accent);
-    background: rgba(200,255,0,0.06);
+    background: rgba(232,93,38,0.07);
   }
 
   /* CTA */
@@ -781,12 +796,12 @@
 
   .btn-primary {
     background: var(--accent);
-    color: var(--bg);
+    color: #fff;
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(200,255,0,0.3);
+    box-shadow: 0 6px 30px rgba(232,93,38,0.3);
   }
 
   .btn-outline {
@@ -797,7 +812,7 @@
 
   .btn-outline:hover {
     border-color: var(--fg);
-    background: rgba(255,255,255,0.03);
+    background: rgba(0,0,0,0.03);
   }
 
   /* FOOTER */
@@ -849,7 +864,7 @@
 
   /* VIDEO PORTFOLIO */
   .portfolio-section {
-    background: linear-gradient(135deg, rgba(200,255,0,0.03), rgba(0,255,200,0.02));
+    background: linear-gradient(135deg, rgba(232,93,38,0.03), rgba(245,166,35,0.02));
     border-top: 1px solid var(--card-border);
     border-bottom: 1px solid var(--card-border);
   }
@@ -876,7 +891,7 @@
   }
 
   .cat-tab:hover, .cat-tab.active {
-    background: rgba(200,255,0,0.08);
+    background: rgba(232,93,38,0.08);
     border-color: var(--accent);
     color: var(--accent);
   }
@@ -904,14 +919,14 @@
   .video-card:hover {
     transform: translateY(-6px);
     border-color: var(--accent);
-    box-shadow: 0 12px 40px rgba(200,255,0,0.08);
+    box-shadow: 0 12px 40px rgba(232,93,38,0.08);
   }
 
   .video-wrapper {
     position: relative;
     width: 100%;
     padding-top: 177.78%; /* 9:16 vertical by default */
-    background: #0d0d0d;
+    background: #e8e2d6;
   }
 
   .video-wrapper.horizontal {
@@ -969,7 +984,7 @@
     gap: 0.3rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.6rem;
-    color: #555;
+    color: #9a8f82;
     margin-top: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -994,7 +1009,7 @@
   .image-card:hover {
     transform: translateY(-6px);
     border-color: var(--accent);
-    box-shadow: 0 12px 40px rgba(200,255,0,0.08);
+    box-shadow: 0 12px 40px rgba(232,93,38,0.08);
   }
 
   .image-card img {
@@ -1048,7 +1063,12 @@
     <li><a href="#character">Character</a></li>
     <li><a href="#animation">Projets perso</a></li>
   </ul>
-  <a href="mailto:simao.thomas@hotmail.fr" class="nav-cta">Me contacter</a>
+  <div style="display:flex;align-items:center;gap:0.75rem;">
+    <a href="https://www.linkedin.com/in/6mao" target="_blank" rel="noopener" class="nav-linkedin" title="LinkedIn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="mailto:simao.thomas@hotmail.fr" class="nav-cta">Me contacter</a>
+  </div>
 </nav>
 
 <!-- SHOWREEL -->
@@ -1103,17 +1123,17 @@
   <div class="section-label">Publié chez Son-Vidéo.com</div>
   <h2 class="section-title">Vidéos publiées</h2>
   <p class="portfolio-intro">Contenus réellement publiés sur les réseaux de Son-Vidéo.com (Instagram, TikTok) et utilisés en campagnes Ads.</p>
-  <div class="yt-shorts-grid">
-    <div class="yt-short-card reveal">
-      <div class="yt-vertical">
-        <iframe src="https://www.youtube.com/embed/yYmcGXhiPa4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="yt-short-info">
-        <div class="published-tag">Campagne Ads</div>
-        <h3>Lancement des Soldes</h3>
-        <p>Vidéo de lancement pour les campagnes Ads soldes Son-Vidéo.com.</p>
-      </div>
+  <div class="yt-featured reveal" style="margin-bottom:2rem;">
+    <div class="yt-horizontal">
+      <iframe src="https://www.youtube.com/embed/yYmcGXhiPa4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
     </div>
+    <div class="yt-featured-info">
+      <div class="published-tag">Campagne Ads</div>
+      <h3>Lancement des Soldes</h3>
+      <p>Vidéo de lancement pour les campagnes Ads soldes Son-Vidéo.com.</p>
+    </div>
+  </div>
+  <div class="yt-shorts-grid">
     <div class="yt-short-card reveal">
       <div class="yt-vertical">
         <iframe src="https://www.youtube.com/embed/FXzcbuV2YDI" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
@@ -1228,7 +1248,22 @@
   <p class="portfolio-intro">Visuels produits générés par IA. Intégration de vrais produits dans des mises en scène photoréalistes, prêts pour le e-commerce et les campagnes Ads.</p>
   <div class="image-grid">
     <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1tMVOFLGsJuq48GlwaozMtYPiXeUHF30l" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1iE12cKdgaTmZDU6vCdmeVrezoUEpSP4o" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
       <img src="https://lh3.googleusercontent.com/d/1kJLcXSalVR_6ur-ABwdjJJmjpyEIsLmy" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1QrQNGqIbQFH6zIqEBxuoPptRBwonYQDa" alt="Packshot Nothing" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/1nNl-xi-c8ZBJ_n-lbnDfKaeaFsmVetne" alt="Packshot IA" loading="lazy">
+    </div>
+    <div class="image-card reveal">
+      <img src="https://lh3.googleusercontent.com/d/17mmR6Hlak1BC2T9PrI2PpxmPw3Cu3Znh" alt="Packshot IA" loading="lazy">
     </div>
     <div class="image-card reveal">
       <img src="https://lh3.googleusercontent.com/d/16qC3XA16dbphMQBph7ZxP1EsVT4k3SjB" alt="Packshot IA" loading="lazy">
@@ -1275,13 +1310,13 @@
   <h2 class="section-title">Projets perso</h2>
   <p class="portfolio-intro">Créations personnelles en dehors du cadre professionnel.</p>
   <div class="video-grid">
-    <div class="video-card full-width reveal">
-      <div class="video-wrapper horizontal">
-        <iframe src="https://drive.google.com/file/d/14-FvcstpiBAXbX2ViybsH1AUiDvC996R/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/Osp8YvP2l5w" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
         <div class="video-tag">Projet perso</div>
-        <h3 style="color: #ffffff;">Denim Jacket handmade</h3>
+        <h3 style="color: #1a1a1a;">Denim Jacket handmade</h3>
         <p>Photo animée par IA. Passage du statique au cinématique avec mouvements de caméra et jeux de lumière.</p>
         <div class="video-tool">⚡ Higgsfield · Seedance</div>
       </div>
@@ -1297,6 +1332,9 @@
     <a href="mailto:simao.thomas@hotmail.fr" class="btn btn-primary">
       simao.thomas@hotmail.fr →
     </a>
+    <a href="https://www.linkedin.com/in/6mao" target="_blank" rel="noopener" class="btn btn-primary" style="background:#0a66c2;">
+      LinkedIn →
+    </a>
     <a href="tel:0612225566" class="btn btn-outline">
       06 12 22 55 66
     </a>
@@ -1306,6 +1344,10 @@
 <!-- FOOTER -->
 <footer>
   <span>© 2026 Thomas Simão</span>
+  <a href="https://www.linkedin.com/in/6mao" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.3s;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    LinkedIn
+  </a>
   <span>Champigny-sur-Marne</span>
 </footer>
 
