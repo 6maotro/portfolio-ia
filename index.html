@@ -301,6 +301,34 @@
     color: var(--muted);
   }
 
+  .perf-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .perf-stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .perf-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .perf-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
   .yt-shorts-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -858,6 +886,21 @@
     border-bottom: 1px solid var(--card-border);
   }
 
+  .portfolio-pro {
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(232,93,38,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(245,166,35,0.03) 0%, transparent 40%),
+      url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0M-10 10L10-10M30 50L50 30' stroke='%23c8b99a' stroke-width='0.5' opacity='0.12'/%3E%3C/svg%3E");
+  }
+
+  .portfolio-pro.portfolio-alt {
+    background-color: var(--card-bg);
+    background-image:
+      radial-gradient(circle at 90% 20%, rgba(232,93,38,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 10% 80%, rgba(245,166,35,0.03) 0%, transparent 40%),
+      url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0M-10 10L10-10M30 50L50 30' stroke='%23c8b99a' stroke-width='0.5' opacity='0.12'/%3E%3C/svg%3E");
+  }
+
   .portfolio-section + .portfolio-section {
     border-top: none;
   }
@@ -1078,7 +1121,7 @@
     <div class="hero-badge">Disponible pour votre prochain projet</div>
     <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,6vw,5.5rem);line-height:1;letter-spacing:-0.03em;margin-bottom:1.5rem;">Je transforme vos<br>pages produits en<br><em style="font-style:italic;background:linear-gradient(135deg,var(--gradient-1),var(--gradient-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">contenu vidéo</em></h1>
     <p class="hero-sub">
-      Traffic Manager & créateur de contenus IA. Je produis des vidéos avec des <strong>personnages cohérents</strong>, j'intègre de <strong>vrais produits</strong> dans des scènes générées par IA et j'<strong>anime des photos</strong>, le tout avec Higgsfield et le modèle Seedance.
+      Traffic Manager & créateur de contenus IA. Je produis des vidéos avec des <strong>personnages cohérents</strong>, j'intègre de <strong>vrais produits</strong> dans des scènes générées par IA et j'<strong>anime des photos</strong>, le tout avec Higgsfield et le modèle Seedance. <strong>Un contenu livré en 48h, sans studio, sans tournage.</strong>
     </p>
     <div class="hero-stats">
       <div class="stat">
@@ -1128,9 +1171,23 @@
       <iframe src="https://www.youtube.com/embed/yYmcGXhiPa4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
     </div>
     <div class="yt-featured-info">
-      <div class="published-tag">Campagne Ads</div>
+      <div class="published-tag">Campagne Ads · Meta Ads</div>
       <h3>Lancement des Soldes</h3>
-      <p>Vidéo de lancement pour les campagnes Ads..</p>
+      <p>Vidéo de lancement diffusée en campagne Ads.</p>
+      <div class="perf-stats">
+        <div class="perf-stat">
+          <span class="perf-number">194</span>
+          <span class="perf-label">Achats générés</span>
+        </div>
+        <div class="perf-stat">
+          <span class="perf-number">57 288</span>
+          <span class="perf-label">Personnes touchées</span>
+        </div>
+        <div class="perf-stat">
+          <span class="perf-number">2,61 €</span>
+          <span class="perf-label">Coût par achat</span>
+        </div>
+      </div>
     </div>
   </div>
   <div class="yt-shorts-grid">
@@ -1141,7 +1198,21 @@
       <div class="yt-short-info">
         <div class="published-tag">Instagram · TikTok</div>
         <h3>Sennheiser Momentum 5 Denim</h3>
-        <p>Publicité pour la sortie du Momentum 5 Denim, publiée sur les réseaux de l'entreprise..</p>
+        <p>Publicité pour la sortie du Momentum 5 Denim, publiée sur les réseaux de l'entreprise.</p>
+        <div class="perf-stats" style="gap:1.2rem;">
+          <div class="perf-stat">
+            <span class="perf-number" style="font-size:1rem;">3 000</span>
+            <span class="perf-label">Vues</span>
+          </div>
+          <div class="perf-stat">
+            <span class="perf-number" style="font-size:1rem;">38</span>
+            <span class="perf-label">Likes</span>
+          </div>
+          <div class="perf-stat">
+            <span class="perf-number" style="font-size:1rem;">2</span>
+            <span class="perf-label">Partages</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="yt-short-card reveal">
@@ -1152,16 +1223,30 @@
         <div class="published-tag">Campagne Ads</div>
         <h3>Cambridge Melomania</h3>
         <p>Publicité pour le casque Cambridge Melomania, diffusée en campagne Ads.</p>
+        <div class="perf-stats" style="gap:1.2rem;">
+          <div class="perf-stat">
+            <span class="perf-number" style="font-size:1rem;">~39</span>
+            <span class="perf-label">Achats</span>
+          </div>
+          <div class="perf-stat">
+            <span class="perf-number" style="font-size:1rem;">3,12 €</span>
+            <span class="perf-label">Coût / achat</span>
+          </div>
+          <div class="perf-stat">
+            <span class="perf-number" style="font-size:1rem;">1,9%</span>
+            <span class="perf-label">CTR</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- MOTION DESIGN -->
-<section class="portfolio-section" id="motion">
-  <div class="section-label">01 Motion Design</div>
+<section class="portfolio-section portfolio-pro" id="motion">
+  <div class="section-label">01 Motion Design · utilisé en entreprise</div>
   <h2 class="section-title">Motion Design IA</h2>
-  <p class="portfolio-intro">Séquences motion design entièrement générées par IA. Animations produit, transitions cinématiques et habillages visuels au service d'un message commercial.</p>
+  <p class="portfolio-intro">Séquences motion design générées par IA et utilisées dans les campagnes publicitaires de Son-Vidéo.com. Animations produit, transitions cinématiques et habillages visuels.</p>
   <div class="video-grid">
     <div class="video-card reveal">
       <div class="video-wrapper">
@@ -1200,10 +1285,10 @@
 </section>
 
 <!-- UGC -->
-<section class="portfolio-section portfolio-alt" id="ugc">
-  <div class="section-label">02 UGC Synthétique</div>
+<section class="portfolio-section portfolio-pro portfolio-alt" id="ugc">
+  <div class="section-label">02 UGC · utilisé en entreprise</div>
   <h2 class="section-title">UGC généré par IA</h2>
-  <p class="portfolio-intro">Contenus façon "User Generated Content" sans tournage. Des personnages IA cohérents qui interagissent avec de vrais produits, prêts pour les campagnes Social Ads.</p>
+  <p class="portfolio-intro">Contenus façon "User Generated Content" produits sans tournage et diffusés en campagnes Social Ads. Des personnages IA cohérents qui interagissent avec de vrais produits.</p>
   <div class="video-grid">
     <div class="video-card reveal">
       <div class="video-wrapper">
