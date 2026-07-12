@@ -189,6 +189,172 @@
     transform: rotate(12deg) translateX(30px);
   }
 
+  /* SHOWREEL HERO */
+  .showreel-section {
+    padding: 8rem 3rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .showreel-text {
+    flex: 1;
+    max-width: 500px;
+  }
+
+  .showreel-video {
+    flex-shrink: 0;
+    width: 340px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid var(--card-border);
+    box-shadow: 0 20px 80px rgba(200,255,0,0.08);
+    transition: border-color 0.4s, box-shadow 0.4s;
+  }
+
+  .showreel-video:hover {
+    border-color: var(--accent);
+    box-shadow: 0 20px 80px rgba(200,255,0,0.15);
+  }
+
+  .showreel-video .yt-vertical {
+    position: relative;
+    width: 100%;
+    padding-top: 177.78%;
+  }
+
+  .showreel-video .yt-vertical iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* YOUTUBE SECTIONS */
+  .yt-section {
+    padding: 5rem 3rem;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .yt-section-alt {
+    background: var(--card-bg);
+  }
+
+  .yt-featured {
+    max-width: 900px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    transition: border-color 0.4s;
+  }
+
+  .yt-featured:hover {
+    border-color: var(--accent);
+  }
+
+  .yt-horizontal {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+  }
+
+  .yt-horizontal iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .yt-featured-info {
+    padding: 1.5rem;
+  }
+
+  .yt-featured-info h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .yt-featured-info p {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .yt-shorts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+  }
+
+  .yt-short-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    transition: transform 0.4s, border-color 0.4s;
+    background: var(--bg);
+  }
+
+  .yt-short-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+  }
+
+  .yt-short-card .yt-vertical {
+    position: relative;
+    width: 100%;
+    padding-top: 177.78%;
+  }
+
+  .yt-short-card .yt-vertical iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .yt-short-info {
+    padding: 1rem 1.25rem;
+  }
+
+  .yt-short-info h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .yt-short-info p {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .yt-short-info .published-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .yt-short-info .published-tag::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
   .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -853,6 +1019,10 @@
     .nav-links { display: none; }
     section { padding: 4rem 1.5rem; }
     .hero { padding: 7rem 1.5rem 3rem; }
+    .showreel-section { flex-direction: column; padding: 7rem 1.5rem 3rem; gap: 2rem; }
+    .showreel-video { width: 280px; }
+    .yt-shorts-grid { grid-template-columns: 1fr 1fr; }
+    .yt-section { padding: 3rem 1.5rem; }
     .hero-content { flex-direction: column; gap: 2rem; }
     .hero-photos { width: 260px; height: 360px; margin: 0 auto; }
     .hero-photo { width: 180px; height: 260px; }
@@ -872,8 +1042,8 @@
 <nav>
   <div class="nav-logo">T<span>.</span>Simão</div>
   <ul class="nav-links">
-    <li><a href="#motion">Motion Design</a></li>
-    <li><a href="#ugc">UGC</a></li>
+    <li><a href="#showreel">Showreel</a></li>
+    <li><a href="#sonvideo">Son-Vidéo</a></li>
     <li><a href="#packshot">Packshot</a></li>
     <li><a href="#character">Character</a></li>
     <li><a href="#animation">Projets perso</a></li>
@@ -881,40 +1051,87 @@
   <a href="mailto:simao.thomas@hotmail.fr" class="nav-cta">Me contacter</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
+<!-- SHOWREEL -->
+<section class="showreel-section" id="showreel">
   <div class="hero-orb"></div>
-  <div class="hero-content">
-    <div class="hero-text">
-      <div class="hero-badge">Disponible pour votre prochain projet</div>
-      <h1>Je transforme vos<br>pages produits en<br><em>contenu vidéo</em></h1>
-      <p class="hero-sub">
-        Traffic Manager & créateur de contenus IA. Je produis des vidéos avec des <strong>personnages cohérents</strong>, j'intègre de <strong>vrais produits</strong> dans des scènes générées par IA et j'<strong>anime des photos</strong>, le tout avec Higgsfield et le modèle Seedance.
-      </p>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-number">260K€</span>
-          <span class="stat-label">Budget Ads géré / an</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">×30</span>
-          <span class="stat-label">ROAS moyen PMax</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">+64%</span>
-          <span class="stat-label">Trafic organique</span>
-        </div>
+  <div class="showreel-text">
+    <div class="hero-badge">Disponible pour votre prochain projet</div>
+    <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,6vw,5.5rem);line-height:1;letter-spacing:-0.03em;margin-bottom:1.5rem;">Je transforme vos<br>pages produits en<br><em style="font-style:italic;background:linear-gradient(135deg,var(--gradient-1),var(--gradient-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">contenu vidéo</em></h1>
+    <p class="hero-sub">
+      Traffic Manager & créateur de contenus IA. Je produis des vidéos avec des <strong>personnages cohérents</strong>, j'intègre de <strong>vrais produits</strong> dans des scènes générées par IA et j'<strong>anime des photos</strong>, le tout avec Higgsfield et le modèle Seedance.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">260K€</span>
+        <span class="stat-label">Budget Ads géré / an</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">×30</span>
+        <span class="stat-label">ROAS moyen PMax</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">+64%</span>
+        <span class="stat-label">Trafic organique</span>
       </div>
     </div>
-    <div class="hero-photos">
-      <div class="hero-photo hp-1">
-        <img src="https://lh3.googleusercontent.com/d/1nlIEKB9JozQutVTVIMzScdwaL9lifN2G" alt="Casque doré et gant">
+  </div>
+  <div class="showreel-video">
+    <div class="yt-vertical">
+      <iframe src="https://www.youtube.com/embed/E5fQXoq2ktM" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOLOGY -->
+<section class="yt-section" id="typology">
+  <div class="section-label">Exemple client fictif</div>
+  <h2 class="section-title">Typology Fictional ADS</h2>
+  <p class="portfolio-intro">Publicité fictive combinant UGC et Motion Design. Concept, production et montage entièrement réalisés avec l'IA.</p>
+  <div class="yt-featured reveal">
+    <div class="yt-horizontal">
+      <iframe src="https://www.youtube.com/embed/5NqltBgVQjk" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="yt-featured-info">
+      <h3>Typology · UGC + Motion Design</h3>
+      <p>Publicité complète générée par IA pour une marque fictive de skincare. Personnage cohérent, intégration produit et motion design.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SON-VIDÉO.COM PUBLISHED -->
+<section class="yt-section yt-section-alt" id="sonvideo">
+  <div class="section-label">Publié chez Son-Vidéo.com</div>
+  <h2 class="section-title">Vidéos publiées</h2>
+  <p class="portfolio-intro">Contenus réellement publiés sur les réseaux de Son-Vidéo.com (Instagram, TikTok) ou utilisés en campagnes Ads.</p>
+  <div class="yt-shorts-grid">
+    <div class="yt-short-card reveal">
+      <div class="yt-vertical">
+        <iframe src="https://www.youtube.com/embed/yYmcGXhiPa4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
       </div>
-      <div class="hero-photo hp-2">
-        <img src="https://lh3.googleusercontent.com/d/1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg" alt="Character Kanye Donda">
+      <div class="yt-short-info">
+        <div class="published-tag">Campagne Ads</div>
+        <h3>Lancement des Soldes</h3>
+        <p>Vidéo de lancement pour les campagnes Ads soldes Son-Vidéo.com.</p>
       </div>
-      <div class="hero-photo hp-3">
-        <img src="https://lh3.googleusercontent.com/d/1kJLcXSalVR_6ur-ABwdjJJmjpyEIsLmy" alt="Nothing Headphone close up">
+    </div>
+    <div class="yt-short-card reveal">
+      <div class="yt-vertical">
+        <iframe src="https://www.youtube.com/embed/FXzcbuV2YDI" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="yt-short-info">
+        <div class="published-tag">Instagram · TikTok</div>
+        <h3>Sennheiser Momentum 5 Denim</h3>
+        <p>Publicité pour la sortie du Momentum 5 Denim, publiée sur les réseaux Son-Vidéo.com.</p>
+      </div>
+    </div>
+    <div class="yt-short-card reveal">
+      <div class="yt-vertical">
+        <iframe src="https://www.youtube.com/embed/sU1_QpPeSqc" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="yt-short-info">
+        <div class="published-tag">Campagne Ads</div>
+        <h3>Cambridge Melomania</h3>
+        <p>Publicité pour le casque Cambridge Melomania, diffusée en campagne Ads.</p>
       </div>
     </div>
   </div>
@@ -923,7 +1140,7 @@
 <!-- MOTION DESIGN -->
 <section class="portfolio-section" id="motion">
   <div class="section-label">01 Motion Design</div>
-  <h2 class="section-title">Motion Design IA</h2>
+  <h2 class="section-title">Motion Design IA utilisés pour Son-Vidéo.com</h2>
   <p class="portfolio-intro">Séquences motion design entièrement générées par IA. Animations produit, transitions cinématiques et habillages visuels au service d'un message commercial.</p>
   <div class="video-grid">
     <div class="video-card reveal">
@@ -934,17 +1151,6 @@
         <div class="video-tag">Motion Design</div>
         <h3>Sonos Ace</h3>
         <p>Motion design pour le casque Sonos Ace. Mise en scène cinématique et transitions visuelles générées par IA.</p>
-        <div class="video-tool">⚡ Higgsfield · Seedance</div>
-      </div>
-    </div>
-    <div class="video-card reveal">
-      <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/1ir0MVeJPEZiOQiWqD_kM3DSlG5Ei6KRy/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-info">
-        <div class="video-tag">Motion Design</div>
-        <h3>Hydratis</h3>
-        <p>Séquence motion design IA pour la marque Hydratis. Animations et transitions entièrement générées par IA.</p>
         <div class="video-tool">⚡ Higgsfield · Seedance</div>
       </div>
     </div>
@@ -1016,39 +1222,17 @@
       <div class="video-wrapper">
         <iframe src="https://drive.google.com/file/d/1wIWwVFRtG8fIp1tdB4nPkTDAOGPPxTJx/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
-      <div class="video-info">
-        <div class="video-tag">UGC</div>
-        <h3>Elipson Planet L · French Days</h3>
-        <p>UGC promotionnel pour les French Days. Mise en avant du produit avec un personnage IA dans un cadre naturel.</p>
-        <div class="video-tool">⚡ Higgsfield · Seedance</div>
-      </div>
-    </div>
   </div>
 </section>
 
 <!-- PACKSHOT -->
-<section class="portfolio-section" id="packshot">
+<section class="portfolio-section" id="Illustrations IA">
   <div class="section-label">03 Packshot</div>
-  <h2 class="section-title">Packshots IA</h2>
+  <h2 class="section-title">Illustrations IA</h2>
   <p class="portfolio-intro">Visuels produits générés par IA. Intégration de vrais produits dans des mises en scène photoréalistes, prêts pour le e-commerce et les campagnes Ads.</p>
   <div class="image-grid">
     <div class="image-card reveal">
-      <img src="https://lh3.googleusercontent.com/d/1tMVOFLGsJuq48GlwaozMtYPiXeUHF30l" alt="Packshot IA" loading="lazy">
-    </div>
-    <div class="image-card reveal">
-      <img src="https://lh3.googleusercontent.com/d/1iE12cKdgaTmZDU6vCdmeVrezoUEpSP4o" alt="Packshot IA" loading="lazy">
-    </div>
-    <div class="image-card reveal">
       <img src="https://lh3.googleusercontent.com/d/1kJLcXSalVR_6ur-ABwdjJJmjpyEIsLmy" alt="Packshot IA" loading="lazy">
-    </div>
-    <div class="image-card reveal">
-      <img src="https://lh3.googleusercontent.com/d/1QrQNGqIbQFH6zIqEBxuoPptRBwonYQDa" alt="Packshot Nothing" loading="lazy">
-    </div>
-    <div class="image-card reveal">
-      <img src="https://lh3.googleusercontent.com/d/1nNl-xi-c8ZBJ_n-lbnDfKaeaFsmVetne" alt="Packshot IA" loading="lazy">
-    </div>
-    <div class="image-card reveal">
-      <img src="https://lh3.googleusercontent.com/d/17mmR6Hlak1BC2T9PrI2PpxmPw3Cu3Znh" alt="Packshot IA" loading="lazy">
     </div>
     <div class="image-card reveal">
       <img src="https://lh3.googleusercontent.com/d/16qC3XA16dbphMQBph7ZxP1EsVT4k3SjB" alt="Packshot IA" loading="lazy">
@@ -1091,7 +1275,7 @@
 
 <!-- ANIMATION -->
 <section class="portfolio-section" id="animation">
-  <div class="section-label">05 Bonus</div>
+  <div class="section-label">05 Projets perso</div>
   <h2 class="section-title">Projets perso</h2>
   <p class="portfolio-intro">Créations personnelles en dehors du cadre professionnel.</p>
   <div class="video-grid">
@@ -1101,7 +1285,7 @@
       </div>
       <div class="video-info">
         <div class="video-tag">Projet perso</div>
-        <h3 style="color: #ffffff;">Handmade Opium Denim Jacket</h3>
+        <h3 style="color: #ffffff;">Denim Jacket handmade</h3>
         <p>Photo animée par IA. Passage du statique au cinématique avec mouvements de caméra et jeux de lumière.</p>
         <div class="video-tool">⚡ Higgsfield · Seedance</div>
       </div>
