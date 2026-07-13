@@ -303,30 +303,36 @@
 
   .perf-stats {
     display: flex;
-    gap: 2rem;
-    margin-top: 1rem;
-    padding-top: 1rem;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
     border-top: 1px solid var(--card-border);
+    overflow-x: hidden;
   }
 
   .perf-stat {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
+    min-width: 0;
   }
 
   .perf-number {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 500;
     color: var(--accent);
+    white-space: nowrap;
   }
 
   .perf-label {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     color: var(--muted);
-    margin-top: 0.15rem;
+    margin-top: 0.1rem;
+    white-space: nowrap;
   }
 
   .yt-shorts-grid {
@@ -941,7 +947,7 @@
 
   .video-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     max-width: 1100px;
   }
@@ -968,7 +974,7 @@
   .video-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 177.78%; /* 9:16 vertical by default */
+    padding-top: 125%; /* 4:5 ratio, comfortable for vertical */
     background: #e8e2d6;
   }
 
@@ -1132,7 +1138,7 @@
         <span class="stat-label">ROAS PMax</span>
       </div>
       <div class="stat">
-        <span class="stat-number">2,61 €</span>
+        <span class="stat-number">1,54 €</span>
         <span class="stat-label">Coût par achat le + bas</span>
       </div>
     </div>
@@ -1179,12 +1185,16 @@
           <span class="perf-label">Achats générés</span>
         </div>
         <div class="perf-stat">
-          <span class="perf-number">57 288</span>
-          <span class="perf-label">Personnes touchées</span>
-        </div>
-        <div class="perf-stat">
           <span class="perf-number">2,61 €</span>
           <span class="perf-label">Coût par achat</span>
+        </div>
+        <div class="perf-stat">
+          <span class="perf-number">1,27%</span>
+          <span class="perf-label">CTR</span>
+        </div>
+        <div class="perf-stat">
+          <span class="perf-number">57K</span>
+          <span class="perf-label">Personnes touchées</span>
         </div>
       </div>
     </div>
@@ -1198,17 +1208,17 @@
         <div class="published-tag">Instagram · TikTok</div>
         <h3>Sennheiser Momentum 5 Denim</h3>
         <p>Publicité pour la sortie du Momentum 5 Denim, publiée sur les réseaux de l'entreprise.</p>
-        <div class="perf-stats" style="gap:1.2rem;">
+        <div class="perf-stats">
           <div class="perf-stat">
-            <span class="perf-number" style="font-size:1rem;">3 000</span>
+            <span class="perf-number">3 000</span>
             <span class="perf-label">Vues</span>
           </div>
           <div class="perf-stat">
-            <span class="perf-number" style="font-size:1rem;">38</span>
+            <span class="perf-number">38</span>
             <span class="perf-label">Likes</span>
           </div>
           <div class="perf-stat">
-            <span class="perf-number" style="font-size:1rem;">2</span>
+            <span class="perf-number">2</span>
             <span class="perf-label">Partages</span>
           </div>
         </div>
@@ -1222,17 +1232,17 @@
         <div class="published-tag">Campagne Ads</div>
         <h3>Cambridge Melomania</h3>
         <p>Publicité pour le casque Cambridge Melomania, diffusée en campagne Ads.</p>
-        <div class="perf-stats" style="gap:1.2rem;">
+        <div class="perf-stats">
           <div class="perf-stat">
-            <span class="perf-number" style="font-size:1rem;">~39</span>
+            <span class="perf-number">~39</span>
             <span class="perf-label">Achats</span>
           </div>
           <div class="perf-stat">
-            <span class="perf-number" style="font-size:1rem;">3,12 €</span>
+            <span class="perf-number">3,12 €</span>
             <span class="perf-label">Coût / achat</span>
           </div>
           <div class="perf-stat">
-            <span class="perf-number" style="font-size:1rem;">1,9%</span>
+            <span class="perf-number">1,9%</span>
             <span class="perf-label">CTR</span>
           </div>
         </div>
@@ -1268,6 +1278,10 @@
             <span class="perf-number">3 622</span>
             <span class="perf-label">Clics</span>
           </div>
+          <div class="perf-stat">
+            <span class="perf-number">15,46 €</span>
+            <span class="perf-label">Coût / achat</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1292,6 +1306,10 @@
             <span class="perf-number">997</span>
             <span class="perf-label">Clics</span>
           </div>
+          <div class="perf-stat">
+            <span class="perf-number">3,92 €</span>
+            <span class="perf-label">Coût / achat</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1315,6 +1333,10 @@
           <div class="perf-stat">
             <span class="perf-number">2 079</span>
             <span class="perf-label">Clics</span>
+          </div>
+          <div class="perf-stat">
+            <span class="perf-number">1,54 €</span>
+            <span class="perf-label">Coût / achat</span>
           </div>
         </div>
       </div>
@@ -1349,6 +1371,10 @@
             <span class="perf-number">292</span>
             <span class="perf-label">Clics</span>
           </div>
+          <div class="perf-stat">
+            <span class="perf-number">21,31 €</span>
+            <span class="perf-label">Coût / achat</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1373,6 +1399,10 @@
             <span class="perf-number">221</span>
             <span class="perf-label">Clics</span>
           </div>
+          <div class="perf-stat">
+            <span class="perf-number">24,47 €</span>
+            <span class="perf-label">Coût / achat</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1396,6 +1426,34 @@
           <div class="perf-stat">
             <span class="perf-number">134</span>
             <span class="perf-label">Clics</span>
+          </div>
+          <div class="perf-stat">
+            <span class="perf-number">38,13 €</span>
+            <span class="perf-label">Coût / achat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/QhtLcwmT7-g" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Motion Design</div>
+        <h3>Argon TT MK2</h3>
+        <p>Motion design pour l'ampli Argon TT MK2. Animations produit et transitions visuelles générées par IA.</p>
+        <div class="perf-stats">
+          <div class="perf-stat">
+            <span class="perf-number">0,81%</span>
+            <span class="perf-label">CTR</span>
+          </div>
+          <div class="perf-stat">
+            <span class="perf-number">72K</span>
+            <span class="perf-label">Impressions</span>
+          </div>
+          <div class="perf-stat">
+            <span class="perf-number">4,15 €</span>
+            <span class="perf-label">Coût / achat</span>
           </div>
         </div>
       </div>
