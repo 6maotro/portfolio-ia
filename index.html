@@ -678,6 +678,61 @@
     line-height: 1.6;
   }
 
+  /* METHOD */
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+  }
+
+  .method-step {
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .method-step:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(232,93,38,0.08);
+  }
+
+  .method-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .method-step h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .method-step p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .method-closer {
+    max-width: 720px;
+    margin-top: 2.5rem;
+    font-size: 1.05rem;
+    color: var(--fg);
+    font-weight: 500;
+    line-height: 1.7;
+  }
+
   /* SEEDANCE / PORTFOLIO HIGHLIGHT */
   .portfolio-highlight {
     background: linear-gradient(135deg, rgba(232,93,38,0.03), rgba(245,166,35,0.02));
@@ -1082,6 +1137,12 @@
     max-height: 500px;
   }
 
+  /* CHARACTER PROOF VIDEO */
+  .character-video {
+    max-width: 900px;
+    margin: 0 auto 1.5rem;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
@@ -1097,6 +1158,7 @@
     .hero-photo { width: 180px; height: 260px; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .expertise-grid { grid-template-columns: 1fr; }
+    .method-grid { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
     .image-grid { grid-template-columns: repeat(2, 1fr); }
     .highlight-grid { grid-template-columns: 1fr; }
@@ -1407,7 +1469,9 @@
           <div class="perf-stat">
             <span class="perf-number">0,81%</span>
             <span class="perf-label">CTR</span>
-          </div>            <span class="perf-number">4,15 €</span>
+          </div>
+          <div class="perf-stat">
+            <span class="perf-number">4,15 €</span>
             <span class="perf-label">Coût / achat</span>
           </div>
         </div>
@@ -1483,7 +1547,17 @@
   <!-- MES PERSONNAGES IA -->
   <div style="margin-top:3rem;">
     <h3 style="font-size:1rem;margin-bottom:0.5rem;font-weight:600;">Mes personnages IA</h3>
-    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">Un même personnage maintenu cohérent à travers différentes scènes et environnements.</p>
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.25rem;">Le même personnage, maintenu cohérent à travers plusieurs générations et environnements. La vidéo ci-dessous le prouve en mouvement, les images ensuite en déclinent les variations.</p>
+    <div class="video-card reveal character-video">
+      <div class="video-wrapper horizontal">
+        <iframe src="https://player.vimeo.com/video/1212954595" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Cohérence personnage · multi-générations</div>
+        <h3>Un seul personnage, plusieurs générations</h3>
+        <p>Chaque scène est un rendu IA distinct, le personnage reste lui-même.</p>
+      </div>
+    </div>
     <div class="image-grid">
       <div class="image-card reveal">
         <img src="https://lh3.googleusercontent.com/d/19FuSVjMpx2E8gtZq17Up8RIgZj_C-01a" alt="Character IA" loading="lazy">
