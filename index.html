@@ -329,7 +329,7 @@
   }
 
   .perf-label {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--muted);
@@ -1050,6 +1050,69 @@
     border: none;
   }
 
+  .video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #000;
+  }
+
+  .featured-split {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2.5rem;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    align-items: center;
+  }
+
+  .featured-split .video-card { margin: 0; }
+
+  .featured-text h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+
+  .featured-text p {
+    color: #5a5347;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .featured-text p strong { color: var(--fg); font-weight: 500; }
+
+  .kpi-note {
+    max-width: 900px;
+    margin: -1.5rem auto 2rem;
+    font-size: 0.85rem;
+    color: #5a5347;
+  }
+
+  .agency-box {
+    max-width: 900px;
+    margin: 3rem 0 0;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--accent);
+    background: rgba(232,93,38,0.05);
+  }
+
+  .agency-box h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .agency-box p { color: #5a5347; font-size: 0.95rem; line-height: 1.7; }
+
   .video-info {
     padding: 1.25rem 1.5rem;
   }
@@ -1162,6 +1225,8 @@
     .video-grid { grid-template-columns: 1fr; }
     .image-grid { grid-template-columns: repeat(2, 1fr); }
     .highlight-grid { grid-template-columns: 1fr; }
+    .featured-split { grid-template-columns: 1fr; gap: 1.5rem; }
+    .featured-split .video-card { max-width: 300px; margin: 0 auto; }
     .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
@@ -1173,9 +1238,10 @@
 <nav>
   <div class="nav-logo">T<span>.</span>Simão</div>
   <ul class="nav-links">
-    <li><a href="#showreel">Showreel</a></li>
+    <li><a href="#projets">Projets</a></li>
     <li><a href="#ugc">UGC</a></li>
-    <li><a href="#motion">Motion Design</a></li>
+    <li><a href="#motion">Motion</a></li>
+    <li><a href="#methode">Méthode</a></li>
     <li><a href="#about">Qui je suis</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:0.75rem;">
@@ -1193,20 +1259,20 @@
     <div class="hero-badge">Disponible maintenant · Freelance</div>
     <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,6vw,5.5rem);line-height:1;letter-spacing:-0.03em;margin-bottom:1.5rem;">Des créas IA<br>pensées pour<br><em style="font-style:italic;background:linear-gradient(135deg,var(--gradient-1),var(--gradient-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">performer en Ads</em></h1>
     <p class="hero-sub">
-      Je produis des vidéos et visuels IA prêts à tourner en campagne : <strong>UGC synthétique</strong>, <strong>motion design produit</strong>, <strong>visuels e-commerce</strong>. Chaque contenu est conçu comme un asset publicitaire, optimisé pour le clic et la conversion. <strong>Livré en 48h, sans studio, sans tournage.</strong> Pour les marques en direct, ou <strong>en marque blanche pour les agences</strong>.
+      Je produis des vidéos et visuels IA prêts à tourner en campagne : <strong>UGC synthétique</strong>, <strong>motion design produit</strong>, <strong>visuels e-commerce</strong>. Chaque contenu est conçu comme un asset publicitaire, optimisé pour le clic et la conversion. <strong>3 concepts, 3 hooks chacun, livrés en 48h</strong>, sans studio ni tournage. Pour les marques en direct, ou <strong>en marque blanche pour les agences</strong>.
     </p>
     <div class="hero-stats">
       <div class="stat">
-        <span class="stat-number">260K€</span>
-        <span class="stat-label">Budget Ads piloté / an</span>
+        <span class="stat-number">~7 €</span>
+        <span class="stat-label">Coût moyen par achat, mes UGC IA</span>
       </div>
       <div class="stat">
-        <span class="stat-number">×30</span>
-        <span class="stat-label">ROAS PMax</span>
+        <span class="stat-number">4,05%</span>
+        <span class="stat-label">De clics, ma meilleure UGC IA</span>
       </div>
       <div class="stat">
-        <span class="stat-number">1,54 €</span>
-        <span class="stat-label">Coût par achat le + bas</span>
+        <span class="stat-number">194</span>
+        <span class="stat-label">Ventes avec une seule vidéo</span>
       </div>
     </div>
   </div>
@@ -1217,20 +1283,55 @@
   </div>
 </section>
 
-<!-- UGC -->
-<section class="portfolio-section portfolio-pro" id="ugc">
-  <div class="section-label">UGC · diffusé en Ads</div>
-  <h2 class="section-title">Des UGC qui performent</h2>
-  <p class="portfolio-intro">Des vidéos façon "créateur" sans tournage ni talent. Des personnages IA cohérents qui présentent de vrais produits, formatés pour les campagnes Social Ads et optimisés pour le scroll-stop.</p>
+<!-- PROJETS -->
+<section class="portfolio-section portfolio-pro" id="projets">
+  <div class="section-label">Projets récents</div>
+  <h2 class="section-title">Ce que je fais pour les marques</h2>
+
+  <div class="featured-split reveal">
+    <div class="video-card">
+      <div class="video-wrapper">
+        <video src="videos/tri-for-fun-avant-apres.mp4" poster="videos/tri-for-fun-avant-apres.jpg" controls muted loop playsinline preload="metadata"></video>
+      </div>
+    </div>
+    <div class="featured-text">
+      <div class="video-tag">Projet client · Commerce local</div>
+      <h3>Tri For Fun, de la maquette 3D au magasin réel</h3>
+      <p>En haut, une maquette 3D du magasin. En bas, le même plan transformé en vidéo photoréaliste par IA. <strong>Aucun tournage sur place.</strong></p>
+      <p>J'ai envoyé cette démo pour démarcher le magasin, à Barcelone. <strong>Elle a décroché la mission</strong> : je prends en charge leur communication vidéo.</p>
+      <div class="video-tool">⚡ Maquette 3D · Higgsfield Genjutsu</div>
+    </div>
+  </div>
+
   <div class="yt-featured reveal" style="margin-bottom:2rem;">
+    <div class="video-wrapper horizontal">
+      <video src="videos/le-casse-jsmcf.mp4" poster="videos/le-casse-jsmcf.jpg" controls muted playsinline preload="metadata"></video>
+    </div>
+    <div class="yt-featured-info">
+      <div class="video-tag">Pub concept · E-commerce</div>
+      <h3>JSMCF Cam · Le casse</h3>
+      <p>Une pub racontée comme un film de braquage pour une mini-caméra rétro. Une histoire complète en 20 secondes, un rendu cinéma, une marque qui reste en tête. 100 % IA.</p>
+    </div>
+  </div>
+
+  <div class="yt-featured reveal">
     <div class="yt-horizontal">
       <iframe src="https://www.youtube.com/embed/5NqltBgVQjk" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
     </div>
     <div class="yt-featured-info">
-      <h3>Typology · Fictional ADS</h3>
-      <p>Concept publicitaire fictif. UGC + Motion Design combinés en un seul asset, pensé pour le scroll-stop et la conversion.</p>
+      <div class="video-tag">Pub concept · Cosmétique</div>
+      <h3>Typology · UGC et motion design</h3>
+      <p>Concept publicitaire fictif. UGC et motion design combinés en un seul asset, pensé pour arrêter le scroll et convertir.</p>
     </div>
   </div>
+</section>
+
+<!-- UGC -->
+<section class="portfolio-section portfolio-pro portfolio-alt" id="ugc">
+  <div class="section-label">UGC · diffusé en Ads</div>
+  <h2 class="section-title">Des UGC qui performent</h2>
+  <p class="portfolio-intro">Des vidéos façon "créateur" sans tournage ni talent. Des personnages IA cohérents qui présentent de vrais produits, formatés pour les campagnes Social Ads et optimisés pour le scroll-stop.</p>
+  <p class="kpi-note"><strong>Chiffres réels de campagnes Meta Ads</strong> pour un e-commerçant audio. CTR : part des personnes qui ont cliqué après avoir vu la pub. Coût / achat : budget pub dépensé pour obtenir une vente. Plus il est bas, mieux c'est.</p>
   <div class="video-grid">
     <div class="video-card reveal">
       <div class="video-wrapper">
@@ -1332,10 +1433,11 @@
 </section>
 
 <!-- MOTION DESIGN -->
-<section class="portfolio-section portfolio-pro portfolio-alt" id="motion">
+<section class="portfolio-section portfolio-pro" id="motion">
   <div class="section-label">Motion Design · diffusé en Ads</div>
   <h2 class="section-title">Des motion designs fidèles à la réalité</h2>
   <p class="portfolio-intro">Des animations produit conçues comme des assets publicitaires. Chaque séquence est pensée pour capter l'attention dans un feed et générer du clic.</p>
+  <p class="kpi-note"><strong>Ce que mes tests m'ont appris :</strong> sur le projecteur Aurzen, la version UGC a coûté 27 % moins cher par achat que la version motion design (15,46 € contre 21,31 €). Je teste les deux formats, puis je mise sur celui qui vend.</p>
   <div class="yt-featured reveal" style="margin-bottom:2rem;">
     <div class="yt-horizontal">
       <iframe src="https://www.youtube.com/embed/yYmcGXhiPa4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
@@ -1411,54 +1513,6 @@
     </div>
     <div class="video-card reveal">
       <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/1SY4QDNdHPM68hPKvkkwFMsuoO0qH6o8l/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-info">
-        <div class="video-tag">Motion Design</div>
-        <h3>Elipson Planet L</h3>
-        <p>Motion design produit avec mise en scène cinématique. L'enceinte connectée prend vie dans un univers visuel IA.</p>
-        <div class="perf-stats">
-          <div class="perf-stat">
-            <span class="perf-number">0,92%</span>
-            <span class="perf-label">CTR</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">221</span>
-            <span class="perf-label">Clics</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">24,47 €</span>
-            <span class="perf-label">Coût / achat</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="video-card reveal">
-      <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/1ZqN0ROkDrB-KtR5xCXFDa3Uz_eS_VEB3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-info">
-        <div class="video-tag">Motion Design</div>
-        <h3>Sonos Ace</h3>
-        <p>Motion design pour le casque Sonos Ace. Mise en scène cinématique et transitions visuelles générées par IA.</p>
-        <div class="perf-stats">
-          <div class="perf-stat">
-            <span class="perf-number">0,84%</span>
-            <span class="perf-label">CTR</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">134</span>
-            <span class="perf-label">Clics</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">38,13 €</span>
-            <span class="perf-label">Coût / achat</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="video-card reveal">
-      <div class="video-wrapper">
         <iframe src="https://www.youtube.com/embed/QhtLcwmT7-g" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
@@ -1477,6 +1531,39 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- METHODE -->
+<section class="portfolio-section portfolio-pro portfolio-alt" id="methode">
+  <div class="section-label">Comment je travaille</div>
+  <h2 class="section-title">De votre brief à des pubs prêtes à tester</h2>
+  <div class="method-grid">
+    <div class="method-step reveal">
+      <span class="method-num">01</span>
+      <h3>Le brief</h3>
+      <p>Votre produit, votre cible, votre objectif. Je regarde aussi vos pubs actuelles et celles de vos concurrents pour trouver les angles qui manquent.</p>
+    </div>
+    <div class="method-step reveal">
+      <span class="method-num">02</span>
+      <h3>3 concepts, 3 hooks chacun</h3>
+      <p>Chaque concept est décliné avec plusieurs accroches sur les 3 premières secondes, là où se joue la performance.</p>
+    </div>
+    <div class="method-step reveal">
+      <span class="method-num">03</span>
+      <h3>Livraison en 48h</h3>
+      <p>Formats 9:16, 4:5 et 1:1, sous-titres intégrés, prêts à uploader dans Meta Ads ou TikTok Ads.</p>
+    </div>
+    <div class="method-step reveal">
+      <span class="method-num">04</span>
+      <h3>On itère sur les chiffres</h3>
+      <p>On coupe ce qui ne marche pas, on décline ce qui vend. Ancien media buyer, je lis vos résultats comme vous.</p>
+    </div>
+  </div>
+  <div class="agency-box reveal">
+    <div class="video-tag">Pour les agences</div>
+    <h3>Votre studio créa, en marque blanche</h3>
+    <p>Vous gérez le média, je produis les créas pour vos clients, sous votre nom. Un renfort quand les clients demandent plus de variantes que votre équipe ne peut en produire. Je travaille en français, anglais, espagnol et portugais.</p>
   </div>
 </section>
 
@@ -1508,13 +1595,13 @@
     </div>
     <div style="display:flex;flex-direction:column;gap:1.5rem;">
       <div style="border-radius:16px;overflow:hidden;border:1px solid var(--card-border);max-width:250px;">
-        <img src="https://media.licdn.com/dms/image/v2/D4E03AQHiRO26SisMEg/profile-displayphoto-scale_400_400/B4EZ9EMyfGIsAg-/0/1783555632851?e=1787184000&v=beta&t=AFCDyILH5i8oWcxAg6d-MnZI9KMuMTROzNmAPxEEq4k" alt="Thomas Simão" style="width:100%;display:block;object-fit:cover;">
+        <img src="photo.jpg" alt="Thomas Simão" style="width:100%;display:block;object-fit:cover;">
       </div>
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-date">2026 · Aujourd'hui</div>
           <div class="timeline-role">Créateur de pubs vidéo IA · Freelance</div>
-          <div class="timeline-company">UGC IA, motion produit, créas pour Meta et TikTok Ads</div>
+          <div class="timeline-company">Pubs IA pour Meta et TikTok Ads · Communication vidéo de Tri For Fun</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-date">Fév. 2024 · 2026</div>
