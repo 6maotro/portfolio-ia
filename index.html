@@ -11,7 +11,10 @@
     --bg: #f5f0e8;
     --fg: #1a1a1a;
     --accent: #e85d26;
-    --muted: #8a8070;
+    --muted: #6b6252;
+    --accent-ink: #b23c0b;
+    --accent-strong: #c2410c;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --card-bg: #ece6da;
     --card-border: #d4cbbf;
     --gradient-1: #e85d26;
@@ -34,8 +37,24 @@
     line-height: 1.6;
   }
 
+  :focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  input, textarea { caret-color: var(--accent-strong); }
+
+  a { text-underline-offset: 0.2em; }
+
+  html { scrollbar-color: var(--card-border) var(--bg); }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 10px; border: 2px solid var(--bg); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
   ::selection {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff;
   }
 
@@ -71,7 +90,7 @@
   }
 
   .nav-logo span {
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
   .nav-links {
@@ -91,10 +110,10 @@
   }
 
   .nav-links a.active {
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover { color: var(--accent-ink); }
 
   .nav-linkedin {
     color: var(--muted);
@@ -103,12 +122,12 @@
   }
 
   .nav-linkedin:hover {
-    color: var(--accent);
+    color: var(--accent-ink);
     transform: translateY(-2px);
   }
 
   .nav-cta {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff;
     padding: 0.6rem 1.4rem;
     border-radius: 100px;
@@ -122,7 +141,7 @@
 
   .nav-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(232,93,38,0.3);
+    box-shadow: 0 10px 24px -10px rgba(120,50,15,0.45);
   }
 
   /* HERO */
@@ -227,13 +246,13 @@
     border-radius: 16px;
     overflow: hidden;
     border: 2px solid var(--card-border);
-    box-shadow: 0 20px 80px rgba(232,93,38,0.08);
+    box-shadow: 0 24px 60px -24px rgba(90,60,30,0.25);
     transition: border-color 0.4s, box-shadow 0.4s;
   }
 
   .showreel-video:hover {
-    border-color: var(--accent);
-    box-shadow: 0 20px 80px rgba(232,93,38,0.15);
+    border-color: var(--accent-ink);
+    box-shadow: 0 30px 70px -24px rgba(90,60,30,0.32);
   }
 
   .showreel-video .yt-vertical {
@@ -271,7 +290,7 @@
   }
 
   .yt-featured:hover {
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
   }
 
   .yt-horizontal {
@@ -321,15 +340,16 @@
   }
 
   .perf-number {
+    font-variant-numeric: tabular-nums;
     font-family: 'JetBrains Mono', monospace;
     font-size: 1rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-ink);
     white-space: nowrap;
   }
 
   .perf-label {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--muted);
@@ -355,7 +375,7 @@
 
   .yt-short-card:hover {
     transform: translateY(-6px);
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
   }
 
   .yt-short-card .yt-vertical {
@@ -392,7 +412,7 @@
     font-size: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--accent);
+    color: var(--accent-ink);
     display: flex;
     align-items: center;
     gap: 0.4rem;
@@ -411,14 +431,14 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(232,93,38,0.08);
+    background: rgba(232,93,38,0.05);
     border: 1px solid rgba(232,93,38,0.25);
     padding: 0.5rem 1rem;
     border-radius: 100px;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 2rem;
     width: fit-content;
     animation: fadeInUp 0.8s ease both;
@@ -431,7 +451,6 @@
     height: 6px;
     background: var(--accent);
     border-radius: 50%;
-    animation: pulse-dot 2s infinite;
   }
 
   @keyframes pulse-dot {
@@ -448,12 +467,9 @@
     animation: fadeInUp 0.8s 0.1s ease both;
   }
 
-  .hero h1 em {
+  .hero h1 em, .hero-em {
     font-style: italic;
-    background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-ink);
   }
 
   .hero-sub {
@@ -483,14 +499,15 @@
   }
 
   .stat-number {
+    font-variant-numeric: tabular-nums;
     font-family: 'JetBrains Mono', monospace;
     font-size: 2rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
   .stat-label {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--muted);
@@ -526,7 +543,7 @@
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -539,6 +556,9 @@
     height: 1px;
     background: var(--accent);
   }
+
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
 
   .section-title {
     font-family: 'Instrument Serif', serif;
@@ -560,6 +580,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     max-width: 1100px;
+    margin: 0 auto;
   }
 
   .about-text {
@@ -608,9 +629,10 @@
   }
 
   .timeline-date {
+    font-variant-numeric: tabular-nums;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
-    color: var(--accent);
+    color: var(--accent-ink);
     letter-spacing: 0.05em;
     margin-bottom: 0.15rem;
   }
@@ -645,7 +667,7 @@
   }
 
   .expertise-card:hover {
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
     transform: translateY(-4px);
   }
 
@@ -681,7 +703,7 @@
   /* METHOD */
   .method-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
     max-width: 1100px;
   }
@@ -698,15 +720,16 @@
 
   .method-step:hover {
     transform: translateY(-4px);
-    border-color: var(--accent);
-    box-shadow: 0 12px 40px rgba(232,93,38,0.08);
+    border-color: var(--accent-ink);
+    box-shadow: 0 18px 40px -18px rgba(90,60,30,0.28);
   }
 
   .method-num {
+    font-variant-numeric: tabular-nums;
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.5rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-ink);
     display: block;
     margin-bottom: 0.75rem;
   }
@@ -757,7 +780,7 @@
 
   .highlight-card:hover {
     transform: translateY(-6px);
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
   }
 
   .highlight-visual {
@@ -793,7 +816,7 @@
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 0.5rem;
   }
 
@@ -842,14 +865,14 @@
   }
 
   .tool-chip:hover {
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
     background: rgba(232,93,38,0.06);
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
   .tool-chip.primary {
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: var(--accent-ink);
+    color: var(--accent-ink);
     background: rgba(232,93,38,0.07);
   }
 
@@ -887,13 +910,13 @@
   }
 
   .btn-primary {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff;
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(232,93,38,0.3);
+    box-shadow: 0 14px 30px -12px rgba(120,50,15,0.45);
   }
 
   .btn-outline {
@@ -925,14 +948,18 @@
   }
 
   .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(18px);
+    transition: transform 0.9s var(--ease-out), box-shadow 0.4s, border-color 0.4s;
   }
 
   .reveal.visible {
-    opacity: 1;
     transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { transform: none; }
+    html { scroll-behavior: auto; }
   }
 
   .portfolio-intro {
@@ -999,8 +1026,8 @@
 
   .cat-tab:hover, .cat-tab.active {
     background: rgba(232,93,38,0.08);
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: var(--accent-ink);
+    color: var(--accent-ink);
   }
 
   .video-grid {
@@ -1024,10 +1051,10 @@
     transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
   }
 
-  .video-card:hover {
+  .video-card:hover, .video-card.reveal.visible:hover {
     transform: translateY(-6px);
-    border-color: var(--accent);
-    box-shadow: 0 12px 40px rgba(232,93,38,0.08);
+    border-color: var(--accent-ink);
+    box-shadow: 0 18px 40px -18px rgba(90,60,30,0.28);
   }
 
   .video-wrapper {
@@ -1119,10 +1146,10 @@
 
   .video-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 0.4rem;
     display: flex;
     align-items: center;
@@ -1155,7 +1182,7 @@
     gap: 0.3rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.6rem;
-    color: #9a8f82;
+    color: var(--muted);
     margin-top: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -1180,8 +1207,8 @@
 
   .image-card:hover {
     transform: translateY(-6px);
-    border-color: var(--accent);
-    box-shadow: 0 12px 40px rgba(232,93,38,0.08);
+    border-color: var(--accent-ink);
+    box-shadow: 0 18px 40px -18px rgba(90,60,30,0.28);
   }
 
   .image-card img {
@@ -1200,19 +1227,146 @@
     max-height: 500px;
   }
 
+  /* ABOUT COLLAGE */
+  .about-collage {
+    margin: 0 0 1rem;
+  }
+
+  .collage-stack {
+    position: relative;
+    width: 340px;
+    max-width: 100%;
+    height: 330px;
+  }
+
+  .collage-card {
+    position: absolute;
+    width: 170px;
+    aspect-ratio: 9 / 16;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 3px solid var(--bg);
+    box-shadow: 0 18px 45px rgba(26,26,26,0.18);
+    transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .collage-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .collage-card.cc-1 { left: 0; top: 34px; transform: rotate(-7deg); z-index: 1; }
+  .collage-card.cc-3 { right: 0; top: 34px; transform: rotate(7deg); z-index: 1; }
+  .collage-card.cc-2 { left: 50%; top: 0; transform: translateX(-50%); z-index: 2; }
+
+  .collage-stack:hover .cc-1 { transform: rotate(-11deg) translateX(-14px); }
+  .collage-stack:hover .cc-3 { transform: rotate(11deg) translateX(14px); }
+  .collage-stack:hover .cc-2 { transform: translateX(-50%) translateY(-8px); }
+
+  .collage-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-ink);
+    margin-top: 1.25rem;
+  }
+
+  .character-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .collage-card { transition: none; }
+  }
+
   /* CHARACTER PROOF VIDEO */
   .character-video {
     max-width: 900px;
     margin: 0 auto 1.5rem;
   }
 
+  /* CENTERED LAYOUT */
+  section > .section-label { justify-content: center; }
+  section > .section-label::after {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+  }
+  section > .section-title {
+    text-align: center;
+    max-width: 22ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-section .section-title { max-width: 700px; }
+  .portfolio-intro, .kpi-note {
+    text-align: center;
+    max-width: 62ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .kpi-note { margin-top: -1.5rem; margin-bottom: 2.5rem; }
+  .method-grid, .expertise-grid, .highlight-grid, .about-grid, .tools-wrap {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .method-grid { max-width: 900px; }
+  .agency-box {
+    margin: 3rem auto 0;
+    text-align: center;
+  }
+  .agency-box .video-tag { justify-content: center; }
+  .about-block {
+    max-width: 1100px;
+    margin: 3rem auto 0;
+    text-align: center;
+  }
+  .about-block > p { max-width: 62ch; margin-left: auto; margin-right: auto; }
+  .chip-row { justify-content: center; }
+  .about-grid { align-items: start; }
+
+  .video-grid:has(> :only-child) {
+    grid-template-columns: minmax(0, 300px);
+    justify-content: center;
+  }
+
+  /* MID-PAGE CONTACT BAND */
+  .mid-cta {
+    padding: 4rem 3rem;
+    text-align: center;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+    background: var(--card-bg);
+  }
+  .mid-cta h2 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+    line-height: 1.15;
+    max-width: 24ch;
+    margin: 0 auto 0.75rem;
+  }
+  .mid-cta p {
+    color: #5a5347;
+    max-width: 52ch;
+    margin: 0 auto 1.75rem;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
+    nav { flex-wrap: wrap; row-gap: 0.6rem; }
+    .nav-links { order: 3; width: 100%; gap: 1.25rem; overflow-x: auto; scrollbar-width: none; padding-bottom: 0.15rem; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { font-size: 0.72rem; white-space: nowrap; }
+
     section { padding: 4rem 1.5rem; }
     .hero { padding: 7rem 1.5rem 3rem; }
-    .showreel-section { flex-direction: column; padding: 7rem 1.5rem 3rem; gap: 2rem; }
+    .showreel-section { flex-direction: column; padding: 9rem 1.5rem 3rem; gap: 2rem; }
     .showreel-video { width: 280px; }
     .yt-shorts-grid { grid-template-columns: 1fr; }
     .yt-section { padding: 3rem 1.5rem; }
@@ -1223,11 +1377,21 @@
     .expertise-grid { grid-template-columns: 1fr; }
     .method-grid { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
-    .image-grid { grid-template-columns: repeat(2, 1fr); }
+    .image-grid, .character-grid { grid-template-columns: repeat(2, 1fr); }
+    .collage-stack { width: 290px; height: 285px; margin: 0 auto; }
+    .collage-card { width: 145px; }
+    .collage-caption { text-align: center; }
     .highlight-grid { grid-template-columns: 1fr; }
     .featured-split { grid-template-columns: 1fr; gap: 1.5rem; }
     .featured-split .video-card { max-width: 300px; margin: 0 auto; }
-    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .hero-stats { flex-wrap: nowrap; gap: 1rem; justify-content: space-between; }
+    .stat-number { font-size: 1.4rem; }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.05em; }
+    .showreel-text { text-align: center; }
+    .showreel-text .hero-badge { margin-left: auto; margin-right: auto; }
+    .showreel-text .hero-stats { text-align: left; }
+    .mid-cta { padding: 3rem 1.5rem; }
+    .about-text { text-align: left; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -1257,7 +1421,7 @@
   <div class="hero-orb"></div>
   <div class="showreel-text">
     <div class="hero-badge">Disponible maintenant · Freelance</div>
-    <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,6vw,5.5rem);line-height:1;letter-spacing:-0.03em;margin-bottom:1.5rem;">Des créas IA<br>pensées pour<br><em style="font-style:italic;background:linear-gradient(135deg,var(--gradient-1),var(--gradient-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">performer en Ads</em></h1>
+    <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,6vw,5.5rem);line-height:1;letter-spacing:-0.03em;margin-bottom:1.5rem;">Des créas IA<br>pensées pour<br><em class="hero-em">performer en Ads</em></h1>
     <p class="hero-sub">
       Je produis des vidéos et visuels IA prêts à tourner en campagne : <strong>UGC synthétique</strong>, <strong>motion design produit</strong>, <strong>visuels e-commerce</strong>. Chaque contenu est conçu comme un asset publicitaire, optimisé pour le clic et la conversion. <strong>3 concepts, 3 hooks chacun, livrés en 48h</strong>, sans studio ni tournage. Pour les marques en direct, ou <strong>en marque blanche pour les agences</strong>.
     </p>
@@ -1363,7 +1527,7 @@
       <p>En haut, une maquette 3D du magasin. En bas, le même plan transformé en vidéo photoréaliste par IA.</p>
       <p><strong>Un rendu maîtrisé, pas une IA laissée au hasard.</strong> Une IA qui invente seule une scène change les rayons, déplace les murs et déforme les produits d'un plan à l'autre. Ici, la maquette 3D sert de squelette : l'agencement, les volumes et le mouvement de caméra sont fixés à l'avance, et l'IA ne s'occupe que des matières et de la lumière.</p>
       <p>Résultat : <strong>le client reconnaît son magasin</strong>, chaque plan reste cohérent avec le suivant, et on peut refaire n'importe quelle prise sans repartir de zéro.</p>
-      <div class="video-tool">⚡ Maquette 3D · Higgsfield Genjutsu</div>
+      <div class="video-tool">Maquette 3D · Higgsfield Genjutsu</div>
     </div>
   </div>
 
@@ -1402,7 +1566,7 @@
       <p>Une pub concept de 30 secondes pour Delta Fraternité, une marque de vêtements indépendante. Elle met en scène les pièces <strong>DREAMCHASER</strong> et <strong>NO SLEEP</strong>.</p>
       <p><strong>Une histoire avant un produit.</strong> La marque parle d'entrepreneuriat et de dépassement de soi. Plutôt que de montrer des vêtements sur un fond neutre, la pub raconte un face-à-face : le héros affronte la version de lui-même d'hier, avec une seule idée, être meilleur que la veille.</p>
       <p>Les vêtements ne sont pas posés dans le décor, ils portent le message. Le spectateur retient une émotion, et l'émotion le ramène à la marque.</p>
-      <div class="video-tool">⚡ Pub concept · 100 % IA</div>
+      <div class="video-tool">Pub concept · 100 % IA</div>
     </div>
   </div>
 
@@ -1424,6 +1588,16 @@
     </div>
   </div>
 </section>
+
+<!-- CONTACT RAPIDE -->
+<aside class="mid-cta" aria-label="Contact">
+  <h2>Des pubs comme celles-ci, pour votre marque ou vos clients ?</h2>
+  <p>Parlez-moi de votre produit et de votre objectif : on regarde ensemble quel format tester en premier.</p>
+  <div class="cta-buttons">
+    <a href="mailto:simao.thomas3108@gmail.com?subject=Projet%20pub%20vid%C3%A9o%20IA" class="btn btn-primary">Me contacter par mail</a>
+    <a href="https://www.linkedin.com/in/6mao" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+  </div>
+</aside>
 
 <!-- UGC -->
 <section class="portfolio-section portfolio-pro portfolio-alt" id="ugc">
@@ -1645,9 +1819,20 @@
       </p>
     </div>
     <div style="display:flex;flex-direction:column;gap:1.5rem;">
-      <div style="border-radius:16px;overflow:hidden;border:1px solid var(--card-border);max-width:250px;">
-        <img src="photo.jpg" alt="Thomas Simão" style="width:100%;display:block;object-fit:cover;">
-      </div>
+      <figure class="about-collage">
+        <div class="collage-stack">
+          <div class="collage-card cc-1">
+            <img src="https://lh3.googleusercontent.com/d/1G6qfYTrDmlbW38CH785oI74RaxdmOLvr" alt="Personnage IA aux Grammys" loading="lazy">
+          </div>
+          <div class="collage-card cc-3">
+            <img src="https://lh3.googleusercontent.com/d/18Ub7P8RDt1h8LHZIJDjYiaAvvRvTyi3h" alt="Personnage IA sur un terrain de basket" loading="lazy">
+          </div>
+          <div class="collage-card cc-2">
+            <img src="https://lh3.googleusercontent.com/d/1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg" alt="Personnage IA dans un couloir de galerie" loading="lazy">
+          </div>
+        </div>
+        <figcaption class="collage-caption">Un seul personnage IA, trois univers</figcaption>
+      </figure>
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-date">2026 · Aujourd'hui</div>
@@ -1674,9 +1859,9 @@
   </div>
 
   <!-- OUTILS -->
-  <div style="margin-top:3rem;">
+  <div class="about-block">
     <h3 style="font-size:1rem;margin-bottom:1rem;font-weight:600;">Outils</h3>
-    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+    <div class="chip-row" style="display:flex;flex-wrap:wrap;gap:0.5rem;">
       <span class="tool-chip primary">Higgsfield (Seedance)</span>
       <span class="tool-chip primary">Sora 2</span>
       <span class="tool-chip primary">Kling</span>
@@ -1693,7 +1878,7 @@
   </div>
 
   <!-- MES PERSONNAGES IA -->
-  <div style="margin-top:3rem;">
+  <div class="about-block">
     <h3 style="font-size:1rem;margin-bottom:0.5rem;font-weight:600;">Mes personnages IA</h3>
     <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.25rem;">Le même personnage, maintenu cohérent à travers plusieurs générations et environnements. La vidéo ci-dessous le prouve en mouvement, les images ensuite en déclinent les variations.</p>
     <div class="video-card reveal character-video">
@@ -1706,27 +1891,18 @@
         <p>Chaque scène est un rendu IA distinct, le personnage reste lui-même.</p>
       </div>
     </div>
-    <div class="image-grid">
+    <div class="image-grid character-grid">
       <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/19FuSVjMpx2E8gtZq17Up8RIgZj_C-01a" alt="Character IA" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/d/19FuSVjMpx2E8gtZq17Up8RIgZj_C-01a" alt="Fiche de référence du personnage IA" loading="lazy">
       </div>
       <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1G6qfYTrDmlbW38CH785oI74RaxdmOLvr" alt="Character IA" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/d/1n_dNTSaiq0XjRxIkwoAI_sJE9PLCrnLv" alt="Personnage IA avec un trophée de tennis" loading="lazy">
       </div>
       <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1n_dNTSaiq0XjRxIkwoAI_sJE9PLCrnLv" alt="Character IA" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/d/1YxlEpbrpsHyOX_MGV5FsaKlS19mKDLd1" alt="Personnage IA devant une maison blanche" loading="lazy">
       </div>
       <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/18Ub7P8RDt1h8LHZIJDjYiaAvvRvTyi3h" alt="Character IA" loading="lazy">
-      </div>
-      <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1YxlEpbrpsHyOX_MGV5FsaKlS19mKDLd1" alt="Character IA" loading="lazy">
-      </div>
-      <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1yZRSnX6DyES06-_dPSuzwGlDG63xqlxU" alt="Character IA" loading="lazy">
-      </div>
-      <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg" alt="Character IA" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/d/1yZRSnX6DyES06-_dPSuzwGlDG63xqlxU" alt="Personnage IA avec un trophée de basket" loading="lazy">
       </div>
     </div>
   </div>
@@ -1767,7 +1943,7 @@
         <div class="video-tag">Side project</div>
         <h3 style="color: #1a1a1a;">Denim Jacket handmade</h3>
         <p>Photo animée par IA. Passage du statique au cinématique avec mouvements de caméra et jeux de lumière.</p>
-        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+        <div class="video-tool">Higgsfield · Seedance</div>
       </div>
     </div>
   </div>
