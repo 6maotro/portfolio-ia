@@ -5,13 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="https://6maotro.github.io/portfolio-ia/favicon.svg">
 <title>Thomas Simão · AI Video & Motion</title>
+<meta name="description" content="Anuncios en vídeo con IA para Meta y TikTok Ads, de un ex media buyer. UGC y motion design de producto, entregados en 48h. Para marcas y en marca blanca para agencias.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://6maotro.github.io/portfolio-ia/es/">
+<meta property="og:title" content="Thomas Simão · Anuncios en vídeo con IA que rinden">
+<meta property="og:description" content="UGC y motion design 100 % IA, un 30 % más baratos por compra que las creatividades clásicas. Entregados en 48h, para marcas y agencias.">
+<meta property="og:image" content="https://i.ytimg.com/vi/E5fQXoq2ktM/hqdefault.jpg">
+<link rel="alternate" hreflang="fr" href="https://6maotro.github.io/portfolio-ia/">
+<link rel="alternate" hreflang="en" href="https://6maotro.github.io/portfolio-ia/en/">
+<link rel="alternate" hreflang="es" href="https://6maotro.github.io/portfolio-ia/es/">
+<meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #f5f0e8;
     --fg: #1a1a1a;
     --accent: #e85d26;
-    --muted: #8a8070;
+    --muted: #6b6252;
+    --accent-ink: #b23c0b;
+    --accent-strong: #c2410c;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --card-bg: #ece6da;
     --card-border: #d4cbbf;
     --gradient-1: #e85d26;
@@ -34,8 +47,24 @@
     line-height: 1.6;
   }
 
+  :focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  input, textarea { caret-color: var(--accent-strong); }
+
+  a { text-underline-offset: 0.2em; }
+
+  html { scrollbar-color: var(--card-border) var(--bg); }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 10px; border: 2px solid var(--bg); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
   ::selection {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff;
   }
 
@@ -71,7 +100,7 @@
   }
 
   .nav-logo span {
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
   .nav-links {
@@ -91,10 +120,10 @@
   }
 
   .nav-links a.active {
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover { color: var(--accent-ink); }
 
   .nav-linkedin {
     color: var(--muted);
@@ -103,12 +132,17 @@
   }
 
   .nav-linkedin:hover {
-    color: var(--accent);
+    color: var(--accent-ink);
     transform: translateY(-2px);
   }
 
+  .lang-switch { display: flex; align-items: center; gap: 0.35rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em; color: var(--muted); margin-right: 0.25rem; }
+  .lang-link { color: var(--muted); text-decoration: none; padding: 0.2rem 0.15rem; }
+  .lang-link:hover { color: var(--accent-ink); }
+  .lang-link.is-current { color: var(--accent-ink); font-weight: 600; }
+
   .nav-cta {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff;
     padding: 0.6rem 1.4rem;
     border-radius: 100px;
@@ -122,7 +156,7 @@
 
   .nav-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(232,93,38,0.3);
+    box-shadow: 0 10px 24px -10px rgba(120,50,15,0.45);
   }
 
   /* HERO */
@@ -227,13 +261,13 @@
     border-radius: 16px;
     overflow: hidden;
     border: 2px solid var(--card-border);
-    box-shadow: 0 20px 80px rgba(232,93,38,0.08);
+    box-shadow: 0 24px 60px -24px rgba(90,60,30,0.25);
     transition: border-color 0.4s, box-shadow 0.4s;
   }
 
   .showreel-video:hover {
-    border-color: var(--accent);
-    box-shadow: 0 20px 80px rgba(232,93,38,0.15);
+    border-color: var(--accent-ink);
+    box-shadow: 0 30px 70px -24px rgba(90,60,30,0.32);
   }
 
   .showreel-video .yt-vertical {
@@ -271,7 +305,7 @@
   }
 
   .yt-featured:hover {
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
   }
 
   .yt-horizontal {
@@ -321,15 +355,16 @@
   }
 
   .perf-number {
+    font-variant-numeric: tabular-nums;
     font-family: 'JetBrains Mono', monospace;
     font-size: 1rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-ink);
     white-space: nowrap;
   }
 
   .perf-label {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--muted);
@@ -355,7 +390,7 @@
 
   .yt-short-card:hover {
     transform: translateY(-6px);
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
   }
 
   .yt-short-card .yt-vertical {
@@ -392,7 +427,7 @@
     font-size: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--accent);
+    color: var(--accent-ink);
     display: flex;
     align-items: center;
     gap: 0.4rem;
@@ -411,14 +446,14 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(232,93,38,0.08);
+    background: rgba(232,93,38,0.05);
     border: 1px solid rgba(232,93,38,0.25);
     padding: 0.5rem 1rem;
     border-radius: 100px;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 2rem;
     width: fit-content;
     animation: fadeInUp 0.8s ease both;
@@ -431,7 +466,6 @@
     height: 6px;
     background: var(--accent);
     border-radius: 50%;
-    animation: pulse-dot 2s infinite;
   }
 
   @keyframes pulse-dot {
@@ -448,12 +482,9 @@
     animation: fadeInUp 0.8s 0.1s ease both;
   }
 
-  .hero h1 em {
+  .hero h1 em, .hero-em {
     font-style: italic;
-    background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-ink);
   }
 
   .hero-sub {
@@ -483,14 +514,15 @@
   }
 
   .stat-number {
+    font-variant-numeric: tabular-nums;
     font-family: 'JetBrains Mono', monospace;
     font-size: 2rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
   .stat-label {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--muted);
@@ -526,7 +558,7 @@
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -539,6 +571,9 @@
     height: 1px;
     background: var(--accent);
   }
+
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
 
   .section-title {
     font-family: 'Instrument Serif', serif;
@@ -560,6 +595,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     max-width: 1100px;
+    margin: 0 auto;
   }
 
   .about-text {
@@ -608,9 +644,10 @@
   }
 
   .timeline-date {
+    font-variant-numeric: tabular-nums;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
-    color: var(--accent);
+    color: var(--accent-ink);
     letter-spacing: 0.05em;
     margin-bottom: 0.15rem;
   }
@@ -645,7 +682,7 @@
   }
 
   .expertise-card:hover {
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
     transform: translateY(-4px);
   }
 
@@ -681,7 +718,7 @@
   /* METHOD */
   .method-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
     max-width: 1100px;
   }
@@ -698,15 +735,16 @@
 
   .method-step:hover {
     transform: translateY(-4px);
-    border-color: var(--accent);
-    box-shadow: 0 12px 40px rgba(232,93,38,0.08);
+    border-color: var(--accent-ink);
+    box-shadow: 0 18px 40px -18px rgba(90,60,30,0.28);
   }
 
   .method-num {
+    font-variant-numeric: tabular-nums;
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.5rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-ink);
     display: block;
     margin-bottom: 0.75rem;
   }
@@ -757,7 +795,7 @@
 
   .highlight-card:hover {
     transform: translateY(-6px);
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
   }
 
   .highlight-visual {
@@ -793,7 +831,7 @@
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 0.5rem;
   }
 
@@ -842,14 +880,14 @@
   }
 
   .tool-chip:hover {
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
     background: rgba(232,93,38,0.06);
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
   .tool-chip.primary {
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: var(--accent-ink);
+    color: var(--accent-ink);
     background: rgba(232,93,38,0.07);
   }
 
@@ -887,13 +925,23 @@
   }
 
   .btn-primary {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff;
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(232,93,38,0.3);
+    box-shadow: 0 14px 30px -12px rgba(120,50,15,0.45);
+  }
+
+  .btn-whatsapp {
+    background: #0f7a52;
+    color: #fff;
+  }
+
+  .btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -12px rgba(15,90,60,0.5);
   }
 
   .btn-outline {
@@ -925,14 +973,18 @@
   }
 
   .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(18px);
+    transition: transform 0.9s var(--ease-out), box-shadow 0.4s, border-color 0.4s;
   }
 
   .reveal.visible {
-    opacity: 1;
     transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { transform: none; }
+    html { scroll-behavior: auto; }
   }
 
   .portfolio-intro {
@@ -999,8 +1051,8 @@
 
   .cat-tab:hover, .cat-tab.active {
     background: rgba(232,93,38,0.08);
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: var(--accent-ink);
+    color: var(--accent-ink);
   }
 
   .video-grid {
@@ -1024,10 +1076,10 @@
     transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
   }
 
-  .video-card:hover {
+  .video-card:hover, .video-card.reveal.visible:hover {
     transform: translateY(-6px);
-    border-color: var(--accent);
-    box-shadow: 0 12px 40px rgba(232,93,38,0.08);
+    border-color: var(--accent-ink);
+    box-shadow: 0 18px 40px -18px rgba(90,60,30,0.28);
   }
 
   .video-wrapper {
@@ -1119,10 +1171,10 @@
 
   .video-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 0.4rem;
     display: flex;
     align-items: center;
@@ -1155,7 +1207,7 @@
     gap: 0.3rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.6rem;
-    color: #9a8f82;
+    color: var(--muted);
     margin-top: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -1180,8 +1232,8 @@
 
   .image-card:hover {
     transform: translateY(-6px);
-    border-color: var(--accent);
-    box-shadow: 0 12px 40px rgba(232,93,38,0.08);
+    border-color: var(--accent-ink);
+    box-shadow: 0 18px 40px -18px rgba(90,60,30,0.28);
   }
 
   .image-card img {
@@ -1200,19 +1252,178 @@
     max-height: 500px;
   }
 
+  /* ABOUT COLLAGE */
+  .about-collage {
+    margin: 0 0 1rem;
+  }
+
+  .collage-stack {
+    position: relative;
+    width: 340px;
+    max-width: 100%;
+    height: 330px;
+  }
+
+  .collage-card {
+    position: absolute;
+    width: 170px;
+    aspect-ratio: 9 / 16;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 3px solid var(--bg);
+    box-shadow: 0 18px 45px rgba(26,26,26,0.18);
+    transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .collage-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .collage-card.cc-1 { left: 0; top: 34px; transform: rotate(-7deg); z-index: 1; }
+  .collage-card.cc-3 { right: 0; top: 34px; transform: rotate(7deg); z-index: 1; }
+  .collage-card.cc-2 { left: 50%; top: 0; transform: translateX(-50%); z-index: 2; }
+
+  .collage-stack:hover .cc-1 { transform: rotate(-11deg) translateX(-14px); }
+  .collage-stack:hover .cc-3 { transform: rotate(11deg) translateX(14px); }
+  .collage-stack:hover .cc-2 { transform: translateX(-50%) translateY(-8px); }
+
+  .collage-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-ink);
+    margin-top: 1.25rem;
+  }
+
+  .character-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .collage-card { transition: none; }
+  }
+
   /* CHARACTER PROOF VIDEO */
   .character-video {
     max-width: 900px;
     margin: 0 auto 1.5rem;
   }
 
+  /* CENTERED LAYOUT */
+  section > .section-label { justify-content: center; }
+  section > .section-label::after {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+  }
+  section > .section-title {
+    text-align: center;
+    max-width: 22ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-section .section-title { max-width: 700px; }
+  .portfolio-intro, .kpi-note {
+    text-align: center;
+    max-width: 62ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .kpi-note { margin-top: -1.5rem; margin-bottom: 2.5rem; }
+  .method-grid, .expertise-grid, .highlight-grid, .about-grid, .tools-wrap {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .method-grid { max-width: 900px; }
+  .agency-box {
+    margin: 3rem auto 0;
+    text-align: center;
+  }
+  .agency-box .video-tag { justify-content: center; }
+  .about-block {
+    max-width: 1100px;
+    margin: 3rem auto 0;
+    text-align: center;
+  }
+  .about-block > p { max-width: 62ch; margin-left: auto; margin-right: auto; }
+  .chip-row { justify-content: center; }
+  .about-grid { align-items: start; }
+
+  .video-grid:has(> :only-child) {
+    grid-template-columns: minmax(0, 300px);
+    justify-content: center;
+  }
+
+  /* OFFER */
+  .offer-wrap { max-width: 900px; margin: 3.5rem auto 0; text-align: center; }
+  .offer-price {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 1.75rem;
+  }
+  .offer-price strong { color: var(--accent-ink); font-weight: 400; }
+  .offer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; text-align: left; }
+  .offer-card {
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .offer-card-agency { border-color: rgba(232,93,38,0.45); background: rgba(232,93,38,0.04); }
+  .offer-card h3 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.7rem; line-height: 1.1; }
+  .offer-card > p { color: #5a5347; font-size: 0.95rem; }
+  .offer-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin: 0.25rem 0 0.75rem; }
+  .offer-list li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.92rem; }
+  .offer-check { flex-shrink: 0; margin-top: 0.25rem; color: var(--accent-ink); }
+  .offer-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: auto; }
+  .offer-actions .btn { padding: 0.8rem 1.1rem; font-size: 0.78rem; letter-spacing: 0.06em; }
+
+  .video-grid:has(> :nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 280px));
+    justify-content: center;
+  }
+
+  /* MID-PAGE CONTACT BAND */
+  .mid-cta {
+    padding: 4rem 3rem;
+    text-align: center;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+    background: var(--card-bg);
+  }
+  .mid-cta h2 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+    line-height: 1.15;
+    max-width: 24ch;
+    margin: 0 auto 0.75rem;
+  }
+  .mid-cta p {
+    color: #5a5347;
+    max-width: 52ch;
+    margin: 0 auto 1.75rem;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
+    nav { flex-wrap: wrap; row-gap: 0.6rem; }
+    .nav-links { order: 3; width: 100%; gap: 1.25rem; overflow-x: auto; scrollbar-width: none; padding-bottom: 0.15rem; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { font-size: 0.72rem; white-space: nowrap; }
+
     section { padding: 4rem 1.5rem; }
     .hero { padding: 7rem 1.5rem 3rem; }
-    .showreel-section { flex-direction: column; padding: 7rem 1.5rem 3rem; gap: 2rem; }
+    .showreel-section { flex-direction: column; padding: 9rem 1.5rem 3rem; gap: 2rem; }
     .showreel-video { width: 280px; }
     .yt-shorts-grid { grid-template-columns: 1fr; }
     .yt-section { padding: 3rem 1.5rem; }
@@ -1223,11 +1434,24 @@
     .expertise-grid { grid-template-columns: 1fr; }
     .method-grid { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
-    .image-grid { grid-template-columns: repeat(2, 1fr); }
+    .image-grid, .character-grid { grid-template-columns: repeat(2, 1fr); }
+    .collage-stack { width: 290px; height: 285px; margin: 0 auto; }
+    .collage-card { width: 145px; }
+    .collage-caption { text-align: center; }
     .highlight-grid { grid-template-columns: 1fr; }
     .featured-split { grid-template-columns: 1fr; gap: 1.5rem; }
     .featured-split .video-card { max-width: 300px; margin: 0 auto; }
-    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .hero-stats { flex-wrap: nowrap; gap: 1rem; justify-content: space-between; }
+    .stat-number { font-size: 1.4rem; }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.05em; }
+    .showreel-text { text-align: center; }
+    .showreel-text .hero-badge { margin-left: auto; margin-right: auto; }
+    .showreel-text .hero-stats { text-align: left; }
+    .mid-cta { padding: 3rem 1.5rem; }
+    .offer-grid { grid-template-columns: 1fr; }
+    .offer-card { padding: 1.5rem; }
+    .video-grid:has(> :nth-child(2):last-child) { grid-template-columns: 1fr; }
+    .about-text { text-align: left; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -1238,25 +1462,21 @@
 <nav>
   <div class="nav-logo">T<span>.</span>Simão</div>
   <ul class="nav-links">
+    <li><a href="#top">Resultados</a></li>
     <li><a href="#projets">Cliente</a></li>
-    <li><a href="#ugc">UGC</a></li>
-    <li><a href="#motion">Motion</a></li>
+    <li><a href="#storytelling">Storytelling</a></li>
     <li><a href="#methode">Método</a></li>
     <li><a href="#about">Sobre mí</a></li>
-    <li><a href="/portfolio-ia/ai-characters.html">Personajes IA</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:0.75rem;">
-    <div style="display:flex;align-items:center;gap:0.4rem;font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.05em;">
-      <a href="/portfolio-ia/" style="color:var(--muted);text-decoration:none;">FR</a>
-      <span style="color:var(--muted);">/</span>
-      <a href="/portfolio-ia/en/" style="color:var(--muted);text-decoration:none;">EN</a>
-      <span style="color:var(--muted);">/</span>
-      <a href="/portfolio-ia/es/" style="color:var(--accent);text-decoration:none;font-weight:600;">ES</a>
-    </div>
+    <div class="lang-switch"><a href="/portfolio-ia/" class="lang-link" hreflang="fr">FR</a><span aria-hidden="true">/</span><a href="/portfolio-ia/en/" class="lang-link" hreflang="en">EN</a><span aria-hidden="true">/</span><a href="/portfolio-ia/es/" class="lang-link is-current" aria-current="page">ES</a></div>
+    <a href="https://wa.me/33612225566?text=Hola%20Thomas%2C%20acabo%20de%20ver%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20hablar%20de%20anuncios%20en%20v%C3%ADdeo%20con%20IA." target="_blank" rel="noopener" class="nav-linkedin" title="WhatsApp" aria-label="Contactar por WhatsApp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.3 11.3 0 0012.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.28l5.67-1.49a11.33 11.33 0 005.42 1.38h.01c6.26 0 11.36-5.09 11.36-11.35 0-3.03-1.18-5.88-3.33-8.03z"/></svg>
+    </a>
     <a href="https://www.linkedin.com/in/6mao" target="_blank" rel="noopener" class="nav-linkedin" title="LinkedIn">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
     </a>
-    <a href="mailto:simao.thomas3108@gmail.com" class="nav-cta">Contacto</a>
+    <a href="mailto:simao.thomas3108@gmail.com" class="nav-cta">Contactar</a>
   </div>
 </nav>
 
@@ -1265,18 +1485,18 @@
   <div class="hero-orb"></div>
   <div class="showreel-text">
     <div class="hero-badge">Disponible ahora · Freelance</div>
-    <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,6vw,5.5rem);line-height:1;letter-spacing:-0.03em;margin-bottom:1.5rem;">Creatividades IA<br>pensadas para<br><em style="font-style:italic;background:linear-gradient(135deg,var(--gradient-1),var(--gradient-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">rendir en Ads</em></h1>
+    <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,6vw,5.5rem);line-height:1;letter-spacing:-0.03em;margin-bottom:1.5rem;">Creatividades IA<br>pensadas para<br><em class="hero-em">rendir en Ads</em></h1>
     <p class="hero-sub">
-      Produzco vídeos y visuales IA listos para campaña: <strong>UGC sintético</strong>, <strong>motion design de producto</strong>, <strong>visuales e-commerce</strong>. Cada pieza está pensada como un activo publicitario, optimizado para el clic y la conversión. <strong>3 conceptos, 3 hooks cada uno, entregados en 48 h</strong>, sin estudio ni rodaje. Para marcas directamente, o <strong>en marca blanca para agencias</strong>.
+      Produzco vídeos y visuales con IA listos para campaña: <strong>UGC sintético</strong>, <strong>motion design de producto</strong>, <strong>visuales para e-commerce</strong>. Cada pieza está pensada como un activo publicitario, optimizada para el clic y la conversión. <strong>3 conceptos, 3 hooks cada uno, entregados en 48h</strong>, sin estudio ni rodaje. Para marcas directamente, o <strong>en marca blanca para agencias</strong>.
     </p>
     <div class="hero-stats">
       <div class="stat">
-        <span class="stat-number">~7 €</span>
-        <span class="stat-label">Coste medio por compra, mis UGC IA</span>
+        <span class="stat-number">-30&nbsp;%</span>
+        <span class="stat-label">De coste por compra vs creatividades clásicas</span>
       </div>
       <div class="stat">
-        <span class="stat-number">4,05 %</span>
-        <span class="stat-label">Tasa de clics, mi mejor UGC IA</span>
+        <span class="stat-number">4,05&nbsp;%</span>
+        <span class="stat-label">De clics, mi mejor UGC con IA</span>
       </div>
       <div class="stat">
         <span class="stat-number">194</span>
@@ -1291,9 +1511,72 @@
   </div>
 </section>
 
+<!-- TOP CONTENUS -->
+<section class="portfolio-section portfolio-pro" id="top">
+  <div class="section-label">Mis mejores resultados</div>
+  <h2 class="section-title">Mi mejor contenido, por formato</h2>
+  <p class="portfolio-intro"><strong style="color:var(--fg);font-weight:500;">De media, mis creatividades con IA cuestan un 30 % menos por compra que las clásicas.</strong> Aquí está lo mejor de cada formato, con cifras reales de campañas de Meta Ads de un e-commerce de audio. CTR: porcentaje de personas que hacen clic tras ver el anuncio. Coste / compra: presupuesto invertido para conseguir una venta, cuanto más bajo, mejor.</p>
+
+  <div class="featured-split reveal">
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1KVE1goYxELa11KyMfvRhPVjwuctc7nm3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="featured-text">
+      <div class="video-tag">Top UGC · en campaña</div>
+      <h3>Elipson Prestige Facet 6B</h3>
+      <p>El producto real integrado en una escena IA, con un personaje que maneja el altavoz como lo haría un creador. <strong>Mi mejor coste por compra: 1,54 € por venta.</strong></p>
+      <div class="perf-stats">
+        <div class="perf-stat">
+          <span class="perf-number">1,54&nbsp;€</span>
+          <span class="perf-label">Coste / compra</span>
+        </div>
+        <div class="perf-stat">
+          <span class="perf-number">2,42&nbsp;%</span>
+          <span class="perf-label">CTR</span>
+        </div>
+        <div class="perf-stat">
+          <span class="perf-number">2.079</span>
+          <span class="perf-label">Clics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="yt-featured reveal">
+    <div class="yt-horizontal">
+      <iframe src="https://www.youtube.com/embed/yYmcGXhiPa4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="yt-featured-info">
+      <div class="video-tag">Top Motion Design · en campaña</div>
+      <h3>Lanzamiento de Rebajas</h3>
+      <p>Un vídeo de lanzamiento difundido en una campaña de Meta Ads. <strong style="color:var(--fg);font-weight:500;">194 ventas con un solo vídeo.</strong></p>
+      <div class="perf-stats">
+        <div class="perf-stat">
+          <span class="perf-number">1,27&nbsp;%</span>
+          <span class="perf-label">CTR</span>
+        </div>
+        <div class="perf-stat">
+          <span class="perf-number">194</span>
+          <span class="perf-label">Compras</span>
+        </div>
+        <div class="perf-stat">
+          <span class="perf-number">2,61&nbsp;€</span>
+          <span class="perf-label">Coste / compra</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
 <!-- PROJETS -->
-<section class="portfolio-section portfolio-pro" id="projets">
-  <div class="section-label">Caso de estudio · Proyecto cliente</div>
+<section class="portfolio-section portfolio-pro portfolio-alt" id="projets">
+  <div class="section-label">Técnica · Proyecto cliente</div>
   <h2 class="section-title">Tri For Fun, una tienda filmada sin cámara</h2>
 
   <div class="featured-split reveal">
@@ -1306,7 +1589,9 @@
       <div class="video-tag">Tienda de triatlón y running · Barcelona</div>
       <h3>De la maqueta 3D a la tienda real, sin rodaje</h3>
       <p>Arriba, una maqueta 3D de la tienda. Abajo, el mismo plano convertido en vídeo fotorrealista con IA.</p>
-      <div class="video-tool">⚡ Maqueta 3D · Higgsfield Genjutsu</div>
+      <p><strong>Un render controlado, no una IA al azar.</strong> Una IA que inventa sola una escena cambia las estanterías, mueve las paredes y deforma los productos de un plano a otro. Aquí, la maqueta 3D sirve de esqueleto: la distribución, los volúmenes y el movimiento de cámara se fijan de antemano, y la IA solo se encarga de los materiales y la luz.</p>
+      <p>Resultado: <strong>el cliente reconoce su tienda</strong>, cada plano es coherente con el siguiente y cualquier toma se puede rehacer sin empezar de cero.</p>
+      <div class="video-tool">Maqueta 3D · Higgsfield Genjutsu</div>
     </div>
   </div>
 
@@ -1314,12 +1599,12 @@
     <div class="method-step reveal">
       <span class="method-num">01</span>
       <h3>El enfoque</h3>
-      <p>En lugar de un mensaje de prospección clásico, contacté con la tienda con un vídeo ya hecho para ellos, a partir de su propio espacio de venta.</p>
+      <p>En lugar de un mensaje de prospección clásico, contacté a la tienda con un vídeo ya hecho para ellos, a partir de su propio espacio de venta.</p>
     </div>
     <div class="method-step reveal">
       <span class="method-num">02</span>
       <h3>La producción</h3>
-      <p>Una maqueta 3D de la tienda y cada plano convertido en un render realista con IA. La tienda se presenta sin cerrar sus puertas ni organizar un rodaje.</p>
+      <p>Primero la maqueta 3D de la tienda, donde encuadro cada plano como en un rodaje real: trayectoria de cámara, ritmo, punto de vista. Después, la IA convierte esos planos en imágenes realistas respetando la geometría de la maqueta. La tienda se pone en escena sin cerrar sus puertas ni organizar un rodaje.</p>
     </div>
     <div class="method-step reveal">
       <span class="method-num">03</span>
@@ -1329,37 +1614,63 @@
   </div>
 </section>
 
-<!-- UGC -->
-<section class="portfolio-section portfolio-pro portfolio-alt" id="ugc">
-  <div class="section-label">UGC · difundido en Ads</div>
-  <h2 class="section-title">UGC que rinden</h2>
-  <p class="portfolio-intro">Vídeos estilo «creador», sin rodaje ni actores. Personajes IA coherentes que presentan productos reales, formateados para campañas de Social Ads y pensados para frenar el scroll.</p>
-  <p class="kpi-note"><strong>Cifras reales de campañas de Meta Ads</strong> para un e-commerce de audio. CTR: porcentaje de personas que hicieron clic tras ver el anuncio. Coste / compra: inversión publicitaria necesaria para conseguir una venta. Cuanto más bajo, mejor.</p>
-  <div class="video-grid">
-    <div class="video-card reveal">
+<!-- STORYTELLING -->
+<section class="portfolio-section portfolio-pro" id="storytelling">
+  <div class="section-label">Storytelling · Anuncio concepto</div>
+  <h2 class="section-title">Delta Fraternité, una historia en 30 segundos</h2>
+  <div class="featured-split reveal">
+    <div class="video-card">
       <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/1QhtLtFRzfdKoJD1mt-NHNyoLo2PPQUA3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-info">
-        <div class="video-tag">UGC · Top performer</div>
-        <h3>Proyector Aurzen</h3>
-        <p>UGC promocional para el proyector Aurzen. Personaje IA que interactúa con naturalidad con el producto.</p>
-        <div class="perf-stats">
-          <div class="perf-stat">
-            <span class="perf-number">4,05 %</span>
-            <span class="perf-label">CTR</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">3 622</span>
-            <span class="perf-label">Clics</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">15,46 €</span>
-            <span class="perf-label">Coste / compra</span>
-          </div>
-        </div>
+        <iframe src="https://www.youtube.com/embed/f2GzZu0G1oU" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
+    <div class="featured-text">
+      <div class="video-tag">Anuncio concepto · Marca de ropa independiente</div>
+      <h3>Delta Fraternité · «Ese soy yo ayer»</h3>
+      <p>Un anuncio concepto de 30 segundos para Delta Fraternité, una marca de ropa independiente. Protagonizan las prendas <strong>DREAMCHASER</strong> y <strong>NO SLEEP</strong>.</p>
+      <p><strong>Una historia antes que un producto.</strong> La marca habla de emprendimiento y superación personal. En lugar de mostrar ropa sobre un fondo neutro, el anuncio cuenta un cara a cara: el protagonista se enfrenta a su versión de ayer, con una sola idea, ser mejor que el día anterior.</p>
+      <p>La ropa no es decorado, lleva el mensaje. El espectador recuerda una emoción, y esa emoción lo lleva de vuelta a la marca.</p>
+      <div class="video-tool">Anuncio concepto · 100 % IA</div>
+    </div>
+  </div>
+
+  <div class="method-grid" style="margin:0 auto 3rem;max-width:900px;">
+    <div class="method-step reveal">
+      <span class="method-num">01</span>
+      <h3>Partir del ADN de la marca</h3>
+      <p>Primero estudié lo que la marca y su fundador cuentan en sus redes: el trabajo, la disciplina, las ganas de superarse. El concepto nace de ahí, no de una plantilla.</p>
+    </div>
+    <div class="method-step reveal">
+      <span class="method-num">02</span>
+      <h3>Construir un relato en 30 segundos</h3>
+      <p>Un punto de partida, una tensión, una resolución. Cada plano hace avanzar la historia, y el eslogan llega cuando el espectador ya lo ha sentido.</p>
+    </div>
+    <div class="method-step reveal">
+      <span class="method-num">03</span>
+      <h3>Hacer del producto el protagonista</h3>
+      <p>Las dos prendas se ven bien y se mantienen fieles de un plano a otro. La historia está al servicio de la prenda, en lugar de hacerla desaparecer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT RAPIDE -->
+<aside class="mid-cta" aria-label="Contact">
+  <h2>¿Anuncios como estos, para tu marca o tus clientes?</h2>
+  <p>Cuéntame tu producto y tu objetivo: vemos juntos qué formato probar primero.</p>
+  <div class="cta-buttons">
+    <a href="mailto:simao.thomas3108@gmail.com?subject=Proyecto%20de%20anuncio%20en%20v%C3%ADdeo%20con%20IA" class="btn btn-primary">Escríbeme por email</a>
+    <a href="https://wa.me/33612225566?text=Hola%20Thomas%2C%20acabo%20de%20ver%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20hablar%20de%20anuncios%20en%20v%C3%ADdeo%20con%20IA." target="_blank" rel="noopener" class="btn btn-whatsapp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.3 11.3 0 0012.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.28l5.67-1.49a11.33 11.33 0 005.42 1.38h.01c6.26 0 11.36-5.09 11.36-11.35 0-3.03-1.18-5.88-3.33-8.03z"/></svg>WhatsApp</a>
+    <a href="https://www.linkedin.com/in/6mao" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+  </div>
+</aside>
+
+<!-- UGC -->
+<section class="portfolio-section portfolio-pro portfolio-alt" id="ugc">
+  <div class="section-label">UGC · en campaña</div>
+  <h2 class="section-title">Más UGC en campaña</h2>
+  <p class="portfolio-intro">Vídeos estilo «creador» sin rodaje ni talento. Personajes IA coherentes que presentan productos reales, en formato para campañas de Social Ads y optimizados para frenar el scroll.</p>
+  <p class="kpi-note"><strong>Cifras reales de campañas de Meta Ads</strong> para un e-commerce de audio. CTR: porcentaje de personas que hicieron clic tras ver el anuncio. Coste / compra: presupuesto publicitario invertido para conseguir una venta. Cuanto más bajo, mejor.</p>
+  <div class="video-grid">
     <div class="video-card reveal">
       <div class="video-wrapper">
         <iframe src="https://drive.google.com/file/d/1EmPpEjXM6lydQfkdtSywkdt2fyPyO0rF/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
@@ -1367,10 +1678,10 @@
       <div class="video-info">
         <div class="video-tag">UGC</div>
         <h3>Platine Days</h3>
-        <p>Vídeo UGC promocional para la operación Platine Days. Personaje IA que presenta las ofertas en un contexto realista.</p>
+        <p>Vídeo UGC promocional para la campaña Platine Days. Personaje IA que presenta las ofertas en un contexto realista.</p>
         <div class="perf-stats">
           <div class="perf-stat">
-            <span class="perf-number">2,93 %</span>
+            <span class="perf-number">2,93&nbsp;%</span>
             <span class="perf-label">CTR</span>
           </div>
           <div class="perf-stat">
@@ -1378,7 +1689,7 @@
             <span class="perf-label">Clics</span>
           </div>
           <div class="perf-stat">
-            <span class="perf-number">3,92 €</span>
+            <span class="perf-number">3,92&nbsp;€</span>
             <span class="perf-label">Coste / compra</span>
           </div>
         </div>
@@ -1386,48 +1697,24 @@
     </div>
     <div class="video-card reveal">
       <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/1KVE1goYxELa11KyMfvRhPVjwuctc7nm3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://drive.google.com/file/d/1QhtLtFRzfdKoJD1mt-NHNyoLo2PPQUA3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
-        <div class="video-tag">UGC</div>
-        <h3>Elipson Prestige Facet 6B</h3>
-        <p>Vídeo UGC que integra el producto real en una escena IA. El personaje interactúa con naturalidad con el altavoz.</p>
+        <div class="video-tag">UGC · Mejor tasa de clics</div>
+        <h3>Proyector Aurzen</h3>
+        <p>Personaje IA interactuando con naturalidad con el proyector. Más de 3.600 personas hicieron clic.</p>
         <div class="perf-stats">
           <div class="perf-stat">
-            <span class="perf-number">2,42 %</span>
+            <span class="perf-number">4,05&nbsp;%</span>
             <span class="perf-label">CTR</span>
           </div>
           <div class="perf-stat">
-            <span class="perf-number">2 079</span>
+            <span class="perf-number">3.622</span>
             <span class="perf-label">Clics</span>
           </div>
           <div class="perf-stat">
-            <span class="perf-number">1,54 €</span>
+            <span class="perf-number">15,46&nbsp;€</span>
             <span class="perf-label">Coste / compra</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="video-card reveal">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/FXzcbuV2YDI" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-info">
-        <div class="video-tag">UGC · Orgánico</div>
-        <h3>Sennheiser Momentum 5 Denim</h3>
-        <p>Vídeo de lanzamiento del Momentum 5 Denim, publicado en orgánico en Instagram y TikTok.</p>
-        <div class="perf-stats">
-          <div class="perf-stat">
-            <span class="perf-number">3 000</span>
-            <span class="perf-label">Visualizaciones</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">38</span>
-            <span class="perf-label">Likes</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">2</span>
-            <span class="perf-label">Compartidos</span>
           </div>
         </div>
       </div>
@@ -1437,34 +1724,10 @@
 
 <!-- MOTION DESIGN -->
 <section class="portfolio-section portfolio-pro" id="motion">
-  <div class="section-label">Motion Design · difundido en Ads</div>
-  <h2 class="section-title">Motion design fiel a la realidad</h2>
-  <p class="portfolio-intro">Animaciones de producto concebidas como activos publicitarios. Cada secuencia está pensada para captar la atención en el feed y generar clics.</p>
-  <p class="kpi-note"><strong>Lo que me enseñaron mis pruebas:</strong> en el proyector Aurzen, la versión UGC costó un 27 % menos por compra que la versión motion design (15,46 € frente a 21,31 €). Pruebo los dos formatos y apuesto por el que vende.</p>
-  <div class="yt-featured reveal" style="margin-bottom:2rem;">
-    <div class="yt-horizontal">
-      <iframe src="https://www.youtube.com/embed/yYmcGXhiPa4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="yt-featured-info">
-      <div class="video-tag">Motion Design</div>
-      <h3>Lanzamiento de rebajas</h3>
-      <p>Vídeo de lanzamiento difundido en una campaña de Meta Ads.</p>
-      <div class="perf-stats">
-        <div class="perf-stat">
-          <span class="perf-number">1,27 %</span>
-          <span class="perf-label">CTR</span>
-        </div>
-        <div class="perf-stat">
-          <span class="perf-number">194</span>
-          <span class="perf-label">Compras</span>
-        </div>
-        <div class="perf-stat">
-          <span class="perf-number">2,61 €</span>
-          <span class="perf-label">Coste / compra</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="section-label">Motion Design · en campaña</div>
+  <h2 class="section-title">Más motion design de producto</h2>
+  <p class="portfolio-intro">Animaciones de producto pensadas como activos publicitarios. Cada secuencia está diseñada para captar la atención en el feed y generar clics.</p>
+  <p class="kpi-note"><strong>Lo que me enseñaron mis tests:</strong> en el proyector Aurzen, la versión UGC costó un 27 % menos por compra que la versión motion design (15,46 € frente a 21,31 €). Pruebo los dos formatos y apuesto por el que vende.</p>
   <div class="video-grid">
     <div class="video-card reveal">
       <div class="video-wrapper">
@@ -1476,7 +1739,7 @@
         <p>Anuncio para los auriculares Cambridge Melomania, difundido en campaña de Ads.</p>
         <div class="perf-stats">
           <div class="perf-stat">
-            <span class="perf-number">1,9 %</span>
+            <span class="perf-number">1,9&nbsp;%</span>
             <span class="perf-label">CTR</span>
           </div>
           <div class="perf-stat">
@@ -1484,7 +1747,7 @@
             <span class="perf-label">Compras</span>
           </div>
           <div class="perf-stat">
-            <span class="perf-number">3,12 €</span>
+            <span class="perf-number">3,12&nbsp;€</span>
             <span class="perf-label">Coste / compra</span>
           </div>
         </div>
@@ -1497,10 +1760,10 @@
       <div class="video-info">
         <div class="video-tag">Motion Design</div>
         <h3>Proyector Aurzen</h3>
-        <p>Motion design para el proyector Aurzen. Animación de producto y ambiente visual generados por IA.</p>
+        <p>Motion design para el proyector Aurzen. Animaciones de producto y ambiente visual generados con IA.</p>
         <div class="perf-stats">
           <div class="perf-stat">
-            <span class="perf-number">0,94 %</span>
+            <span class="perf-number">0,94&nbsp;%</span>
             <span class="perf-label">CTR</span>
           </div>
           <div class="perf-stat">
@@ -1508,27 +1771,7 @@
             <span class="perf-label">Clics</span>
           </div>
           <div class="perf-stat">
-            <span class="perf-number">21,31 €</span>
-            <span class="perf-label">Coste / compra</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="video-card reveal">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/QhtLcwmT7-g" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-info">
-        <div class="video-tag">Motion Design</div>
-        <h3>Argon TT MK2</h3>
-        <p>Motion design para el tocadiscos Argon TT MK2. Animación de producto y transiciones visuales generadas por IA.</p>
-        <div class="perf-stats">
-          <div class="perf-stat">
-            <span class="perf-number">0,81 %</span>
-            <span class="perf-label">CTR</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">4,15 €</span>
+            <span class="perf-number">21,31&nbsp;€</span>
             <span class="perf-label">Coste / compra</span>
           </div>
         </div>
@@ -1540,21 +1783,21 @@
 <!-- METHODE -->
 <section class="portfolio-section portfolio-pro portfolio-alt" id="methode">
   <div class="section-label">Cómo trabajo</div>
-  <h2 class="section-title">De tu brief a anuncios listos para probar</h2>
+  <h2 class="section-title">De tu brief a anuncios listos para testear</h2>
   <div class="method-grid">
     <div class="method-step reveal">
       <span class="method-num">01</span>
       <h3>El brief</h3>
-      <p>Tu producto, tu público, tu objetivo. También reviso tus anuncios actuales y los de tus competidores para encontrar los ángulos que faltan.</p>
+      <p>Tu producto, tu público, tu objetivo. También reviso tus anuncios actuales y los de tu competencia para encontrar los ángulos que faltan.</p>
     </div>
     <div class="method-step reveal">
       <span class="method-num">02</span>
       <h3>3 conceptos, 3 hooks cada uno</h3>
-      <p>Cada concepto se declina con varios ganchos para los 3 primeros segundos, donde se decide el rendimiento.</p>
+      <p>Cada concepto se declina con varios ganchos en los 3 primeros segundos, donde se decide el rendimiento.</p>
     </div>
     <div class="method-step reveal">
       <span class="method-num">03</span>
-      <h3>Entrega en 48 h</h3>
+      <h3>Entrega en 48h</h3>
       <p>Formatos 9:16, 4:5 y 1:1, subtítulos integrados, listos para subir a Meta Ads o TikTok Ads.</p>
     </div>
     <div class="method-step reveal">
@@ -1563,10 +1806,38 @@
       <p>Cortamos lo que no funciona y escalamos lo que vende. Como ex media buyer, leo tus resultados como tú.</p>
     </div>
   </div>
-  <div class="agency-box reveal">
-    <div class="video-tag">Para agencias</div>
-    <h3>Tu estudio creativo en marca blanca</h3>
-    <p>Tú gestionas los medios, yo produzco las creatividades para tus clientes, con tu nombre. Un refuerzo cuando los clientes piden más variantes de las que tu equipo puede producir. Trabajo en francés, inglés, español y portugués.</p>
+  <div class="offer-wrap">
+    <p class="offer-price">Desde <strong>50&nbsp;€</strong> por vídeo</p>
+    <div class="offer-grid">
+      <div class="offer-card reveal">
+        <h3>Para marcas</h3>
+        <p>Anuncios en vídeo listos para publicar, sin organizar un rodaje.</p>
+        <ul class="offer-list">
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sin estudio ni creadores que contratar</span></li>
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>3 conceptos, 3 hooks cada uno, entregados en 48h</span></li>
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Formatos 9:16, 4:5 y 1:1, subtítulos integrados</span></li>
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Nos quedamos con lo que vende y cortamos el resto</span></li>
+        </ul>
+        <div class="offer-actions">
+          <a href="mailto:simao.thomas3108@gmail.com?subject=Anuncios%20en%20v%C3%ADdeo%20con%20IA%20para%20mi%20marca" class="btn btn-primary">Hablar de mi marca</a>
+          <a href="https://wa.me/33612225566?text=Hola%20Thomas%2C%20me%20gustar%C3%ADa%20hablar%20de%20anuncios%20en%20v%C3%ADdeo%20con%20IA%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-whatsapp" aria-label="Hablar de mi marca por WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.3 11.3 0 0012.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.28l5.67-1.49a11.33 11.33 0 005.42 1.38h.01c6.26 0 11.36-5.09 11.36-11.35 0-3.03-1.18-5.88-3.33-8.03z"/></svg>WhatsApp</a>
+        </div>
+      </div>
+      <div class="offer-card offer-card-agency reveal">
+        <h3>Para agencias</h3>
+        <p>Tu estudio creativo en marca blanca: tú gestionas los medios, yo produzco para tus clientes.</p>
+        <ul class="offer-list">
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Entregado con tu nombre, soy invisible para el cliente</span></li>
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Refuerzo cuando tus clientes piden más variantes</span></li>
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Un ex media buyer que habla de KPIs, no solo de estética</span></li>
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Francés, inglés, español y portugués</span></li>
+        </ul>
+        <div class="offer-actions">
+          <a href="mailto:simao.thomas3108@gmail.com?subject=Creatividades%20en%20v%C3%ADdeo%20con%20IA%20en%20marca%20blanca" class="btn btn-primary">Hablar de mi agencia</a>
+          <a href="https://wa.me/33612225566?text=Hola%20Thomas%2C%20trabajo%20en%20una%20agencia%20y%20me%20gustar%C3%ADa%20hablar%20de%20creatividades%20en%20v%C3%ADdeo%20con%20IA%20en%20marca%20blanca." target="_blank" rel="noopener" class="btn btn-whatsapp" aria-label="Hablar de mi agencia por WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.3 11.3 0 0012.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.28l5.67-1.49a11.33 11.33 0 005.42 1.38h.01c6.26 0 11.36-5.09 11.36-11.35 0-3.03-1.18-5.88-3.33-8.03z"/></svg>WhatsApp</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1577,19 +1848,19 @@
   <div class="about-grid">
     <div class="about-text">
       <p>
-        Empecé gestionando campañas de Google Ads y Meta Ads en EasyLounge y después en Groupe Foncier de France. Enseguida entendí que <strong>el contenido era la palanca más infravalorada del rendimiento en Ads</strong>.
+        Empecé gestionando campañas de Google Ads y Meta Ads en EasyLounge y después en Groupe Foncier de France. Muy pronto entendí que <strong>el contenido era la palanca más infravalorada del rendimiento en Ads</strong>.
       </p>
       <br>
       <p>
-        En <strong>Son-Vidéo.com</strong>, como Traffic Manager, gestioné un presupuesto anual de 260 000 € en Google Ads y Meta Ads, y produje las creatividades en vídeo internamente, íntegramente con IA. UGC sintético, motion design de producto, animación de fotos: todo hecho con <strong>Higgsfield y el modelo Seedance</strong>, entregado en 48 h, sin estudio ni rodaje.
+        En <strong>Son-Vidéo.com</strong>, como Traffic Manager, gestioné 260K€ de presupuesto anual en Google Ads y Meta Ads, y produje las creatividades en vídeo internamente, íntegramente con IA. UGC sintético, motion design de producto, animación de fotos: todo hecho con <strong>Higgsfield y el modelo Seedance</strong>, entregado en 48h, sin estudio ni rodaje.
       </p>
       <br>
       <p>
-        Lo que me motiva: demostrar que un contenido IA bien pensado puede <strong>rendir igual (o mejor) que una producción clásica</strong>. Mi mejor resultado: un CPA de 1,54 € y un CTR del 4,05 % con UGC 100 % IA.
+        Lo que me motiva: demostrar que un contenido IA bien pensado puede <strong>rendir igual de bien (o mejor) que una producción clásica</strong>. Mi mejor resultado: un CPA de 1,54 € y un CTR del 4,05 % en UGC 100 % IA.
       </p>
       <br>
       <p>
-        Hoy pongo este método al servicio de <strong>marcas e-commerce y agencias</strong>, desde Barcelona. Trabajo en francés, inglés, español y portugués.
+        Hoy pongo este método al servicio de <strong>marcas de e-commerce y agencias</strong>, desde Barcelona. Trabajo en francés, inglés, español y portugués.
       </p>
       <br>
       <p style="font-size:0.85rem;color:var(--muted);">
@@ -1597,9 +1868,20 @@
       </p>
     </div>
     <div style="display:flex;flex-direction:column;gap:1.5rem;">
-      <div style="border-radius:16px;overflow:hidden;border:1px solid var(--card-border);max-width:250px;">
-        <img src="../photo.jpg" alt="Thomas Simão" style="width:100%;display:block;object-fit:cover;">
-      </div>
+      <figure class="about-collage">
+        <div class="collage-stack">
+          <div class="collage-card cc-1">
+            <img src="https://lh3.googleusercontent.com/d/1G6qfYTrDmlbW38CH785oI74RaxdmOLvr" alt="Personaje IA en los Grammy" loading="lazy">
+          </div>
+          <div class="collage-card cc-3">
+            <img src="https://lh3.googleusercontent.com/d/18Ub7P8RDt1h8LHZIJDjYiaAvvRvTyi3h" alt="Personaje IA en una cancha de baloncesto" loading="lazy">
+          </div>
+          <div class="collage-card cc-2">
+            <img src="https://lh3.googleusercontent.com/d/1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg" alt="Personaje IA en un pasillo de galería" loading="lazy">
+          </div>
+        </div>
+        <figcaption class="collage-caption">Un solo personaje IA, tres universos</figcaption>
+      </figure>
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-date">2026 · Actualidad</div>
@@ -1609,7 +1891,7 @@
         <div class="timeline-item">
           <div class="timeline-date">Feb. 2024 · 2026</div>
           <div class="timeline-role">Traffic Manager</div>
-          <div class="timeline-company">Son-Vidéo.com · Ads, afiliación, creación de UGC IA</div>
+          <div class="timeline-company">Son-Vidéo.com · Ads, afiliación, creación de UGC con IA</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-date">Sept. 2022 · Sept. 2023</div>
@@ -1626,9 +1908,9 @@
   </div>
 
   <!-- OUTILS -->
-  <div style="margin-top:3rem;">
+  <div class="about-block">
     <h3 style="font-size:1rem;margin-bottom:1rem;font-weight:600;">Herramientas</h3>
-    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+    <div class="chip-row" style="display:flex;flex-wrap:wrap;gap:0.5rem;">
       <span class="tool-chip primary">Higgsfield (Seedance)</span>
       <span class="tool-chip primary">Sora 2</span>
       <span class="tool-chip primary">Kling</span>
@@ -1637,48 +1919,36 @@
       <span class="tool-chip">Meta Ads</span>
       <span class="tool-chip">GA4</span>
       <span class="tool-chip">Looker Studio</span>
-      <span class="tool-chip">Claude Code</span>
       <span class="tool-chip">Arcads</span>
-      <span class="tool-chip">Canva</span>
-      <span class="tool-chip">CapCut</span>
     </div>
   </div>
 
   <!-- MES PERSONNAGES IA -->
-  <div style="margin-top:3rem;">
+  <div class="about-block">
     <h3 style="font-size:1rem;margin-bottom:0.5rem;font-weight:600;">Mis personajes IA</h3>
-    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.25rem;">El mismo personaje, coherente a lo largo de varias generaciones y entornos. El vídeo lo demuestra en movimiento, las imágenes muestran sus variaciones.</p>
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.25rem;">El mismo personaje, coherente a lo largo de varias generaciones y entornos. El vídeo de abajo lo demuestra en movimiento y las imágenes muestran sus variaciones.</p>
     <div class="video-card reveal character-video">
       <div class="video-wrapper horizontal">
         <iframe src="https://player.vimeo.com/video/1212954595" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
         <div class="video-tag">Coherencia de personaje · multigeneración</div>
-        <h3>Un personaje, varias generaciones</h3>
-        <p>Cada escena es un render IA distinto, el personaje sigue siendo el mismo.</p>
+        <h3>Un solo personaje, varias generaciones</h3>
+        <p>Cada escena es un render IA distinto, el personaje sigue siendo él mismo.</p>
       </div>
     </div>
-    <div class="image-grid">
+    <div class="image-grid character-grid">
       <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/19FuSVjMpx2E8gtZq17Up8RIgZj_C-01a" alt="Personaje IA" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/d/19FuSVjMpx2E8gtZq17Up8RIgZj_C-01a" alt="Hoja de referencia del personaje IA" loading="lazy">
       </div>
       <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1G6qfYTrDmlbW38CH785oI74RaxdmOLvr" alt="Personaje IA" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/d/1n_dNTSaiq0XjRxIkwoAI_sJE9PLCrnLv" alt="Personaje IA con un trofeo de tenis" loading="lazy">
       </div>
       <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1n_dNTSaiq0XjRxIkwoAI_sJE9PLCrnLv" alt="Personaje IA" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/d/1YxlEpbrpsHyOX_MGV5FsaKlS19mKDLd1" alt="Personaje IA delante de una casa blanca" loading="lazy">
       </div>
       <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/18Ub7P8RDt1h8LHZIJDjYiaAvvRvTyi3h" alt="Personaje IA" loading="lazy">
-      </div>
-      <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1YxlEpbrpsHyOX_MGV5FsaKlS19mKDLd1" alt="Personaje IA" loading="lazy">
-      </div>
-      <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1yZRSnX6DyES06-_dPSuzwGlDG63xqlxU" alt="Personaje IA" loading="lazy">
-      </div>
-      <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg" alt="Personaje IA" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/d/1yZRSnX6DyES06-_dPSuzwGlDG63xqlxU" alt="Personaje IA con un trofeo de baloncesto" loading="lazy">
       </div>
     </div>
   </div>
@@ -1688,15 +1958,16 @@
 <section class="portfolio-section" id="animation">
   <div class="section-label">Proyectos personales y conceptos</div>
   <h2 class="section-title">Mi laboratorio creativo</h2>
-  <p class="portfolio-intro">Creaciones personales fuera de los proyectos de clientes: JSMCF, mi marca de mini cámaras retro, una marca de ropa con impresión DTF y anuncios concepto para explorar nuevos formatos.</p>
+  <p class="portfolio-intro">Creaciones personales fuera del marco de cliente: JSMCF, mi marca de minicámaras retro, una marca de ropa con impresión DTF y anuncios concepto para explorar nuevos formatos.</p>
+
   <div class="yt-featured reveal" style="margin-bottom:2rem;">
     <div class="yt-horizontal">
       <iframe src="https://www.youtube.com/embed/sCKXYeQDIMs" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
     </div>
     <div class="yt-featured-info">
-      <div class="video-tag">Proyecto personal · E-commerce</div>
+      <div class="video-tag">Side project · E-commerce</div>
       <h3>JSMCF Cam · El golpe</h3>
-      <p>Un anuncio contado como una película de atracos, para una mini cámara retro. Una historia completa en 20 segundos, estética de cine y una marca que se recuerda. 100 % IA.</p>
+      <p>Un anuncio contado como una película de atracos para una minicámara retro. Una historia completa en 20 segundos, look de cine, una marca que se queda en la cabeza. 100 % IA.</p>
     </div>
   </div>
   <div class="yt-featured reveal" style="margin-bottom:2rem;">
@@ -1706,7 +1977,7 @@
     <div class="yt-featured-info">
       <div class="video-tag">Anuncio concepto · Cosmética</div>
       <h3>Typology · UGC y motion design</h3>
-      <p>Anuncio concepto, no encargado por la marca. UGC y motion design combinados en una sola pieza, pensada para frenar el scroll y convertir.</p>
+      <p>Anuncio concepto no encargado por la marca. UGC y motion design combinados en un solo activo, pensado para frenar el scroll y convertir.</p>
     </div>
   </div>
   <div class="video-grid">
@@ -1715,10 +1986,10 @@
         <iframe src="https://www.youtube.com/embed/Osp8YvP2l5w" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
-        <div class="video-tag">Proyecto personal</div>
+        <div class="video-tag">Side project</div>
         <h3 style="color: #1a1a1a;">Denim Jacket handmade</h3>
-        <p>Foto animada con IA. Del estático al cinemático con movimientos de cámara y juegos de luz.</p>
-        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+        <p>Foto animada con IA. Del estático al cinematográfico con movimientos de cámara y juegos de luz.</p>
+        <div class="video-tool">Higgsfield · Seedance</div>
       </div>
     </div>
   </div>
@@ -1727,7 +1998,7 @@
 <!-- CTA -->
 <section class="cta-section">
   <div class="section-label" style="justify-content:center;">¿Listo para escalar tus creatividades?</div>
-  <h2 class="section-title">Creatividades IA que convierten.<br>Hablemos.</h2>
+  <h2 class="section-title">Activos IA que convierten.<br>Hablemos.</h2>
   <div class="cta-buttons">
     <a href="mailto:simao.thomas3108@gmail.com" class="btn btn-primary">
       simao.thomas3108@gmail.com →
@@ -1735,8 +2006,8 @@
     <a href="https://www.linkedin.com/in/6mao" target="_blank" rel="noopener" class="btn btn-primary" style="background:#0a66c2;">
       LinkedIn →
     </a>
-    <a href="tel:+33612225566" class="btn btn-outline">
-      +33 6 12 22 55 66
+    <a href="https://wa.me/33612225566?text=Hola%20Thomas%2C%20acabo%20de%20ver%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20hablar%20de%20anuncios%20en%20v%C3%ADdeo%20con%20IA." target="_blank" rel="noopener" class="btn btn-whatsapp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.3 11.3 0 0012.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.28l5.67-1.49a11.33 11.33 0 005.42 1.38h.01c6.26 0 11.36-5.09 11.36-11.35 0-3.03-1.18-5.88-3.33-8.03z"/></svg>WhatsApp · +33 6 12 22 55 66
     </a>
   </div>
 </section>
@@ -1748,7 +2019,7 @@
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
     LinkedIn
   </a>
-  <span>Barcelona · en remoto para todo el mundo</span>
+  <span>Barcelona · en remoto en todo el mundo</span>
 </footer>
 
 <script>
