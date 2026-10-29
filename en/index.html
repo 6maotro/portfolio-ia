@@ -5,13 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="https://6maotro.github.io/portfolio-ia/favicon.svg">
 <title>Thomas Simão · AI Video & Motion</title>
+<meta name="description" content="AI video ads for Meta and TikTok Ads, by a former media buyer. UGC and product motion design, delivered in 48h. For brands, and white-label for agencies.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://6maotro.github.io/portfolio-ia/en/">
+<meta property="og:title" content="Thomas Simão · AI video ads that perform">
+<meta property="og:description" content="100% AI UGC and motion design, 30% cheaper per purchase than traditional creatives. Delivered in 48h, for brands and agencies.">
+<meta property="og:image" content="https://i.ytimg.com/vi/E5fQXoq2ktM/hqdefault.jpg">
+<link rel="alternate" hreflang="fr" href="https://6maotro.github.io/portfolio-ia/">
+<link rel="alternate" hreflang="en" href="https://6maotro.github.io/portfolio-ia/en/">
+<link rel="alternate" hreflang="es" href="https://6maotro.github.io/portfolio-ia/es/">
+<meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #f5f0e8;
     --fg: #1a1a1a;
     --accent: #e85d26;
-    --muted: #8a8070;
+    --muted: #6b6252;
+    --accent-ink: #b23c0b;
+    --accent-strong: #c2410c;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --card-bg: #ece6da;
     --card-border: #d4cbbf;
     --gradient-1: #e85d26;
@@ -34,8 +47,24 @@
     line-height: 1.6;
   }
 
+  :focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  input, textarea { caret-color: var(--accent-strong); }
+
+  a { text-underline-offset: 0.2em; }
+
+  html { scrollbar-color: var(--card-border) var(--bg); }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 10px; border: 2px solid var(--bg); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
   ::selection {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff;
   }
 
@@ -71,7 +100,7 @@
   }
 
   .nav-logo span {
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
   .nav-links {
@@ -91,10 +120,10 @@
   }
 
   .nav-links a.active {
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover { color: var(--accent-ink); }
 
   .nav-linkedin {
     color: var(--muted);
@@ -103,12 +132,17 @@
   }
 
   .nav-linkedin:hover {
-    color: var(--accent);
+    color: var(--accent-ink);
     transform: translateY(-2px);
   }
 
+  .lang-switch { display: flex; align-items: center; gap: 0.35rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em; color: var(--muted); margin-right: 0.25rem; }
+  .lang-link { color: var(--muted); text-decoration: none; padding: 0.2rem 0.15rem; }
+  .lang-link:hover { color: var(--accent-ink); }
+  .lang-link.is-current { color: var(--accent-ink); font-weight: 600; }
+
   .nav-cta {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff;
     padding: 0.6rem 1.4rem;
     border-radius: 100px;
@@ -122,7 +156,7 @@
 
   .nav-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(232,93,38,0.3);
+    box-shadow: 0 10px 24px -10px rgba(120,50,15,0.45);
   }
 
   /* HERO */
@@ -227,13 +261,13 @@
     border-radius: 16px;
     overflow: hidden;
     border: 2px solid var(--card-border);
-    box-shadow: 0 20px 80px rgba(232,93,38,0.08);
+    box-shadow: 0 24px 60px -24px rgba(90,60,30,0.25);
     transition: border-color 0.4s, box-shadow 0.4s;
   }
 
   .showreel-video:hover {
-    border-color: var(--accent);
-    box-shadow: 0 20px 80px rgba(232,93,38,0.15);
+    border-color: var(--accent-ink);
+    box-shadow: 0 30px 70px -24px rgba(90,60,30,0.32);
   }
 
   .showreel-video .yt-vertical {
@@ -271,7 +305,7 @@
   }
 
   .yt-featured:hover {
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
   }
 
   .yt-horizontal {
@@ -321,15 +355,16 @@
   }
 
   .perf-number {
+    font-variant-numeric: tabular-nums;
     font-family: 'JetBrains Mono', monospace;
     font-size: 1rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-ink);
     white-space: nowrap;
   }
 
   .perf-label {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--muted);
@@ -355,7 +390,7 @@
 
   .yt-short-card:hover {
     transform: translateY(-6px);
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
   }
 
   .yt-short-card .yt-vertical {
@@ -392,7 +427,7 @@
     font-size: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--accent);
+    color: var(--accent-ink);
     display: flex;
     align-items: center;
     gap: 0.4rem;
@@ -411,14 +446,14 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(232,93,38,0.08);
+    background: rgba(232,93,38,0.05);
     border: 1px solid rgba(232,93,38,0.25);
     padding: 0.5rem 1rem;
     border-radius: 100px;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 2rem;
     width: fit-content;
     animation: fadeInUp 0.8s ease both;
@@ -431,7 +466,6 @@
     height: 6px;
     background: var(--accent);
     border-radius: 50%;
-    animation: pulse-dot 2s infinite;
   }
 
   @keyframes pulse-dot {
@@ -448,12 +482,9 @@
     animation: fadeInUp 0.8s 0.1s ease both;
   }
 
-  .hero h1 em {
+  .hero h1 em, .hero-em {
     font-style: italic;
-    background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-ink);
   }
 
   .hero-sub {
@@ -483,14 +514,15 @@
   }
 
   .stat-number {
+    font-variant-numeric: tabular-nums;
     font-family: 'JetBrains Mono', monospace;
     font-size: 2rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
   .stat-label {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--muted);
@@ -526,7 +558,7 @@
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -539,6 +571,9 @@
     height: 1px;
     background: var(--accent);
   }
+
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
 
   .section-title {
     font-family: 'Instrument Serif', serif;
@@ -560,6 +595,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     max-width: 1100px;
+    margin: 0 auto;
   }
 
   .about-text {
@@ -608,9 +644,10 @@
   }
 
   .timeline-date {
+    font-variant-numeric: tabular-nums;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
-    color: var(--accent);
+    color: var(--accent-ink);
     letter-spacing: 0.05em;
     margin-bottom: 0.15rem;
   }
@@ -645,7 +682,7 @@
   }
 
   .expertise-card:hover {
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
     transform: translateY(-4px);
   }
 
@@ -681,7 +718,7 @@
   /* METHOD */
   .method-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
     max-width: 1100px;
   }
@@ -698,15 +735,16 @@
 
   .method-step:hover {
     transform: translateY(-4px);
-    border-color: var(--accent);
-    box-shadow: 0 12px 40px rgba(232,93,38,0.08);
+    border-color: var(--accent-ink);
+    box-shadow: 0 18px 40px -18px rgba(90,60,30,0.28);
   }
 
   .method-num {
+    font-variant-numeric: tabular-nums;
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.5rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-ink);
     display: block;
     margin-bottom: 0.75rem;
   }
@@ -757,7 +795,7 @@
 
   .highlight-card:hover {
     transform: translateY(-6px);
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
   }
 
   .highlight-visual {
@@ -793,7 +831,7 @@
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 0.5rem;
   }
 
@@ -842,14 +880,14 @@
   }
 
   .tool-chip:hover {
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
     background: rgba(232,93,38,0.06);
-    color: var(--accent);
+    color: var(--accent-ink);
   }
 
   .tool-chip.primary {
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: var(--accent-ink);
+    color: var(--accent-ink);
     background: rgba(232,93,38,0.07);
   }
 
@@ -887,13 +925,23 @@
   }
 
   .btn-primary {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff;
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(232,93,38,0.3);
+    box-shadow: 0 14px 30px -12px rgba(120,50,15,0.45);
+  }
+
+  .btn-whatsapp {
+    background: #0f7a52;
+    color: #fff;
+  }
+
+  .btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -12px rgba(15,90,60,0.5);
   }
 
   .btn-outline {
@@ -925,14 +973,18 @@
   }
 
   .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(18px);
+    transition: transform 0.9s var(--ease-out), box-shadow 0.4s, border-color 0.4s;
   }
 
   .reveal.visible {
-    opacity: 1;
     transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { transform: none; }
+    html { scroll-behavior: auto; }
   }
 
   .portfolio-intro {
@@ -999,8 +1051,8 @@
 
   .cat-tab:hover, .cat-tab.active {
     background: rgba(232,93,38,0.08);
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: var(--accent-ink);
+    color: var(--accent-ink);
   }
 
   .video-grid {
@@ -1024,10 +1076,10 @@
     transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
   }
 
-  .video-card:hover {
+  .video-card:hover, .video-card.reveal.visible:hover {
     transform: translateY(-6px);
-    border-color: var(--accent);
-    box-shadow: 0 12px 40px rgba(232,93,38,0.08);
+    border-color: var(--accent-ink);
+    box-shadow: 0 18px 40px -18px rgba(90,60,30,0.28);
   }
 
   .video-wrapper {
@@ -1119,10 +1171,10 @@
 
   .video-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin-bottom: 0.4rem;
     display: flex;
     align-items: center;
@@ -1155,7 +1207,7 @@
     gap: 0.3rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.6rem;
-    color: #9a8f82;
+    color: var(--muted);
     margin-top: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -1180,8 +1232,8 @@
 
   .image-card:hover {
     transform: translateY(-6px);
-    border-color: var(--accent);
-    box-shadow: 0 12px 40px rgba(232,93,38,0.08);
+    border-color: var(--accent-ink);
+    box-shadow: 0 18px 40px -18px rgba(90,60,30,0.28);
   }
 
   .image-card img {
@@ -1200,19 +1252,178 @@
     max-height: 500px;
   }
 
+  /* ABOUT COLLAGE */
+  .about-collage {
+    margin: 0 0 1rem;
+  }
+
+  .collage-stack {
+    position: relative;
+    width: 340px;
+    max-width: 100%;
+    height: 330px;
+  }
+
+  .collage-card {
+    position: absolute;
+    width: 170px;
+    aspect-ratio: 9 / 16;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 3px solid var(--bg);
+    box-shadow: 0 18px 45px rgba(26,26,26,0.18);
+    transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .collage-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .collage-card.cc-1 { left: 0; top: 34px; transform: rotate(-7deg); z-index: 1; }
+  .collage-card.cc-3 { right: 0; top: 34px; transform: rotate(7deg); z-index: 1; }
+  .collage-card.cc-2 { left: 50%; top: 0; transform: translateX(-50%); z-index: 2; }
+
+  .collage-stack:hover .cc-1 { transform: rotate(-11deg) translateX(-14px); }
+  .collage-stack:hover .cc-3 { transform: rotate(11deg) translateX(14px); }
+  .collage-stack:hover .cc-2 { transform: translateX(-50%) translateY(-8px); }
+
+  .collage-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-ink);
+    margin-top: 1.25rem;
+  }
+
+  .character-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .collage-card { transition: none; }
+  }
+
   /* CHARACTER PROOF VIDEO */
   .character-video {
     max-width: 900px;
     margin: 0 auto 1.5rem;
   }
 
+  /* CENTERED LAYOUT */
+  section > .section-label { justify-content: center; }
+  section > .section-label::after {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+  }
+  section > .section-title {
+    text-align: center;
+    max-width: 22ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-section .section-title { max-width: 700px; }
+  .portfolio-intro, .kpi-note {
+    text-align: center;
+    max-width: 62ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .kpi-note { margin-top: -1.5rem; margin-bottom: 2.5rem; }
+  .method-grid, .expertise-grid, .highlight-grid, .about-grid, .tools-wrap {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .method-grid { max-width: 900px; }
+  .agency-box {
+    margin: 3rem auto 0;
+    text-align: center;
+  }
+  .agency-box .video-tag { justify-content: center; }
+  .about-block {
+    max-width: 1100px;
+    margin: 3rem auto 0;
+    text-align: center;
+  }
+  .about-block > p { max-width: 62ch; margin-left: auto; margin-right: auto; }
+  .chip-row { justify-content: center; }
+  .about-grid { align-items: start; }
+
+  .video-grid:has(> :only-child) {
+    grid-template-columns: minmax(0, 300px);
+    justify-content: center;
+  }
+
+  /* OFFER */
+  .offer-wrap { max-width: 900px; margin: 3.5rem auto 0; text-align: center; }
+  .offer-price {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 1.75rem;
+  }
+  .offer-price strong { color: var(--accent-ink); font-weight: 400; }
+  .offer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; text-align: left; }
+  .offer-card {
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .offer-card-agency { border-color: rgba(232,93,38,0.45); background: rgba(232,93,38,0.04); }
+  .offer-card h3 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.7rem; line-height: 1.1; }
+  .offer-card > p { color: #5a5347; font-size: 0.95rem; }
+  .offer-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin: 0.25rem 0 0.75rem; }
+  .offer-list li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.92rem; }
+  .offer-check { flex-shrink: 0; margin-top: 0.25rem; color: var(--accent-ink); }
+  .offer-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: auto; }
+  .offer-actions .btn { padding: 0.8rem 1.1rem; font-size: 0.78rem; letter-spacing: 0.06em; }
+
+  .video-grid:has(> :nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 280px));
+    justify-content: center;
+  }
+
+  /* MID-PAGE CONTACT BAND */
+  .mid-cta {
+    padding: 4rem 3rem;
+    text-align: center;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+    background: var(--card-bg);
+  }
+  .mid-cta h2 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+    line-height: 1.15;
+    max-width: 24ch;
+    margin: 0 auto 0.75rem;
+  }
+  .mid-cta p {
+    color: #5a5347;
+    max-width: 52ch;
+    margin: 0 auto 1.75rem;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
+    nav { flex-wrap: wrap; row-gap: 0.6rem; }
+    .nav-links { order: 3; width: 100%; gap: 1.25rem; overflow-x: auto; scrollbar-width: none; padding-bottom: 0.15rem; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { font-size: 0.72rem; white-space: nowrap; }
+
     section { padding: 4rem 1.5rem; }
     .hero { padding: 7rem 1.5rem 3rem; }
-    .showreel-section { flex-direction: column; padding: 7rem 1.5rem 3rem; gap: 2rem; }
+    .showreel-section { flex-direction: column; padding: 9rem 1.5rem 3rem; gap: 2rem; }
     .showreel-video { width: 280px; }
     .yt-shorts-grid { grid-template-columns: 1fr; }
     .yt-section { padding: 3rem 1.5rem; }
@@ -1223,11 +1434,24 @@
     .expertise-grid { grid-template-columns: 1fr; }
     .method-grid { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
-    .image-grid { grid-template-columns: repeat(2, 1fr); }
+    .image-grid, .character-grid { grid-template-columns: repeat(2, 1fr); }
+    .collage-stack { width: 290px; height: 285px; margin: 0 auto; }
+    .collage-card { width: 145px; }
+    .collage-caption { text-align: center; }
     .highlight-grid { grid-template-columns: 1fr; }
     .featured-split { grid-template-columns: 1fr; gap: 1.5rem; }
     .featured-split .video-card { max-width: 300px; margin: 0 auto; }
-    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .hero-stats { flex-wrap: nowrap; gap: 1rem; justify-content: space-between; }
+    .stat-number { font-size: 1.4rem; }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.05em; }
+    .showreel-text { text-align: center; }
+    .showreel-text .hero-badge { margin-left: auto; margin-right: auto; }
+    .showreel-text .hero-stats { text-align: left; }
+    .mid-cta { padding: 3rem 1.5rem; }
+    .offer-grid { grid-template-columns: 1fr; }
+    .offer-card { padding: 1.5rem; }
+    .video-grid:has(> :nth-child(2):last-child) { grid-template-columns: 1fr; }
+    .about-text { text-align: left; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -1238,19 +1462,17 @@
 <nav>
   <div class="nav-logo">T<span>.</span>Simão</div>
   <ul class="nav-links">
+    <li><a href="#top">Results</a></li>
     <li><a href="#projets">Client</a></li>
-    <li><a href="#ugc">UGC</a></li>
-    <li><a href="#motion">Motion</a></li>
+    <li><a href="#storytelling">Storytelling</a></li>
     <li><a href="#methode">Process</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="/portfolio-ia/ai-characters.html">AI Characters</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:0.75rem;">
-    <div style="display:flex;align-items:center;gap:0.4rem;font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.05em;">
-      <a href="/portfolio-ia/" style="color:var(--muted);text-decoration:none;">FR</a>
-      <span style="color:var(--muted);">/</span>
-      <a href="/portfolio-ia/en/" style="color:var(--accent);text-decoration:none;font-weight:600;">EN</a>
-    </div>
+    <div class="lang-switch"><a href="/portfolio-ia/" class="lang-link" hreflang="fr">FR</a><span aria-hidden="true">/</span><a href="/portfolio-ia/en/" class="lang-link is-current" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="/portfolio-ia/es/" class="lang-link" hreflang="es">ES</a></div>
+    <a href="https://wa.me/33612225566?text=Hi%20Thomas%2C%20I%20just%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20AI%20video%20ads." target="_blank" rel="noopener" class="nav-linkedin" title="WhatsApp" aria-label="Contact me on WhatsApp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.3 11.3 0 0012.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.28l5.67-1.49a11.33 11.33 0 005.42 1.38h.01c6.26 0 11.36-5.09 11.36-11.35 0-3.03-1.18-5.88-3.33-8.03z"/></svg>
+    </a>
     <a href="https://www.linkedin.com/in/6mao" target="_blank" rel="noopener" class="nav-linkedin" title="LinkedIn">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
     </a>
@@ -1263,14 +1485,14 @@
   <div class="hero-orb"></div>
   <div class="showreel-text">
     <div class="hero-badge">Available now · Freelance</div>
-    <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,6vw,5.5rem);line-height:1;letter-spacing:-0.03em;margin-bottom:1.5rem;">AI creatives<br>built to<br><em style="font-style:italic;background:linear-gradient(135deg,var(--gradient-1),var(--gradient-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">perform in Ads</em></h1>
+    <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,6vw,5.5rem);line-height:1;letter-spacing:-0.03em;margin-bottom:1.5rem;">AI creatives<br>built to<br><em class="hero-em">perform in Ads</em></h1>
     <p class="hero-sub">
       I produce campaign-ready AI videos and visuals: <strong>synthetic UGC</strong>, <strong>product motion design</strong>, <strong>e-commerce visuals</strong>. Every piece is built as an ad asset, optimized for clicks and conversion. <strong>3 concepts, 3 hooks each, delivered in 48h</strong>, no studio and no shoot. For brands directly, or <strong>white-label for agencies</strong>.
     </p>
     <div class="hero-stats">
       <div class="stat">
-        <span class="stat-number">~€7</span>
-        <span class="stat-label">Average cost per purchase, my AI UGC</span>
+        <span class="stat-number">-30%</span>
+        <span class="stat-label">Cost per purchase vs traditional creatives</span>
       </div>
       <div class="stat">
         <span class="stat-number">4.05%</span>
@@ -1289,9 +1511,72 @@
   </div>
 </section>
 
+<!-- TOP CONTENUS -->
+<section class="portfolio-section portfolio-pro" id="top">
+  <div class="section-label">My best results</div>
+  <h2 class="section-title">My top content, by format</h2>
+  <p class="portfolio-intro"><strong style="color:var(--fg);font-weight:500;">On average, my AI creatives cost 30% less per purchase than traditional creatives.</strong> Here is the best of each format, with real Meta Ads figures from an audio e-commerce retailer. CTR: share of people who click after seeing the ad. Cost / purchase: ad spend needed to get one sale, the lower the better.</p>
+
+  <div class="featured-split reveal">
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1KVE1goYxELa11KyMfvRhPVjwuctc7nm3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="featured-text">
+      <div class="video-tag">Top UGC · running in Ads</div>
+      <h3>Elipson Prestige Facet 6B</h3>
+      <p>The real product placed in an AI scene, with a character handling the speaker like a creator would. <strong>My best cost per purchase: €1.54 per sale.</strong></p>
+      <div class="perf-stats">
+        <div class="perf-stat">
+          <span class="perf-number">€1.54</span>
+          <span class="perf-label">Cost / purchase</span>
+        </div>
+        <div class="perf-stat">
+          <span class="perf-number">2.42%</span>
+          <span class="perf-label">CTR</span>
+        </div>
+        <div class="perf-stat">
+          <span class="perf-number">2,079</span>
+          <span class="perf-label">Clicks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="yt-featured reveal">
+    <div class="yt-horizontal">
+      <iframe src="https://www.youtube.com/embed/yYmcGXhiPa4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="yt-featured-info">
+      <div class="video-tag">Top Motion Design · running in Ads</div>
+      <h3>Sale Launch</h3>
+      <p>A launch video running in a Meta Ads campaign. <strong style="color:var(--fg);font-weight:500;">194 sales from a single video.</strong></p>
+      <div class="perf-stats">
+        <div class="perf-stat">
+          <span class="perf-number">1.27%</span>
+          <span class="perf-label">CTR</span>
+        </div>
+        <div class="perf-stat">
+          <span class="perf-number">194</span>
+          <span class="perf-label">Purchases</span>
+        </div>
+        <div class="perf-stat">
+          <span class="perf-number">€2.61</span>
+          <span class="perf-label">Cost / purchase</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
 <!-- PROJETS -->
-<section class="portfolio-section portfolio-pro" id="projets">
-  <div class="section-label">Case study · Client project</div>
+<section class="portfolio-section portfolio-pro portfolio-alt" id="projets">
+  <div class="section-label">Technical craft · Client project</div>
   <h2 class="section-title">Tri For Fun, a store filmed without a camera</h2>
 
   <div class="featured-split reveal">
@@ -1304,7 +1589,9 @@
       <div class="video-tag">Triathlon & running store · Barcelona</div>
       <h3>From 3D mockup to the real store, no shoot</h3>
       <p>Top: a 3D mockup of the store. Bottom: the same shot turned into photorealistic video with AI.</p>
-      <div class="video-tool">⚡ 3D mockup · Higgsfield Genjutsu</div>
+      <p><strong>A controlled render, not AI left to chance.</strong> An AI inventing a scene on its own changes the shelves, moves the walls and warps the products from one shot to the next. Here, the 3D mockup is the skeleton: layout, volumes and camera movement are locked in advance, and the AI only handles materials and light.</p>
+      <p>Result: <strong>the client recognizes their store</strong>, every shot stays consistent with the next, and any take can be redone without starting from scratch.</p>
+      <div class="video-tool">3D mockup · Higgsfield Genjutsu</div>
     </div>
   </div>
 
@@ -1317,7 +1604,7 @@
     <div class="method-step reveal">
       <span class="method-num">02</span>
       <h3>The production</h3>
-      <p>A 3D mockup of the store, then every shot turned into a realistic AI render. The store is showcased without closing its doors or organizing a shoot.</p>
+      <p>First the 3D mockup of the store, where I frame every shot as on a real set: camera path, pacing, point of view. Then the AI turns these shots into realistic images while respecting the mockup's geometry. The store is showcased without closing its doors or organizing a shoot.</p>
     </div>
     <div class="method-step reveal">
       <span class="method-num">03</span>
@@ -1327,37 +1614,63 @@
   </div>
 </section>
 
+<!-- STORYTELLING -->
+<section class="portfolio-section portfolio-pro" id="storytelling">
+  <div class="section-label">Storytelling · Concept ad</div>
+  <h2 class="section-title">Delta Fraternité, a story in 30 seconds</h2>
+  <div class="featured-split reveal">
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/f2GzZu0G1oU" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="featured-text">
+      <div class="video-tag">Concept ad · Independent clothing brand</div>
+      <h3>Delta Fraternité · “That's me, yesterday”</h3>
+      <p>A 30-second concept ad for Delta Fraternité, an independent clothing brand. It features the <strong>DREAMCHASER</strong> and <strong>NO SLEEP</strong>.</p>
+      <p><strong>A story before a product.</strong> The brand talks about entrepreneurship and pushing yourself. Rather than showing clothes on a plain background, the ad tells a face-off: the hero confronts yesterday's version of himself, with one idea, being better than the day before.</p>
+      <p>The clothes aren't set dressing, they carry the message. The viewer remembers an emotion, and the emotion brings them back to the brand.</p>
+      <div class="video-tool">Concept ad · 100% AI</div>
+    </div>
+  </div>
+
+  <div class="method-grid" style="margin:0 auto 3rem;max-width:900px;">
+    <div class="method-step reveal">
+      <span class="method-num">01</span>
+      <h3>Start from the brand's DNA</h3>
+      <p>I first studied what the brand and its founder talk about on social media: hard work, discipline, the drive to push further. The concept comes from there, not from a template.</p>
+    </div>
+    <div class="method-step reveal">
+      <span class="method-num">02</span>
+      <h3>Build a story in 30 seconds</h3>
+      <p>A starting point, a tension, a resolution. Every shot moves the story forward, and the tagline lands when the viewer has already felt it.</p>
+    </div>
+    <div class="method-step reveal">
+      <span class="method-num">03</span>
+      <h3>Make the product the hero</h3>
+      <p>Both pieces stay readable and accurate from shot to shot. The story serves the garment instead of hiding it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT RAPIDE -->
+<aside class="mid-cta" aria-label="Contact">
+  <h2>Ads like these, for your brand or your clients?</h2>
+  <p>Tell me about your product and your goal: we'll pick together which format to test first.</p>
+  <div class="cta-buttons">
+    <a href="mailto:simao.thomas3108@gmail.com?subject=AI%20video%20ad%20project" class="btn btn-primary">Email me</a>
+    <a href="https://wa.me/33612225566?text=Hi%20Thomas%2C%20I%20just%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20AI%20video%20ads." target="_blank" rel="noopener" class="btn btn-whatsapp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.3 11.3 0 0012.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.28l5.67-1.49a11.33 11.33 0 005.42 1.38h.01c6.26 0 11.36-5.09 11.36-11.35 0-3.03-1.18-5.88-3.33-8.03z"/></svg>WhatsApp</a>
+    <a href="https://www.linkedin.com/in/6mao" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+  </div>
+</aside>
+
 <!-- UGC -->
 <section class="portfolio-section portfolio-pro portfolio-alt" id="ugc">
   <div class="section-label">UGC · running in Ads</div>
-  <h2 class="section-title">UGC that performs</h2>
+  <h2 class="section-title">More UGC running in Ads</h2>
   <p class="portfolio-intro">Creator-style videos with no shoot and no talent. Consistent AI characters presenting real products, formatted for Social Ads campaigns and optimized for the scroll-stop.</p>
   <p class="kpi-note"><strong>Real Meta Ads campaign figures</strong> for an audio e-commerce retailer. CTR: share of people who clicked after seeing the ad. Cost / purchase: ad spend needed to get one sale. The lower, the better.</p>
   <div class="video-grid">
-    <div class="video-card reveal">
-      <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/1QhtLtFRzfdKoJD1mt-NHNyoLo2PPQUA3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-info">
-        <div class="video-tag">UGC · Top performer</div>
-        <h3>Aurzen Projector</h3>
-        <p>Promotional UGC for the Aurzen projector. AI character interacting naturally with the product.</p>
-        <div class="perf-stats">
-          <div class="perf-stat">
-            <span class="perf-number">4.05%</span>
-            <span class="perf-label">CTR</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">3,622</span>
-            <span class="perf-label">Clicks</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">€15.46</span>
-            <span class="perf-label">Cost / purchase</span>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="video-card reveal">
       <div class="video-wrapper">
         <iframe src="https://drive.google.com/file/d/1EmPpEjXM6lydQfkdtSywkdt2fyPyO0rF/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
@@ -1384,48 +1697,24 @@
     </div>
     <div class="video-card reveal">
       <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/1KVE1goYxELa11KyMfvRhPVjwuctc7nm3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://drive.google.com/file/d/1QhtLtFRzfdKoJD1mt-NHNyoLo2PPQUA3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
-        <div class="video-tag">UGC</div>
-        <h3>Elipson Prestige Facet 6B</h3>
-        <p>UGC video integrating the real product into an AI scene. The character interacts naturally with the speaker.</p>
+        <div class="video-tag">UGC · Best click-through rate</div>
+        <h3>Aurzen Projector</h3>
+        <p>AI character interacting naturally with the projector. Over 3,600 people clicked.</p>
         <div class="perf-stats">
           <div class="perf-stat">
-            <span class="perf-number">2.42%</span>
+            <span class="perf-number">4.05%</span>
             <span class="perf-label">CTR</span>
           </div>
           <div class="perf-stat">
-            <span class="perf-number">2,079</span>
+            <span class="perf-number">3,622</span>
             <span class="perf-label">Clicks</span>
           </div>
           <div class="perf-stat">
-            <span class="perf-number">€1.54</span>
+            <span class="perf-number">€15.46</span>
             <span class="perf-label">Cost / purchase</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="video-card reveal">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/FXzcbuV2YDI" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-info">
-        <div class="video-tag">UGC · Organic</div>
-        <h3>Sennheiser Momentum 5 Denim</h3>
-        <p>Ad for the Momentum 5 Denim launch, posted organically on Instagram and TikTok.</p>
-        <div class="perf-stats">
-          <div class="perf-stat">
-            <span class="perf-number">3,000</span>
-            <span class="perf-label">Views</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">38</span>
-            <span class="perf-label">Likes</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">2</span>
-            <span class="perf-label">Shares</span>
           </div>
         </div>
       </div>
@@ -1436,33 +1725,9 @@
 <!-- MOTION DESIGN -->
 <section class="portfolio-section portfolio-pro" id="motion">
   <div class="section-label">Motion Design · running in Ads</div>
-  <h2 class="section-title">Motion design true to reality</h2>
+  <h2 class="section-title">More product motion design</h2>
   <p class="portfolio-intro">Product animations designed as ad assets. Every sequence is built to grab attention in a feed and drive clicks.</p>
   <p class="kpi-note"><strong>What my tests taught me:</strong> on the Aurzen projector, the UGC version cost 27% less per purchase than the motion design version (€15.46 vs €21.31). I test both formats, then back the one that sells.</p>
-  <div class="yt-featured reveal" style="margin-bottom:2rem;">
-    <div class="yt-horizontal">
-      <iframe src="https://www.youtube.com/embed/yYmcGXhiPa4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="yt-featured-info">
-      <div class="video-tag">Motion Design</div>
-      <h3>Sale Launch</h3>
-      <p>Launch video running in a Meta Ads campaign.</p>
-      <div class="perf-stats">
-        <div class="perf-stat">
-          <span class="perf-number">1.27%</span>
-          <span class="perf-label">CTR</span>
-        </div>
-        <div class="perf-stat">
-          <span class="perf-number">194</span>
-          <span class="perf-label">Purchases</span>
-        </div>
-        <div class="perf-stat">
-          <span class="perf-number">€2.61</span>
-          <span class="perf-label">Cost / purchase</span>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="video-grid">
     <div class="video-card reveal">
       <div class="video-wrapper">
@@ -1512,26 +1777,6 @@
         </div>
       </div>
     </div>
-    <div class="video-card reveal">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/QhtLcwmT7-g" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-info">
-        <div class="video-tag">Motion Design</div>
-        <h3>Argon TT MK2</h3>
-        <p>Motion design for the Argon TT MK2 turntable. AI-generated product animation and visual transitions.</p>
-        <div class="perf-stats">
-          <div class="perf-stat">
-            <span class="perf-number">0.81%</span>
-            <span class="perf-label">CTR</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">€4.15</span>
-            <span class="perf-label">Cost / purchase</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1561,10 +1806,38 @@
       <p>We cut what doesn't work and scale what sells. As a former media buyer, I read your results the way you do.</p>
     </div>
   </div>
-  <div class="agency-box reveal">
-    <div class="video-tag">For agencies</div>
-    <h3>Your white-label creative studio</h3>
-    <p>You run the media, I produce the creatives for your clients, under your name. Extra firepower when clients ask for more variations than your team can deliver. I work in French, English, Spanish and Portuguese.</p>
+  <div class="offer-wrap">
+    <p class="offer-price">From <strong>€50</strong> per video</p>
+    <div class="offer-grid">
+      <div class="offer-card reveal">
+        <h3>For brands</h3>
+        <p>Video ads ready to run, without organizing a shoot.</p>
+        <ul class="offer-list">
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>No studio, no creators to hire</span></li>
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>3 concepts, 3 hooks each, delivered in 48h</span></li>
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>9:16, 4:5 and 1:1 formats, burned-in captions</span></li>
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>We keep what sells and cut the rest</span></li>
+        </ul>
+        <div class="offer-actions">
+          <a href="mailto:simao.thomas3108@gmail.com?subject=AI%20video%20ads%20for%20my%20brand" class="btn btn-primary">Talk about my brand</a>
+          <a href="https://wa.me/33612225566?text=Hi%20Thomas%2C%20I%27d%20like%20to%20talk%20about%20AI%20video%20ads%20for%20my%20brand." target="_blank" rel="noopener" class="btn btn-whatsapp" aria-label="Talk about my brand on WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.3 11.3 0 0012.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.28l5.67-1.49a11.33 11.33 0 005.42 1.38h.01c6.26 0 11.36-5.09 11.36-11.35 0-3.03-1.18-5.88-3.33-8.03z"/></svg>WhatsApp</a>
+        </div>
+      </div>
+      <div class="offer-card offer-card-agency reveal">
+        <h3>For agencies</h3>
+        <p>Your white-label creative studio: you run the media, I produce for your clients.</p>
+        <ul class="offer-list">
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Delivered under your name, I stay invisible to the client</span></li>
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Extra capacity when clients ask for more variations</span></li>
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A former media buyer who talks KPIs, not just looks</span></li>
+        <li><svg class="offer-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>French, English, Spanish and Portuguese</span></li>
+        </ul>
+        <div class="offer-actions">
+          <a href="mailto:simao.thomas3108@gmail.com?subject=White-label%20AI%20video%20creatives" class="btn btn-primary">Talk about my agency</a>
+          <a href="https://wa.me/33612225566?text=Hi%20Thomas%2C%20I%20work%20at%20an%20agency%20and%20I%27d%20like%20to%20talk%20about%20white-label%20AI%20video%20creatives." target="_blank" rel="noopener" class="btn btn-whatsapp" aria-label="Talk about my agency on WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.3 11.3 0 0012.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.28l5.67-1.49a11.33 11.33 0 005.42 1.38h.01c6.26 0 11.36-5.09 11.36-11.35 0-3.03-1.18-5.88-3.33-8.03z"/></svg>WhatsApp</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1595,9 +1868,20 @@
       </p>
     </div>
     <div style="display:flex;flex-direction:column;gap:1.5rem;">
-      <div style="border-radius:16px;overflow:hidden;border:1px solid var(--card-border);max-width:250px;">
-        <img src="../photo.jpg" alt="Thomas Simão" style="width:100%;display:block;object-fit:cover;">
-      </div>
+      <figure class="about-collage">
+        <div class="collage-stack">
+          <div class="collage-card cc-1">
+            <img src="https://lh3.googleusercontent.com/d/1G6qfYTrDmlbW38CH785oI74RaxdmOLvr" alt="AI character at the Grammys" loading="lazy">
+          </div>
+          <div class="collage-card cc-3">
+            <img src="https://lh3.googleusercontent.com/d/18Ub7P8RDt1h8LHZIJDjYiaAvvRvTyi3h" alt="AI character on a basketball court" loading="lazy">
+          </div>
+          <div class="collage-card cc-2">
+            <img src="https://lh3.googleusercontent.com/d/1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg" alt="AI character in a gallery corridor" loading="lazy">
+          </div>
+        </div>
+        <figcaption class="collage-caption">One AI character, three worlds</figcaption>
+      </figure>
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-date">2026 · Present</div>
@@ -1624,9 +1908,9 @@
   </div>
 
   <!-- OUTILS -->
-  <div style="margin-top:3rem;">
+  <div class="about-block">
     <h3 style="font-size:1rem;margin-bottom:1rem;font-weight:600;">Tools</h3>
-    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+    <div class="chip-row" style="display:flex;flex-wrap:wrap;gap:0.5rem;">
       <span class="tool-chip primary">Higgsfield (Seedance)</span>
       <span class="tool-chip primary">Sora 2</span>
       <span class="tool-chip primary">Kling</span>
@@ -1635,15 +1919,12 @@
       <span class="tool-chip">Meta Ads</span>
       <span class="tool-chip">GA4</span>
       <span class="tool-chip">Looker Studio</span>
-      <span class="tool-chip">Claude Code</span>
       <span class="tool-chip">Arcads</span>
-      <span class="tool-chip">Canva</span>
-      <span class="tool-chip">CapCut</span>
     </div>
   </div>
 
   <!-- MES PERSONNAGES IA -->
-  <div style="margin-top:3rem;">
+  <div class="about-block">
     <h3 style="font-size:1rem;margin-bottom:0.5rem;font-weight:600;">My AI characters</h3>
     <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.25rem;">The same character, kept consistent across multiple generations and environments. The video below proves it in motion, the images then show the variations.</p>
     <div class="video-card reveal character-video">
@@ -1656,27 +1937,18 @@
         <p>Each scene is a separate AI render, the character stays itself.</p>
       </div>
     </div>
-    <div class="image-grid">
+    <div class="image-grid character-grid">
       <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/19FuSVjMpx2E8gtZq17Up8RIgZj_C-01a" alt="AI character" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/d/19FuSVjMpx2E8gtZq17Up8RIgZj_C-01a" alt="AI character reference sheet" loading="lazy">
       </div>
       <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1G6qfYTrDmlbW38CH785oI74RaxdmOLvr" alt="AI character" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/d/1n_dNTSaiq0XjRxIkwoAI_sJE9PLCrnLv" alt="AI character with a tennis trophy" loading="lazy">
       </div>
       <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1n_dNTSaiq0XjRxIkwoAI_sJE9PLCrnLv" alt="AI character" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/d/1YxlEpbrpsHyOX_MGV5FsaKlS19mKDLd1" alt="AI character in front of a white house" loading="lazy">
       </div>
       <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/18Ub7P8RDt1h8LHZIJDjYiaAvvRvTyi3h" alt="AI character" loading="lazy">
-      </div>
-      <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1YxlEpbrpsHyOX_MGV5FsaKlS19mKDLd1" alt="AI character" loading="lazy">
-      </div>
-      <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1yZRSnX6DyES06-_dPSuzwGlDG63xqlxU" alt="AI character" loading="lazy">
-      </div>
-      <div class="image-card reveal">
-        <img src="https://lh3.googleusercontent.com/d/1FlHZ3hIO_9Co_o0W8XfdGmrC8SxOVpeg" alt="AI character" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/d/1yZRSnX6DyES06-_dPSuzwGlDG63xqlxU" alt="AI character with a basketball trophy" loading="lazy">
       </div>
     </div>
   </div>
@@ -1687,6 +1959,7 @@
   <div class="section-label">Personal projects & concepts</div>
   <h2 class="section-title">My creative lab</h2>
   <p class="portfolio-intro">Personal work outside client projects: JSMCF, my retro mini-camera brand, a DTF-printed clothing brand, and concept ads to explore new formats.</p>
+
   <div class="yt-featured reveal" style="margin-bottom:2rem;">
     <div class="yt-horizontal">
       <iframe src="https://www.youtube.com/embed/sCKXYeQDIMs" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
@@ -1716,7 +1989,7 @@
         <div class="video-tag">Side project</div>
         <h3 style="color: #1a1a1a;">Denim Jacket handmade</h3>
         <p>Photo animated by AI. From still to cinematic with camera moves and lighting play.</p>
-        <div class="video-tool">⚡ Higgsfield · Seedance</div>
+        <div class="video-tool">Higgsfield · Seedance</div>
       </div>
     </div>
   </div>
@@ -1733,8 +2006,8 @@
     <a href="https://www.linkedin.com/in/6mao" target="_blank" rel="noopener" class="btn btn-primary" style="background:#0a66c2;">
       LinkedIn →
     </a>
-    <a href="tel:+33612225566" class="btn btn-outline">
-      +33 6 12 22 55 66
+    <a href="https://wa.me/33612225566?text=Hi%20Thomas%2C%20I%20just%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20AI%20video%20ads." target="_blank" rel="noopener" class="btn btn-whatsapp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.3 11.3 0 0012.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.28l5.67-1.49a11.33 11.33 0 005.42 1.38h.01c6.26 0 11.36-5.09 11.36-11.35 0-3.03-1.18-5.88-3.33-8.03z"/></svg>WhatsApp · +33 6 12 22 55 66
     </a>
   </div>
 </section>
