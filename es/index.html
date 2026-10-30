@@ -1391,6 +1391,47 @@
     justify-content: center;
   }
 
+  /* GALLERY (all work in one dense block) */
+  .gallery-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 0 auto 1.75rem; }
+  .filter-chip {
+    background: var(--card-bg); border: 1px solid var(--card-border); color: var(--fg);
+    padding: 0.5rem 1rem; border-radius: 100px; font: inherit; font-size: 0.82rem; font-weight: 500; cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+  .filter-chip:hover { border-color: var(--accent-strong); }
+  .filter-chip.is-active { border-color: var(--accent-strong); background: rgba(232,93,38,0.1); color: var(--accent-ink); }
+  .more-work[hidden] { display: none; }
+  .gallery { display: grid; gap: 1rem; max-width: 1100px; margin: 0 auto; align-items: start; }
+  .gallery-top { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 960px; gap: 1.25rem; }
+  .gallery-top .video-info h3 { font-size: 1.05rem; }
+  .gallery-top .video-info p { font-size: 0.85rem; }
+  .gallery-v { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-top: 1.5rem; }
+  .gallery-h { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 1rem; }
+  .more-work { max-width: 1100px; margin: 2rem auto 0; }
+  .more-toggle {
+    list-style: none; cursor: pointer; width: fit-content; margin: 0 auto;
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.9rem 1.8rem; border-radius: 100px;
+    border: 1.5px solid var(--accent-strong); background: rgba(232,93,38,0.08); color: var(--accent-ink);
+    font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .more-toggle::-webkit-details-marker { display: none; }
+  .more-toggle:hover { background: rgba(232,93,38,0.14); transform: translateY(-1px); }
+  .more-label-close { display: none; }
+  .more-work[open] .more-label-open { display: none; }
+  .more-work[open] .more-label-close { display: inline; }
+  .more-chevron { transition: transform 0.25s var(--ease-out); }
+  .more-work[open] .more-chevron { transform: rotate(180deg); }
+  .gallery[hidden], .g-card[hidden] { display: none; }
+  .g-card .video-info { padding: 0.85rem 1rem 1rem; }
+  .g-card .video-info h3 { font-size: 0.95rem; line-height: 1.3; margin-bottom: 0.25rem; }
+  .g-card .video-info p { font-size: 0.78rem; line-height: 1.45; }
+  .g-card .perf-stats { flex-wrap: wrap; gap: 0.35rem 0.9rem; margin-top: 0.6rem; padding-top: 0.6rem; }
+  .g-card .perf-number { font-size: 0.92rem; }
+  .g-card .video-tag { align-items: flex-start; }
+  .g-card .video-tag::before { flex-shrink: 0; margin-top: 0.4em; }
+
   /* MID-PAGE CONTACT BAND */
   .mid-cta {
     padding: 4rem 3rem;
@@ -1451,7 +1492,35 @@
     .offer-grid { grid-template-columns: 1fr; }
     .offer-card { padding: 1.5rem; }
     .video-grid:has(> :nth-child(2):last-child) { grid-template-columns: 1fr; }
-    .about-text { text-align: left; }
+    .gallery-top {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 74%;
+      overflow-x: auto; scroll-snap-type: x mandatory; gap: 0.75rem;
+      padding-bottom: 0.5rem; scrollbar-width: none;
+    }
+    .gallery-top::-webkit-scrollbar { display: none; }
+    .gallery-top > .g-card { scroll-snap-align: center; }
+    .gallery-v { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+    .gallery-filters { gap: 0.4rem; margin-bottom: 1.25rem; }
+    .filter-chip { padding: 0.45rem 0.8rem; font-size: 0.78rem; }
+    .more-toggle { padding: 0.8rem 1.3rem; font-size: 0.78rem; }
+    .gallery-h { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.75rem; }
+    .g-card .video-info { padding: 0.7rem 0.75rem 0.8rem; }
+    .g-card .video-info h3 { font-size: 0.88rem; }
+        .about-text { text-align: left; }
+    /* mobile fixes */
+    html { scroll-padding-top: 110px; }
+    .featured-split .video-card { width: 100%; max-width: 300px; justify-self: center; }
+    nav { padding: 0.6rem max(16px, env(safe-area-inset-right, 0px)) 0.5rem max(16px, env(safe-area-inset-left, 0px)); row-gap: 0.4rem; }
+    .nav-logo { font-size: 1.15rem; }
+    nav > div:last-child { gap: 0.55rem !important; }
+    .lang-switch { font-size: 0.7rem; gap: 0.25rem; margin-right: 0; }
+    .nav-linkedin[title="LinkedIn"] { display: none; }
+    .nav-cta { padding: 0.5rem 0.8rem; font-size: 0.7rem; letter-spacing: 0.03em; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.7rem; letter-spacing: 0.05em; }
+    .showreel-section { padding-top: 7.5rem; }
+    section > .section-label { text-align: center; letter-spacing: 0.14em; }
+    section > .section-label::before, section > .section-label::after { display: none; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -1462,10 +1531,8 @@
 <nav>
   <div class="nav-logo">T<span>.</span>Simão</div>
   <ul class="nav-links">
-    <li><a href="#top">Resultados</a></li>
-    <li><a href="#projets">Cliente</a></li>
-    <li><a href="#storytelling">Storytelling</a></li>
-    <li><a href="#methode">Método</a></li>
+    <li><a href="#realisations">Trabajos</a></li>
+    <li><a href="#methode">Método y precios</a></li>
     <li><a href="#about">Sobre mí</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:0.75rem;">
@@ -1511,273 +1578,181 @@
   </div>
 </section>
 
-<!-- TOP CONTENUS -->
-<section class="portfolio-section portfolio-pro" id="top">
-  <div class="section-label">Mis mejores resultados</div>
-  <h2 class="section-title">Mi mejor contenido, por formato</h2>
-  <p class="portfolio-intro"><strong style="color:var(--fg);font-weight:500;">De media, mis creatividades con IA cuestan un 30 % menos por compra que las clásicas.</strong> Aquí está lo mejor de cada formato, con cifras reales de campañas de Meta Ads de un e-commerce de audio. CTR: porcentaje de personas que hacen clic tras ver el anuncio. Coste / compra: presupuesto invertido para conseguir una venta, cuanto más bajo, mejor.</p>
-
-  <div class="featured-split reveal">
-    <div class="video-card">
+<!-- REALISATIONS -->
+<section class="portfolio-section portfolio-pro" id="realisations">
+  <div class="section-label">Trabajos</div>
+  <h2 class="section-title">Mis anuncios con IA, del UGC al storytelling</h2>
+  <p class="portfolio-intro"><strong style="color:var(--fg);font-weight:500;">De media, mis creatividades con IA cuestan un 30 % menos por compra que las clásicas.</strong> Cifras reales de campañas de Meta Ads. CTR: porcentaje de personas que hacen clic. Coste / compra: presupuesto para conseguir una venta.</p>
+  <div class="gallery-filters" role="group" aria-label="Filtrar por formato">
+    <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">Todo</button>
+    <button type="button" class="filter-chip" data-filter="ugc" aria-pressed="false">UGC</button>
+    <button type="button" class="filter-chip" data-filter="motion" aria-pressed="false">Motion design</button>
+    <button type="button" class="filter-chip" data-filter="story" aria-pressed="false">Storytelling</button>
+    <button type="button" class="filter-chip" data-filter="local" aria-pressed="false">Comercio local</button>
+  </div>
+  <div class="gallery gallery-top">
+    <article class="video-card g-card reveal" data-cat="ugc">
       <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/1KVE1goYxELa11KyMfvRhPVjwuctc7nm3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-    <div class="featured-text">
-      <div class="video-tag">Top UGC · en campaña</div>
-      <h3>Elipson Prestige Facet 6B</h3>
-      <p>El producto real integrado en una escena IA, con un personaje que maneja el altavoz como lo haría un creador. <strong>Mi mejor coste por compra: 1,54 € por venta.</strong></p>
-      <div class="perf-stats">
-        <div class="perf-stat">
-          <span class="perf-number">1,54&nbsp;€</span>
-          <span class="perf-label">Coste / compra</span>
-        </div>
-        <div class="perf-stat">
-          <span class="perf-number">2,42&nbsp;%</span>
-          <span class="perf-label">CTR</span>
-        </div>
-        <div class="perf-stat">
-          <span class="perf-number">2.079</span>
-          <span class="perf-label">Clics</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="yt-featured reveal">
-    <div class="yt-horizontal">
-      <iframe src="https://www.youtube.com/embed/yYmcGXhiPa4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="yt-featured-info">
-      <div class="video-tag">Top Motion Design · en campaña</div>
-      <h3>Lanzamiento de Rebajas</h3>
-      <p>Un vídeo de lanzamiento difundido en una campaña de Meta Ads. <strong style="color:var(--fg);font-weight:500;">194 ventas con un solo vídeo.</strong></p>
-      <div class="perf-stats">
-        <div class="perf-stat">
-          <span class="perf-number">1,27&nbsp;%</span>
-          <span class="perf-label">CTR</span>
-        </div>
-        <div class="perf-stat">
-          <span class="perf-number">194</span>
-          <span class="perf-label">Compras</span>
-        </div>
-        <div class="perf-stat">
-          <span class="perf-number">2,61&nbsp;€</span>
-          <span class="perf-label">Coste / compra</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-<!-- PROJETS -->
-<section class="portfolio-section portfolio-pro portfolio-alt" id="projets">
-  <div class="section-label">Técnica · Proyecto cliente</div>
-  <h2 class="section-title">Tri For Fun, una tienda filmada sin cámara</h2>
-
-  <div class="featured-split reveal">
-    <div class="video-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/_4kPmt2pZfM" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-    <div class="featured-text">
-      <div class="video-tag">Tienda de triatlón y running · Barcelona</div>
-      <h3>De la maqueta 3D a la tienda real, sin rodaje</h3>
-      <p>Arriba, una maqueta 3D de la tienda. Abajo, el mismo plano convertido en vídeo fotorrealista con IA.</p>
-      <p><strong>Un render controlado, no una IA al azar.</strong> Una IA que inventa sola una escena cambia las estanterías, mueve las paredes y deforma los productos de un plano a otro. Aquí, la maqueta 3D sirve de esqueleto: la distribución, los volúmenes y el movimiento de cámara se fijan de antemano, y la IA solo se encarga de los materiales y la luz.</p>
-      <p>Resultado: <strong>el cliente reconoce su tienda</strong>, cada plano es coherente con el siguiente y cualquier toma se puede rehacer sin empezar de cero.</p>
-      <div class="video-tool">Maqueta 3D · Higgsfield Genjutsu</div>
-    </div>
-  </div>
-
-  <div class="method-grid" style="margin:0 auto;max-width:900px;">
-    <div class="method-step reveal">
-      <span class="method-num">01</span>
-      <h3>El enfoque</h3>
-      <p>En lugar de un mensaje de prospección clásico, contacté a la tienda con un vídeo ya hecho para ellos, a partir de su propio espacio de venta.</p>
-    </div>
-    <div class="method-step reveal">
-      <span class="method-num">02</span>
-      <h3>La producción</h3>
-      <p>Primero la maqueta 3D de la tienda, donde encuadro cada plano como en un rodaje real: trayectoria de cámara, ritmo, punto de vista. Después, la IA convierte esos planos en imágenes realistas respetando la geometría de la maqueta. La tienda se pone en escena sin cerrar sus puertas ni organizar un rodaje.</p>
-    </div>
-    <div class="method-step reveal">
-      <span class="method-num">03</span>
-      <h3>El resultado</h3>
-      <p><strong style="color:var(--fg);font-weight:600;">La demo consiguió el proyecto.</strong> Ahora me encargo de la comunicación en vídeo de la tienda.</p>
-    </div>
-  </div>
-</section>
-
-<!-- STORYTELLING -->
-<section class="portfolio-section portfolio-pro" id="storytelling">
-  <div class="section-label">Storytelling · Anuncio concepto</div>
-  <h2 class="section-title">Delta Fraternité, una historia en 30 segundos</h2>
-  <div class="featured-split reveal">
-    <div class="video-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/f2GzZu0G1oU" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-    <div class="featured-text">
-      <div class="video-tag">Anuncio concepto · Marca de ropa independiente</div>
-      <h3>Delta Fraternité · «Ese soy yo ayer»</h3>
-      <p>Un anuncio concepto de 30 segundos para Delta Fraternité, una marca de ropa independiente. Protagonizan las prendas <strong>DREAMCHASER</strong> y <strong>NO SLEEP</strong>.</p>
-      <p><strong>Una historia antes que un producto.</strong> La marca habla de emprendimiento y superación personal. En lugar de mostrar ropa sobre un fondo neutro, el anuncio cuenta un cara a cara: el protagonista se enfrenta a su versión de ayer, con una sola idea, ser mejor que el día anterior.</p>
-      <p>La ropa no es decorado, lleva el mensaje. El espectador recuerda una emoción, y esa emoción lo lleva de vuelta a la marca.</p>
-      <div class="video-tool">Anuncio concepto · 100 % IA</div>
-    </div>
-  </div>
-
-  <div class="method-grid" style="margin:0 auto 3rem;max-width:900px;">
-    <div class="method-step reveal">
-      <span class="method-num">01</span>
-      <h3>Partir del ADN de la marca</h3>
-      <p>Primero estudié lo que la marca y su fundador cuentan en sus redes: el trabajo, la disciplina, las ganas de superarse. El concepto nace de ahí, no de una plantilla.</p>
-    </div>
-    <div class="method-step reveal">
-      <span class="method-num">02</span>
-      <h3>Construir un relato en 30 segundos</h3>
-      <p>Un punto de partida, una tensión, una resolución. Cada plano hace avanzar la historia, y el eslogan llega cuando el espectador ya lo ha sentido.</p>
-    </div>
-    <div class="method-step reveal">
-      <span class="method-num">03</span>
-      <h3>Hacer del producto el protagonista</h3>
-      <p>Las dos prendas se ven bien y se mantienen fieles de un plano a otro. La historia está al servicio de la prenda, en lugar de hacerla desaparecer.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT RAPIDE -->
-<aside class="mid-cta" aria-label="Contact">
-  <h2>¿Anuncios como estos, para tu marca o tus clientes?</h2>
-  <p>Cuéntame tu producto y tu objetivo: vemos juntos qué formato probar primero.</p>
-  <div class="cta-buttons">
-    <a href="mailto:simao.thomas3108@gmail.com?subject=Proyecto%20de%20anuncio%20en%20v%C3%ADdeo%20con%20IA" class="btn btn-primary">Escríbeme por email</a>
-    <a href="https://wa.me/33612225566?text=Hola%20Thomas%2C%20acabo%20de%20ver%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20hablar%20de%20anuncios%20en%20v%C3%ADdeo%20con%20IA." target="_blank" rel="noopener" class="btn btn-whatsapp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.3 11.3 0 0012.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.28l5.67-1.49a11.33 11.33 0 005.42 1.38h.01c6.26 0 11.36-5.09 11.36-11.35 0-3.03-1.18-5.88-3.33-8.03z"/></svg>WhatsApp</a>
-    <a href="https://www.linkedin.com/in/6mao" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
-  </div>
-</aside>
-
-<!-- UGC -->
-<section class="portfolio-section portfolio-pro portfolio-alt" id="ugc">
-  <div class="section-label">UGC · en campaña</div>
-  <h2 class="section-title">Más UGC en campaña</h2>
-  <p class="portfolio-intro">Vídeos estilo «creador» sin rodaje ni talento. Personajes IA coherentes que presentan productos reales, en formato para campañas de Social Ads y optimizados para frenar el scroll.</p>
-  <p class="kpi-note"><strong>Cifras reales de campañas de Meta Ads</strong> para un e-commerce de audio. CTR: porcentaje de personas que hicieron clic tras ver el anuncio. Coste / compra: presupuesto publicitario invertido para conseguir una venta. Cuanto más bajo, mejor.</p>
-  <div class="video-grid">
-    <div class="video-card reveal">
-      <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/1EmPpEjXM6lydQfkdtSywkdt2fyPyO0rF/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://drive.google.com/file/d/1KVE1goYxELa11KyMfvRhPVjwuctc7nm3/preview" title="Elipson Prestige Facet 6B" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
-        <div class="video-tag">UGC</div>
-        <h3>Platine Days</h3>
-        <p>Vídeo UGC promocional para la campaña Platine Days. Personaje IA que presenta las ofertas en un contexto realista.</p>
+        <div class="video-tag">UGC · Mejor coste por compra</div>
+        <h3>Elipson Prestige Facet 6B</h3>
+        <p>El producto real en una escena IA, presentado como lo haría un creador.</p>
         <div class="perf-stats">
-          <div class="perf-stat">
-            <span class="perf-number">2,93&nbsp;%</span>
-            <span class="perf-label">CTR</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">997</span>
-            <span class="perf-label">Clics</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">3,92&nbsp;€</span>
-            <span class="perf-label">Coste / compra</span>
-          </div>
+          <div class="perf-stat"><span class="perf-number">1,54&nbsp;€</span><span class="perf-label">Coste / compra</span></div>
+          <div class="perf-stat"><span class="perf-number">2,42&nbsp;%</span><span class="perf-label">CTR</span></div>
+          <div class="perf-stat"><span class="perf-number">2.079</span><span class="perf-label">Clics</span></div>
         </div>
       </div>
-    </div>
-    <div class="video-card reveal">
+    </article>
+    <article class="video-card g-card reveal" data-cat="local">
       <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/1QhtLtFRzfdKoJD1mt-NHNyoLo2PPQUA3/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/_4kPmt2pZfM" title="Tri For Fun" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Comercio local · Cliente</div>
+        <h3>Tri For Fun</h3>
+        <p>Maqueta 3D y después IA: cada plano se fija de antemano y el cliente reconoce su tienda. La demo consiguió el proyecto.</p>
+      </div>
+    </article>
+    <article class="video-card g-card reveal" data-cat="story">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/f2GzZu0G1oU" title="Delta Fraternité" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Storytelling · Anuncio concepto</div>
+        <h3>Delta Fraternité</h3>
+        <p>Una historia antes que un producto: el protagonista frente a su versión de ayer, y la ropa lleva el mensaje.</p>
+      </div>
+    </article>
+  </div>
+  <details class="more-work">
+    <summary class="more-toggle">
+      <span class="more-label-open">Ver más trabajos (9)</span>
+      <span class="more-label-close">Ver menos</span>
+      <svg class="more-chevron" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </summary>
+    <div class="gallery gallery-v">
+    <article class="video-card g-card reveal" data-cat="ugc">
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1QhtLtFRzfdKoJD1mt-NHNyoLo2PPQUA3/preview" title="Proyector Aurzen" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
         <div class="video-tag">UGC · Mejor tasa de clics</div>
         <h3>Proyector Aurzen</h3>
-        <p>Personaje IA interactuando con naturalidad con el proyector. Más de 3.600 personas hicieron clic.</p>
+        <p>Un personaje IA que maneja el proyector con naturalidad.</p>
         <div class="perf-stats">
-          <div class="perf-stat">
-            <span class="perf-number">4,05&nbsp;%</span>
-            <span class="perf-label">CTR</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">3.622</span>
-            <span class="perf-label">Clics</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">15,46&nbsp;€</span>
-            <span class="perf-label">Coste / compra</span>
-          </div>
+          <div class="perf-stat"><span class="perf-number">4,05&nbsp;%</span><span class="perf-label">CTR</span></div>
+          <div class="perf-stat"><span class="perf-number">3.622</span><span class="perf-label">Clics</span></div>
+          <div class="perf-stat"><span class="perf-number">15,46&nbsp;€</span><span class="perf-label">Coste / compra</span></div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- MOTION DESIGN -->
-<section class="portfolio-section portfolio-pro" id="motion">
-  <div class="section-label">Motion Design · en campaña</div>
-  <h2 class="section-title">Más motion design de producto</h2>
-  <p class="portfolio-intro">Animaciones de producto pensadas como activos publicitarios. Cada secuencia está diseñada para captar la atención en el feed y generar clics.</p>
-  <p class="kpi-note"><strong>Lo que me enseñaron mis tests:</strong> en el proyector Aurzen, la versión UGC costó un 27 % menos por compra que la versión motion design (15,46 € frente a 21,31 €). Pruebo los dos formatos y apuesto por el que vende.</p>
-  <div class="video-grid">
-    <div class="video-card reveal">
+    </article>
+    <article class="video-card g-card reveal" data-cat="ugc">
       <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/sU1_QpPeSqc" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://drive.google.com/file/d/1EmPpEjXM6lydQfkdtSywkdt2fyPyO0rF/preview" title="Platine Days" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
-        <div class="video-tag">Motion Design</div>
+        <div class="video-tag">UGC</div>
+        <h3>Platine Days</h3>
+        <p>Un personaje IA que presenta las ofertas en un contexto realista.</p>
+        <div class="perf-stats">
+          <div class="perf-stat"><span class="perf-number">2,93&nbsp;%</span><span class="perf-label">CTR</span></div>
+          <div class="perf-stat"><span class="perf-number">997</span><span class="perf-label">Clics</span></div>
+          <div class="perf-stat"><span class="perf-number">3,92&nbsp;€</span><span class="perf-label">Coste / compra</span></div>
+        </div>
+      </div>
+    </article>
+    <article class="video-card g-card reveal" data-cat="motion">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/sU1_QpPeSqc" title="Cambridge Melomania" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Motion design</div>
         <h3>Cambridge Melomania</h3>
-        <p>Anuncio para los auriculares Cambridge Melomania, difundido en campaña de Ads.</p>
+        <p>Animación de producto para los auriculares, en campaña.</p>
         <div class="perf-stats">
-          <div class="perf-stat">
-            <span class="perf-number">1,9&nbsp;%</span>
-            <span class="perf-label">CTR</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">~39</span>
-            <span class="perf-label">Compras</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">3,12&nbsp;€</span>
-            <span class="perf-label">Coste / compra</span>
-          </div>
+          <div class="perf-stat"><span class="perf-number">1,9&nbsp;%</span><span class="perf-label">CTR</span></div>
+          <div class="perf-stat"><span class="perf-number">~39</span><span class="perf-label">Compras</span></div>
+          <div class="perf-stat"><span class="perf-number">3,12&nbsp;€</span><span class="perf-label">Coste / compra</span></div>
         </div>
       </div>
-    </div>
-    <div class="video-card reveal">
+    </article>
+    <article class="video-card g-card reveal" data-cat="motion">
       <div class="video-wrapper">
-        <iframe src="https://drive.google.com/file/d/129zpF8VYlV9BAmfJU9ykNZpQdGCfRod2/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://drive.google.com/file/d/129zpF8VYlV9BAmfJU9ykNZpQdGCfRod2/preview" title="Proyector Aurzen" allow="autoplay" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
-        <div class="video-tag">Motion Design</div>
+        <div class="video-tag">Motion design</div>
         <h3>Proyector Aurzen</h3>
-        <p>Motion design para el proyector Aurzen. Animaciones de producto y ambiente visual generados con IA.</p>
+        <p>Animación de producto y ambiente generados con IA.</p>
         <div class="perf-stats">
-          <div class="perf-stat">
-            <span class="perf-number">0,94&nbsp;%</span>
-            <span class="perf-label">CTR</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">292</span>
-            <span class="perf-label">Clics</span>
-          </div>
-          <div class="perf-stat">
-            <span class="perf-number">21,31&nbsp;€</span>
-            <span class="perf-label">Coste / compra</span>
-          </div>
+          <div class="perf-stat"><span class="perf-number">0,94&nbsp;%</span><span class="perf-label">CTR</span></div>
+          <div class="perf-stat"><span class="perf-number">292</span><span class="perf-label">Clics</span></div>
+          <div class="perf-stat"><span class="perf-number">21,31&nbsp;€</span><span class="perf-label">Coste / compra</span></div>
         </div>
       </div>
+    </article>
+    <article class="video-card g-card reveal" data-cat="motion">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/Osp8YvP2l5w" title="Denim Jacket handmade" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Foto animada · Proyecto personal</div>
+        <h3>Denim Jacket handmade</h3>
+        <p>Una simple foto convertida en plano de cine.</p>
+      </div>
+    </article>
     </div>
-  </div>
+    <div class="gallery gallery-h">
+    <article class="video-card g-card reveal" data-cat="motion">
+      <div class="video-wrapper horizontal">
+        <iframe src="https://www.youtube.com/embed/yYmcGXhiPa4" title="Lanzamiento de Rebajas" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Motion design · Más ventas</div>
+        <h3>Lanzamiento de Rebajas</h3>
+        <p>194 ventas con un solo vídeo.</p>
+        <div class="perf-stats">
+          <div class="perf-stat"><span class="perf-number">1,27&nbsp;%</span><span class="perf-label">CTR</span></div>
+          <div class="perf-stat"><span class="perf-number">194</span><span class="perf-label">Compras</span></div>
+          <div class="perf-stat"><span class="perf-number">2,61&nbsp;€</span><span class="perf-label">Coste / compra</span></div>
+        </div>
+      </div>
+    </article>
+    <article class="video-card g-card reveal" data-cat="story">
+      <div class="video-wrapper horizontal">
+        <iframe src="https://www.youtube.com/embed/sCKXYeQDIMs" title="JSMCF Cam · El golpe" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Storytelling · Proyecto personal</div>
+        <h3>JSMCF Cam · El golpe</h3>
+        <p>Una película de atracos en 20 segundos para una minicámara retro.</p>
+      </div>
+    </article>
+    <article class="video-card g-card reveal" data-cat="ugc motion">
+      <div class="video-wrapper horizontal">
+        <iframe src="https://www.youtube.com/embed/5NqltBgVQjk" title="Typology" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">UGC + motion · Anuncio concepto</div>
+        <h3>Typology</h3>
+        <p>Anuncio concepto no encargado: UGC y motion design en un solo activo.</p>
+      </div>
+    </article>
+    <article class="video-card g-card reveal" data-cat="ugc">
+      <div class="video-wrapper horizontal">
+        <iframe src="https://player.vimeo.com/video/1212954595" title="Un personaje, varias escenas" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Coherencia de personaje</div>
+        <h3>Un personaje, varias escenas</h3>
+        <p>Cada escena es un render IA distinto, el personaje sigue siendo él mismo.</p>
+      </div>
+    </article>
+    </div>
+  </details>
 </section>
 
 <!-- METHODE -->
@@ -1926,17 +1901,7 @@
   <!-- MES PERSONNAGES IA -->
   <div class="about-block">
     <h3 style="font-size:1rem;margin-bottom:0.5rem;font-weight:600;">Mis personajes IA</h3>
-    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.25rem;">El mismo personaje, coherente a lo largo de varias generaciones y entornos. El vídeo de abajo lo demuestra en movimiento y las imágenes muestran sus variaciones.</p>
-    <div class="video-card reveal character-video">
-      <div class="video-wrapper horizontal">
-        <iframe src="https://player.vimeo.com/video/1212954595" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-info">
-        <div class="video-tag">Coherencia de personaje · multigeneración</div>
-        <h3>Un solo personaje, varias generaciones</h3>
-        <p>Cada escena es un render IA distinto, el personaje sigue siendo él mismo.</p>
-      </div>
-    </div>
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.25rem;">El mismo personaje, coherente a lo largo de varias generaciones y entornos. El vídeo está en los trabajos, aquí van algunas variaciones.</p>
     <div class="image-grid character-grid">
       <div class="image-card reveal">
         <img src="https://lh3.googleusercontent.com/d/19FuSVjMpx2E8gtZq17Up8RIgZj_C-01a" alt="Hoja de referencia del personaje IA" loading="lazy">
@@ -1949,47 +1914,6 @@
       </div>
       <div class="image-card reveal">
         <img src="https://lh3.googleusercontent.com/d/1yZRSnX6DyES06-_dPSuzwGlDG63xqlxU" alt="Personaje IA con un trofeo de baloncesto" loading="lazy">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ANIMATION -->
-<section class="portfolio-section" id="animation">
-  <div class="section-label">Proyectos personales y conceptos</div>
-  <h2 class="section-title">Mi laboratorio creativo</h2>
-  <p class="portfolio-intro">Creaciones personales fuera del marco de cliente: JSMCF, mi marca de minicámaras retro, una marca de ropa con impresión DTF y anuncios concepto para explorar nuevos formatos.</p>
-
-  <div class="yt-featured reveal" style="margin-bottom:2rem;">
-    <div class="yt-horizontal">
-      <iframe src="https://www.youtube.com/embed/sCKXYeQDIMs" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="yt-featured-info">
-      <div class="video-tag">Side project · E-commerce</div>
-      <h3>JSMCF Cam · El golpe</h3>
-      <p>Un anuncio contado como una película de atracos para una minicámara retro. Una historia completa en 20 segundos, look de cine, una marca que se queda en la cabeza. 100 % IA.</p>
-    </div>
-  </div>
-  <div class="yt-featured reveal" style="margin-bottom:2rem;">
-    <div class="yt-horizontal">
-      <iframe src="https://www.youtube.com/embed/5NqltBgVQjk" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="yt-featured-info">
-      <div class="video-tag">Anuncio concepto · Cosmética</div>
-      <h3>Typology · UGC y motion design</h3>
-      <p>Anuncio concepto no encargado por la marca. UGC y motion design combinados en un solo activo, pensado para frenar el scroll y convertir.</p>
-    </div>
-  </div>
-  <div class="video-grid">
-    <div class="video-card reveal">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/Osp8YvP2l5w" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-info">
-        <div class="video-tag">Side project</div>
-        <h3 style="color: #1a1a1a;">Denim Jacket handmade</h3>
-        <p>Foto animada con IA. Del estático al cinematográfico con movimientos de cámara y juegos de luz.</p>
-        <div class="video-tool">Higgsfield · Seedance</div>
       </div>
     </div>
   </div>
@@ -2057,6 +1981,37 @@
       }
     });
   });
+</script>
+
+
+
+
+<script>
+  // Gallery filters: filter featured + drawer, open the drawer when it holds matches
+  (function () {
+    const chips = document.querySelectorAll('.filter-chip');
+    const cards = document.querySelectorAll('.g-card');
+    const galleries = document.querySelectorAll('.gallery');
+    const drawer = document.querySelector('.more-work');
+    chips.forEach((btn) => btn.addEventListener('click', () => {
+      const f = btn.dataset.filter;
+      chips.forEach((c) => { const on = c === btn; c.classList.toggle('is-active', on); c.setAttribute('aria-pressed', String(on)); });
+      cards.forEach((card) => { card.hidden = f !== 'all' && !card.dataset.cat.split(' ').includes(f); });
+      galleries.forEach((g) => { g.hidden = ![...g.children].some((c) => !c.hidden); });
+      if (!drawer) return;
+      if (f === 'all') {
+        drawer.hidden = false;
+        if (autoOpened) { drawer.open = false; autoOpened = false; }
+        return;
+      }
+      const hasMatch = [...drawer.querySelectorAll('.g-card')].some((c) => !c.hidden);
+      drawer.hidden = !hasMatch;
+      if (hasMatch && !drawer.open) { drawer.open = true; autoOpened = true; }
+    }));
+    let autoOpened = false;
+    const toggle = drawer && drawer.querySelector('summary');
+    if (toggle) toggle.addEventListener('click', () => { autoOpened = false; });
+  })();
 </script>
 
 </body>
