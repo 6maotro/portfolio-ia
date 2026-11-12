@@ -1524,6 +1524,73 @@
     section > .section-label::before, section > .section-label::after { display: none; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
+
+  /* FEATURED FILM: full-width cinema band right under the hero */
+  .featured-film {
+    background: #14110f;
+    color: #f5f0e8;
+    padding: 5rem 3rem 5.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .featured-film::before {
+    content: '';
+    position: absolute;
+    inset: -40% -10% auto auto;
+    width: 60vw; height: 60vw;
+    background: radial-gradient(circle, rgba(232,93,38,0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .featured-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+  .featured-film .section-label { color: #f0a27e; }
+  .featured-film .section-label::before, .featured-film .section-label::after { background: var(--accent); }
+  .featured-player {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.06);
+  }
+  .featured-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .featured-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-top: 1.75rem;
+  }
+  .featured-caption .video-tag { color: #f0a27e; }
+  .featured-caption h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0.3rem 0 0.75rem;
+  }
+  .featured-caption p { color: #cfc6b8; max-width: 56ch; margin: 0; line-height: 1.6; }
+  .featured-more {
+    flex-shrink: 0;
+    color: #f5f0e8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid rgba(245,240,232,0.3);
+    border-radius: 999px;
+    padding: 0.7rem 1.2rem;
+    white-space: nowrap;
+    transition: background 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+  }
+  .featured-more:hover { background: rgba(245,240,232,0.08); border-color: #f5f0e8; }
+  .featured-more:focus-visible { outline: 2px solid #f0a27e; outline-offset: 3px; }
+  @media (max-width: 768px) {
+    .featured-film { padding: 3.5rem 1.25rem 4rem; }
+    .featured-player { border-radius: 10px; }
+    .featured-caption { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+    .featured-film .section-label { justify-content: center; letter-spacing: 0.14em; }
+    .featured-film .section-label::before { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -1575,6 +1642,24 @@
   <div class="showreel-video">
     <div class="yt-vertical">
       <iframe src="https://www.youtube.com/embed/E5fQXoq2ktM" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED FILM -->
+<section class="featured-film" id="a-la-une" aria-label="Película destacada">
+  <div class="featured-inner">
+    <div class="section-label">Destacado</div>
+    <div class="featured-player">
+      <iframe src="https://www.youtube.com/embed/HtusLnK7Lug?rel=0" title="Burglary" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="featured-caption">
+      <div>
+        <div class="video-tag">Storytelling · Anuncio concepto</div>
+        <h2>Burglary</h2>
+        <p>Una mancha de mostaza, una lavandería de noche y una abuela que se va con el chándal. Un anuncio de moda contado como una comedia, sin una palabra.</p>
+      </div>
+      <a href="#realisations" class="featured-more" data-goto-filter="story">Ver todos los films de storytelling →</a>
     </div>
   </div>
 </section>
@@ -1631,7 +1716,7 @@
   </div>
   <details class="more-work">
     <summary class="more-toggle">
-      <span class="more-label-open">Ver más trabajos (9)</span>
+      <span class="more-label-open">Ver más trabajos (12)</span>
       <span class="more-label-close">Ver menos</span>
       <svg class="more-chevron" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </summary>
@@ -1725,12 +1810,42 @@
     </article>
     <article class="video-card g-card reveal" data-cat="story">
       <div class="video-wrapper horizontal">
+        <iframe src="https://www.youtube.com/embed/HtusLnK7Lug" title="Burglary" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Storytelling · Anuncio concepto</div>
+        <h3>Burglary</h3>
+        <p>Una mancha de mostaza, una lavandería y una abuela muy tranquila: un anuncio de moda contado como una comedia.</p>
+      </div>
+    </article>
+    <article class="video-card g-card reveal" data-cat="story">
+      <div class="video-wrapper horizontal">
         <iframe src="https://www.youtube.com/embed/sCKXYeQDIMs" title="JSMCF Cam · El golpe" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-info">
         <div class="video-tag">Storytelling · Proyecto personal</div>
         <h3>JSMCF Cam · El golpe</h3>
         <p>Una película de atracos en 20 segundos para una minicámara retro.</p>
+      </div>
+    </article>
+    <article class="video-card g-card reveal" data-cat="story">
+      <div class="video-wrapper horizontal">
+        <iframe src="https://www.youtube.com/embed/0fmOn_zVwYc" title="Still Graduating" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Storytelling · Proyecto personal</div>
+        <h3>Still Graduating</h3>
+        <p>Una mascota graduada, del backstage hasta el público: una entrada de concierto contada como una película.</p>
+      </div>
+    </article>
+    <article class="video-card g-card reveal" data-cat="local story">
+      <div class="video-wrapper horizontal">
+        <iframe src="https://www.youtube.com/embed/61o5Ws9ykn4" title="Rodeo" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Comercio local · Anuncio concepto</div>
+        <h3>Rodeo</h3>
+        <p>Una figura, un monster truck y una llegada a la tienda: un comercio local filmado como un blockbuster.</p>
       </div>
     </article>
     <article class="video-card g-card reveal" data-cat="ugc motion">
@@ -2021,6 +2136,15 @@
       if (drawer) drawer.hidden = true;
     }));
   })();
+</script>
+
+
+<script>
+  // "See all storytelling films" link: scroll to the gallery and apply the Storytelling filter
+  document.querySelectorAll('[data-goto-filter]').forEach((a) => a.addEventListener('click', () => {
+    const chip = document.querySelector('.filter-chip[data-filter="' + a.dataset.gotoFilter + '"]');
+    if (chip) chip.click();
+  }));
 </script>
 
 </body>
